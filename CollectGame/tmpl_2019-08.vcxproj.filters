@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="surface.cpp">
+      <Filter>template code</Filter>
+    </ClCompile>
+    <ClCompile Include="template.cpp">
+      <Filter>template code</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>game code</Filter>
+    </ClCompile>
+    <ClCompile Include="entity.cpp">
+      <Filter>game code\entity</Filter>
+    </ClCompile>
+    <ClCompile Include="point.cpp">
+      <Filter>game code\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>game code\entity\player</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="surface.h">
+      <Filter>template code</Filter>
+    </ClInclude>
+    <ClInclude Include="template.h">
+      <Filter>template code</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>game code</Filter>
+    </ClInclude>
+    <ClInclude Include="entity.h">
+      <Filter>game code\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="point.h">
+      <Filter>game code\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>game code\entity\player</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="template code">
+      <UniqueIdentifier>{bf32dd6e-4be7-4889-8ac6-49e7ee163c40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game code">
+      <UniqueIdentifier>{6d19cd33-2d8f-46ca-898b-a3aa0182f899}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game code\entity">
+      <UniqueIdentifier>{3145edb8-bed9-4090-9e36-9e4f63f0bbe6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game code\tools">
+      <UniqueIdentifier>{48f5b2c1-f288-4102-93e8-3dd645a8f2b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game code\entity\player">
+      <UniqueIdentifier>{fa01d26c-9002-4838-8df4-128597aa2ca1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game code\entity\enemy">
+      <UniqueIdentifier>{1e0c9fcc-9c49-4cdd-8957-34e3d7064d8c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="_readme.txt">
+      <Filter>template code</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
