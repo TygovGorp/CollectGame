@@ -4,6 +4,10 @@ namespace Tmpl8
 {
     class player : public entity
     {
+    public:
+        void moveWithInputs(int key);
+
+    private:
 
     };
 }

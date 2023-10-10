@@ -14,7 +14,7 @@ namespace Tmpl8
 		entity(int hp, int dmg, vec2 LOC);
 		entity(int hp, int dmg, int xloc, int yloc);
 
-		void buildAnimation(Surface* surface, unsigned int numofframes, char* filename);
+		void buildAnimation(Surface* surface, int numofframes, char* filename);
 		void build(int hp, int dmg, vec2 LOC);
 		void build(int hp, int dmg, int xloc, int yloc);
 

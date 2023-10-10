@@ -33,7 +33,14 @@ namespace Tmpl8
 	void animation::update(int FrameCounter)
 	{
 		//drawing the frames (do minus to the FrameCounter because you don't have frame 0 but start at 1)
-		Frames[FrameCounter-1]->DrawScaled(Xlocation, Ylocation, 104, 104, Screen);
+		Frames[FrameCounter - 1]->DrawScaled(Xlocation, Ylocation, 104, 104, Screen);
+	}
+	
+	void animation::update(int FrameCounter, int updatedX, int updatedY)
+	{
+		Xlocation = updatedX;
+		Ylocation = updatedY;
+		update(FrameCounter);
 	}
 
 	//adding the extension to the end of the filename for full animations (automation)

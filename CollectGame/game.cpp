@@ -1,10 +1,9 @@
 #include "game.h"
 #include "surface.h"
-#include "entity.h"
 
 namespace Tmpl8
 {
-	entity Player;
+
 	// -----------------------------------------------------------
 	// Initialize the application
 	// -----------------------------------------------------------
@@ -28,7 +27,6 @@ namespace Tmpl8
 	{
 		// clear the graphics window
 		screen->Clear(0);
-
 		Player.update();
 	}
 };

@@ -17,7 +17,10 @@ namespace Tmpl8
 		~animation() {Frames.clear();}
 
 		void init(int NumFrames, char* filename, int Xloc, int Yloc, Surface* ScreenSurface);
+
 		void update(int FrameCounter);
+		void update(int FrameCounter, int updatedX, int updatedY);
+
 		char* StrToCharStar(char* filename, int i);
 	};
 }
