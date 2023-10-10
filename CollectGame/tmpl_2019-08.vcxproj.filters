@@ -13,11 +13,11 @@
     <ClCompile Include="entity.cpp">
       <Filter>game code\entity</Filter>
     </ClCompile>
-    <ClCompile Include="point.cpp">
-      <Filter>game code\tools</Filter>
-    </ClCompile>
     <ClCompile Include="player.cpp">
       <Filter>game code\entity\player</Filter>
+    </ClCompile>
+    <ClCompile Include="animation.cpp">
+      <Filter>game code\tools</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -33,11 +33,11 @@
     <ClInclude Include="entity.h">
       <Filter>game code\entity</Filter>
     </ClInclude>
-    <ClInclude Include="point.h">
-      <Filter>game code\tools</Filter>
-    </ClInclude>
     <ClInclude Include="player.h">
       <Filter>game code\entity\player</Filter>
+    </ClInclude>
+    <ClInclude Include="animation.h">
+      <Filter>game code\tools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

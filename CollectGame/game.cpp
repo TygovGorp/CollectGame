@@ -1,14 +1,16 @@
 #include "game.h"
 #include "surface.h"
-#include <cstdio> //printf
+#include "entity.h"
 
 namespace Tmpl8
 {
+	entity Player;
 	// -----------------------------------------------------------
 	// Initialize the application
 	// -----------------------------------------------------------
 	void Game::Init()
 	{
+		Player.buildAnimation(screen, 1, "assets/temp_Player.png");
 	}
 	
 	// -----------------------------------------------------------
@@ -16,6 +18,7 @@ namespace Tmpl8
 	// -----------------------------------------------------------
 	void Game::Shutdown()
 	{
+
 	}
 
 	// -----------------------------------------------------------
@@ -26,5 +29,6 @@ namespace Tmpl8
 		// clear the graphics window
 		screen->Clear(0);
 
+		Player.update();
 	}
 };

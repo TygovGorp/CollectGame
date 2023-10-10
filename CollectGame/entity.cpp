@@ -8,7 +8,7 @@ namespace Tmpl8
 		loc.x = 0;
 		loc.y = 0;
 	}
-	entity::entity(int hp, int dmg, point LOC)
+	entity::entity(int hp, int dmg, vec2 LOC)
 	{
 		HP = hp;
 		DMG = dmg;
@@ -22,11 +22,16 @@ namespace Tmpl8
 		loc.y = yloc;
 	}
 
-	void entity::build(int hp, int dmg, point LOC)
+	void entity::buildAnimation(Surface* surface, unsigned int numofframes, char* filename)
+	{
+		entityAnimation.init(numofframes, filename, loc.x, loc.y, surface);
+	}
+	void entity::build(int hp, int dmg, vec2 LOC)
 	{
 		HP = hp;
 		DMG = dmg;
 		loc = LOC;
+
 	}
 	void entity::build(int hp, int dmg, int xloc, int yloc)
 	{
@@ -34,5 +39,17 @@ namespace Tmpl8
 		DMG = dmg;
 		loc.x = xloc;
 		loc.y = yloc;
+
+	}
+
+	void entity::update()
+	{
+		entityAnimation.update(1);
+	}
+
+	void entity::move(int xDifference, int yDifference)
+	{
+		loc.x += xDifference;
+		loc.y += yDifference;
 	}
 }

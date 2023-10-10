@@ -1,24 +1,44 @@
 #pragma once
-#include "point.h"
 #include "surface.h"
+#include "template.h"
+#include "animation.h"
+#include <vector>
+
 namespace Tmpl8
 {
+	using namespace std;
 	class entity
 	{
 	public:
 		entity();
-		entity(int hp, int dmg, point LOC);
+		entity(int hp, int dmg, vec2 LOC);
 		entity(int hp, int dmg, int xloc, int yloc);
 
-		void build(int hp, int dmg, point LOC);
+		void buildAnimation(Surface* surface, unsigned int numofframes, char* filename);
+		void build(int hp, int dmg, vec2 LOC);
 		void build(int hp, int dmg, int xloc, int yloc);
 
 		void update();
+
+		void move(int xDifference, int yDifference);
+
+		void setHP(int hp) { HP = hp; };
+		void setDMG(int dmg) { DMG = dmg; };
+		void setLoc(vec2 Loc) { loc = Loc; };
+		void setLoc(int x, int y) { 
+			loc.x = x; 
+			loc.y = y; 
+		};
+
+		int getHP() { return HP; };
+		int getDMG() { return DMG; };
+		vec2 getLoc() { return loc; };
+
 	protected:
-		int HP;
-		int DMG;
-		point loc;
-		Sprite entitySprite();
+		int HP = 10;
+		int DMG = 5;
+		vec2 loc{1, 1};
+		animation entityAnimation;
 	};
 }
 

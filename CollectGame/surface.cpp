@@ -377,19 +377,6 @@ void Sprite::Build(Surface* a_Surface, unsigned int a_NumFrames)
 	InitializeStartData();
 }
 
-void Sprite::Build(Surface* a_Surface)
-{
-	m_Width = static_cast<int>(a_Surface->GetWidth() / 1);
-	m_Height = a_Surface->GetHeight();
-	m_Pitch = a_Surface->GetWidth();
-	m_NumFrames = 1;
-	m_CurrentFrame = 1;
-	m_Flags = 0;
-	m_Start = new unsigned int* [1];
-	m_Surface = a_Surface;
-	InitializeStartData();
-}
-
 void Sprite::Draw( Surface* a_Target, int a_X, int a_Y )
 {
 	if ((a_X < -m_Width) || (a_X > (a_Target->GetWidth() + m_Width))) return;
