@@ -1,6 +1,5 @@
 #pragma once
 #include "player.h"
-#include <iostream>
 
 namespace Tmpl8 {
 class Surface;

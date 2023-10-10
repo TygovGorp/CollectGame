@@ -2,12 +2,13 @@
 #include "surface.h"
 #include "template.h"
 #include "animation.h"
+#include "base.h"
 #include <vector>
 
 namespace Tmpl8
 {
 	using namespace std;
-	class entity
+	class entity : public base
 	{
 	public:
 		entity();
@@ -37,7 +38,6 @@ namespace Tmpl8
 	protected:
 		int HP = 10;
 		int DMG = 5;
-		vec2 loc{1, 1};
 		animation entityAnimation;
 	};
 }
