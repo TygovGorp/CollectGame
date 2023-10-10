@@ -1,9 +1,9 @@
 #include "player.h"
-#include<iostream>
 namespace Tmpl8
 {
 	void player::moveWithInputs(int key)
 	{
+		//player movement with WASD and the arrow keys
 		switch (key)
 		{
 		//w
@@ -42,6 +42,5 @@ namespace Tmpl8
 		default:
 			break;
 		}
-		std::cout << loc.x << ", " << loc.y << std::endl;
 	}
 }

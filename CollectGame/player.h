@@ -6,7 +6,6 @@ namespace Tmpl8
     {
     public:
         void moveWithInputs(int key);
-
     private:
 
     };
