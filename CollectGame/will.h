@@ -7,14 +7,15 @@ namespace Tmpl8
 	class will : public object
 	{
 	public:
-		will();
-
 		void init(Surface* screen);
 
 		void update();
 
-		void onInteract();
+		void Interaction();
+
+		bool getState() { return pickedUp; };
 	private:
+		bool pickedUp = false;
 		int frameNum = 1;
 		animation willAnim;
 	};

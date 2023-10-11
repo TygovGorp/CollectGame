@@ -2,11 +2,6 @@
 
 namespace Tmpl8
 {
-	will::will()
-	{
-		
-	}
-
 	void will::init(Surface* screen)
 	{
 		willAnim.init(frameNum, "assets/temp_will.png", loc.x, loc.y, screen);
@@ -17,8 +12,8 @@ namespace Tmpl8
 		willAnim.update(frameNum);
 	}
 
-	void will::onInteract()
+	void will::Interaction()
 	{
-
+		pickedUp = true;
 	}
 }
