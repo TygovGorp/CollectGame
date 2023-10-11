@@ -8,10 +8,14 @@ namespace Tmpl8
 	{
 	public:
 		void setLocPoints(vec2 pointA, vec2 pointB);
+
 		void update(Surface* screen, Pixel color);
 
 		vec2 getPointA() { return locPointA; };
 		vec2 getPointB() { return locPointB; };
+
+		void setPointA(vec2 A) { locPointA = A; };
+		void setPointB(vec2 B) { locPointB = B; };
 	private:
 		vec2 locPointA;
 		vec2 locPointB;

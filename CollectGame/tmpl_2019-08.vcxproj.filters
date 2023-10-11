@@ -31,6 +31,9 @@
     <ClCompile Include="will.cpp">
       <Filter>game code\environment\object\will</Filter>
     </ClCompile>
+    <ClCompile Include="level.cpp">
+      <Filter>game code\environment</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="surface.h">
@@ -62,6 +65,9 @@
     </ClInclude>
     <ClInclude Include="will.h">
       <Filter>game code\environment\object\will</Filter>
+    </ClInclude>
+    <ClInclude Include="level.h">
+      <Filter>game code\environment</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
