@@ -7,6 +7,10 @@ namespace Tmpl8
 		loc.x = 1;
 		loc.y = 1;
 	}
+	base::base(vec2 LOC)
+	{
+		loc = LOC;
+	}
 	base::base(int x, int y)
 	{
 		loc.x = x;

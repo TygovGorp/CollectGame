@@ -6,9 +6,11 @@ namespace Tmpl8
 	{
 	public:
 		base();
+		base(vec2 LOC);
 		base(int x, int y);
 
 		void init(int x, int y);
+
 	protected:
 		vec2 loc;
 	};

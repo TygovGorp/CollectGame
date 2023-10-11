@@ -231,6 +231,7 @@
     <ClCompile Include="surface.cpp" />
     <ClCompile Include="template.cpp" />
     <ClCompile Include="wall.cpp" />
+    <ClCompile Include="will.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h" />
@@ -242,6 +243,7 @@
     <ClInclude Include="surface.h" />
     <ClInclude Include="template.h" />
     <ClInclude Include="wall.h" />
+    <ClInclude Include="will.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="_readme.txt" />

@@ -11,22 +11,25 @@
       <Filter>game code</Filter>
     </ClCompile>
     <ClCompile Include="player.cpp">
-      <Filter>game code\entity\creature\player</Filter>
+      <Filter>game code\entityBase\entity\player</Filter>
     </ClCompile>
     <ClCompile Include="animation.cpp">
       <Filter>game code\tools</Filter>
     </ClCompile>
     <ClCompile Include="entity.cpp">
-      <Filter>game code\entity\creature</Filter>
+      <Filter>game code\entityBase\entity</Filter>
     </ClCompile>
     <ClCompile Include="base.cpp">
-      <Filter>game code\entity</Filter>
+      <Filter>game code\entityBase</Filter>
     </ClCompile>
     <ClCompile Include="object.cpp">
       <Filter>game code\environment\object</Filter>
     </ClCompile>
     <ClCompile Include="wall.cpp">
       <Filter>game code\environment</Filter>
+    </ClCompile>
+    <ClCompile Include="will.cpp">
+      <Filter>game code\environment\object\will</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -40,22 +43,25 @@
       <Filter>game code</Filter>
     </ClInclude>
     <ClInclude Include="player.h">
-      <Filter>game code\entity\creature\player</Filter>
+      <Filter>game code\entityBase\entity\player</Filter>
     </ClInclude>
     <ClInclude Include="animation.h">
       <Filter>game code\tools</Filter>
     </ClInclude>
     <ClInclude Include="entity.h">
-      <Filter>game code\entity\creature</Filter>
+      <Filter>game code\entityBase\entity</Filter>
     </ClInclude>
     <ClInclude Include="base.h">
-      <Filter>game code\entity</Filter>
+      <Filter>game code\entityBase</Filter>
     </ClInclude>
     <ClInclude Include="object.h">
       <Filter>game code\environment\object</Filter>
     </ClInclude>
     <ClInclude Include="wall.h">
       <Filter>game code\environment</Filter>
+    </ClInclude>
+    <ClInclude Include="will.h">
+      <Filter>game code\environment\object\will</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -65,26 +71,26 @@
     <Filter Include="game code">
       <UniqueIdentifier>{6d19cd33-2d8f-46ca-898b-a3aa0182f899}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game code\entity">
-      <UniqueIdentifier>{3145edb8-bed9-4090-9e36-9e4f63f0bbe6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="game code\tools">
       <UniqueIdentifier>{48f5b2c1-f288-4102-93e8-3dd645a8f2b8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="game code\entity\enemy">
-      <UniqueIdentifier>{1e0c9fcc-9c49-4cdd-8957-34e3d7064d8c}</UniqueIdentifier>
     </Filter>
     <Filter Include="game code\environment">
       <UniqueIdentifier>{e04d3ff1-7acb-4b9b-a44a-b153ef462e6a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game code\entity\creature">
-      <UniqueIdentifier>{12ecd37b-3b45-4478-9b15-e4082044d317}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="game code\entity\creature\player">
-      <UniqueIdentifier>{fa01d26c-9002-4838-8df4-128597aa2ca1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="game code\environment\object">
       <UniqueIdentifier>{5105fee8-c85a-4371-a680-cf2f8e53ccdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game code\environment\object\will">
+      <UniqueIdentifier>{71ccc90b-3fe5-4a12-80ec-9c0feb159401}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game code\entityBase">
+      <UniqueIdentifier>{3145edb8-bed9-4090-9e36-9e4f63f0bbe6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game code\entityBase\entity">
+      <UniqueIdentifier>{12ecd37b-3b45-4478-9b15-e4082044d317}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game code\entityBase\entity\player">
+      <UniqueIdentifier>{fa01d26c-9002-4838-8df4-128597aa2ca1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

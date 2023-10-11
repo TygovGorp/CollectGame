@@ -1,9 +1,10 @@
 #pragma once
 #include "template.h"
+#include  "base.h"
 
 namespace Tmpl8
 {
-	class object
+	class object : public base
 	{
 	public:
 		object();
@@ -20,7 +21,6 @@ namespace Tmpl8
 		vec2 getCollisionBox(int pointNumber) { return collisionBox[pointNumber]; };
 
 	protected:
-		vec2 loc;
 		vec2 collisionBox[2];
 	};
 }
