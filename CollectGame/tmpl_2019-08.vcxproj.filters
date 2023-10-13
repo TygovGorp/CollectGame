@@ -11,16 +11,16 @@
       <Filter>game code</Filter>
     </ClCompile>
     <ClCompile Include="player.cpp">
-      <Filter>game code\entityBase\entity\player</Filter>
+      <Filter>game code\organisms\entity\player</Filter>
     </ClCompile>
     <ClCompile Include="animation.cpp">
       <Filter>game code\tools</Filter>
     </ClCompile>
     <ClCompile Include="entity.cpp">
-      <Filter>game code\entityBase\entity</Filter>
+      <Filter>game code\organisms\entity</Filter>
     </ClCompile>
     <ClCompile Include="base.cpp">
-      <Filter>game code\entityBase</Filter>
+      <Filter>game code\organisms</Filter>
     </ClCompile>
     <ClCompile Include="object.cpp">
       <Filter>game code\environment\object</Filter>
@@ -46,16 +46,16 @@
       <Filter>game code</Filter>
     </ClInclude>
     <ClInclude Include="player.h">
-      <Filter>game code\entityBase\entity\player</Filter>
+      <Filter>game code\organisms\entity\player</Filter>
     </ClInclude>
     <ClInclude Include="animation.h">
       <Filter>game code\tools</Filter>
     </ClInclude>
     <ClInclude Include="entity.h">
-      <Filter>game code\entityBase\entity</Filter>
+      <Filter>game code\organisms\entity</Filter>
     </ClInclude>
     <ClInclude Include="base.h">
-      <Filter>game code\entityBase</Filter>
+      <Filter>game code\organisms</Filter>
     </ClInclude>
     <ClInclude Include="object.h">
       <Filter>game code\environment\object</Filter>
@@ -89,13 +89,13 @@
     <Filter Include="game code\environment\object\will">
       <UniqueIdentifier>{71ccc90b-3fe5-4a12-80ec-9c0feb159401}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game code\entityBase">
+    <Filter Include="game code\organisms">
       <UniqueIdentifier>{3145edb8-bed9-4090-9e36-9e4f63f0bbe6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game code\entityBase\entity">
+    <Filter Include="game code\organisms\entity">
       <UniqueIdentifier>{12ecd37b-3b45-4478-9b15-e4082044d317}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game code\entityBase\entity\player">
+    <Filter Include="game code\organisms\entity\player">
       <UniqueIdentifier>{fa01d26c-9002-4838-8df4-128597aa2ca1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

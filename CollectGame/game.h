@@ -26,6 +26,9 @@ public:
 private:
 	Surface* screen;
 	player Player;
+
+	const int ScreenWidth = 780;
+	const int ScreenHeight = 540;
 };
 
 }; // namespace Tmpl8
