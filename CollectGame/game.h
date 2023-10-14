@@ -1,5 +1,6 @@
 #pragma once
 #include "player.h"
+#include "level.h"
 
 namespace Tmpl8 {
 class Surface;
@@ -26,9 +27,10 @@ public:
 private:
 	Surface* screen;
 	player Player;
+	level levelManager;
 
-	const int ScreenWidth = 780;
-	const int ScreenHeight = 540;
+	const int ScreenWidth = 800;
+	const int ScreenHeight = 560;
 };
 
 }; // namespace Tmpl8

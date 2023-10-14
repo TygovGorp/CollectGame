@@ -8,8 +8,8 @@ namespace Tmpl8
 	class level
 	{
 	public:
-		void init(char* filename, int levelNum);
-		void update();
+		void init(int levelNum);
+		void update(Surface* screen);
 		void reset();
 	private:
 		std::vector<wall> wallVec;
