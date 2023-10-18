@@ -9,7 +9,10 @@ namespace Tmpl8
 	public:
 		void init(int levelNum, Surface* ScreenSurface);
 		void update();
+
 		vec2 getWillLoc();
+		std::vector<wall> getWallVec();
+
 		void reset();
 	private:
 		Surface* screen;

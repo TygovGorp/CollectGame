@@ -9,7 +9,10 @@ namespace Tmpl8
 
 	void will::update()
 	{
-		willAnim.update(frameNum);
+		if (!pickedUp)
+		{
+			willAnim.update(frameNum);
+		}
 	}
 
 	void will::Interaction()

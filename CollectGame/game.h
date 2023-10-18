@@ -2,6 +2,8 @@
 #include "player.h"
 #include "level.h"
 #include "will.h"
+#include "collision.h"
+#include<iostream>
 
 namespace Tmpl8 {
 class Surface;
@@ -17,10 +19,11 @@ public:
 	void MouseMove( int x, int y ) { /* implement if you want to detect mouse movement */ }
 	void KeyUp( int key ) { /* implement if you want to handle keys */ }
 	void KeyDown(int key) { 
-		//7 = e
-		if (key == 7)
+
+		if (Col.AABB(Player.getLoc(), WillInst.getLoc()))
 		{
-			//check for will if player is on the will collect will and go to next level
+			std::cout << "pickup" << endl;
+			WillInst.Interaction();
 		}
 
 		Player.moveWithInputs(key); 
@@ -30,6 +33,7 @@ private:
 	player Player;
 	level levelManager;
 	will WillInst;
+	collision Col;
 
 	const int ScreenWidth = 800;
 	const int ScreenHeight = 560;

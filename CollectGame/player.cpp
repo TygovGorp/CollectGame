@@ -1,46 +1,65 @@
 #include "player.h"
+#include <iostream>
+
 namespace Tmpl8
 {
 	void player::moveWithInputs(int key)
 	{
+		vec2 change = { 0, 0 };
 		//player movement with WASD and the arrow keys
 		switch (key)
 		{
-		//w
+			//w
 		case 26:
-			move(0, -10);
+			change = { 0 , -10 };
 			break;
-		//a
+			//a
 		case 4:
-			move(-10, 0);
+			change = { -10 , 0 };
 			break;
-		//s
+			//s
 		case 22:
-			move(0, 10);
+			change = { 0 , 10 };
 			break;
-		//d
+			//d
 		case 7:
-			move(10, 0);
+			change = { 10 , 0 };
 			break;
-		//arrow keys
-		//up
+			//arrow keys
+			//up
 		case 82:
-			move(0, -10);
+			change = { 0 , -10 };
 			break;
-		//left
+			//left
 		case 80:
-			move(-10, 0);
+			change = { -10 , 0 };
 			break;
-		//down
+			//down
 		case 81:
-			move(0, 10);
+			change = { 0 , 10 };
 			break;
-		//right
+			//right
 		case 79:
-			move(10, 0);
+			change = { 10 , 0 };
 			break;
 		default:
 			break;
 		}
+
+		lastChangeLoc = change;
+		move(change.x, change.y);
+	}
+
+	void player::checkCollisionWall(std::vector<wall> wallVec)
+	{
+		for (int i = 0; i < wallVec.size() - 1; i++)
+		{
+			if (Col.AABB(loc, vec2(loc.x + 60, loc.y + 60), wallVec[i].getPointA(), wallVec[i].getPointB()))
+			{
+				std::cout << "moved" << std::endl;
+				move(-lastChangeLoc.x, -lastChangeLoc.y);
+			}
+		}
+
 	}
 }

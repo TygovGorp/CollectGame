@@ -17,7 +17,7 @@ namespace Tmpl8
 		void setCollisionBox(vec2 A, vec2 B);
 		void setCollisionBox(int Ax, int Ay, int Bx, int By);
 
-		vec2 getLoc() { vec2 loc; };
+		vec2 getLoc() { return loc; };
 		vec2 getCollisionBox(int pointNumber) { return collisionBox[pointNumber]; };
 
 	protected:

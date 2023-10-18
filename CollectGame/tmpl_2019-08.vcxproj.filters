@@ -25,9 +25,6 @@
     <ClCompile Include="object.cpp">
       <Filter>game code\environment\object</Filter>
     </ClCompile>
-    <ClCompile Include="wall.cpp">
-      <Filter>game code\environment</Filter>
-    </ClCompile>
     <ClCompile Include="will.cpp">
       <Filter>game code\environment\object\will</Filter>
     </ClCompile>
@@ -36,6 +33,9 @@
     </ClCompile>
     <ClCompile Include="collision.cpp">
       <Filter>game code\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="wall.cpp">
+      <Filter>game code\environment\wall</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -63,9 +63,6 @@
     <ClInclude Include="object.h">
       <Filter>game code\environment\object</Filter>
     </ClInclude>
-    <ClInclude Include="wall.h">
-      <Filter>game code\environment</Filter>
-    </ClInclude>
     <ClInclude Include="will.h">
       <Filter>game code\environment\object\will</Filter>
     </ClInclude>
@@ -74,6 +71,9 @@
     </ClInclude>
     <ClInclude Include="collision.h">
       <Filter>game code\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="wall.h">
+      <Filter>game code\environment\wall</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +103,9 @@
     </Filter>
     <Filter Include="game code\organisms\entity\player">
       <UniqueIdentifier>{fa01d26c-9002-4838-8df4-128597aa2ca1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game code\environment\wall">
+      <UniqueIdentifier>{d295f1a5-007f-435a-bd77-445e15fe4046}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

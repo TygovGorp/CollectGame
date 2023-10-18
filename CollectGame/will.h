@@ -1,6 +1,7 @@
 #pragma once
 #include "object.h"
 #include "animation.h"
+#include "collision.h"
 
 namespace Tmpl8
 {

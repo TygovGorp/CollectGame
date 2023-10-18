@@ -34,6 +34,8 @@ namespace Tmpl8
 
 		levelManager.update();
 		WillInst.update();
+
+		Player.checkCollisionWall(levelManager.getWallVec());
 		Player.update();
 	}
 };

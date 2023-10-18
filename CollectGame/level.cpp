@@ -85,11 +85,15 @@ namespace Tmpl8
 		}
 	}
 
+	std::vector<wall> level::getWallVec()
+	{
+		return wallVec;
+	}
+
 	vec2 level::getWillLoc()
 	{
 		return willLoc;
 	}
-
 
 	void level::reset()
 	{
