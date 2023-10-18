@@ -19,13 +19,6 @@ public:
 	void MouseMove( int x, int y ) { /* implement if you want to detect mouse movement */ }
 	void KeyUp( int key ) { /* implement if you want to handle keys */ }
 	void KeyDown(int key) { 
-
-		if (Col.AABB(Player.getLoc(), WillInst.getLoc()))
-		{
-			std::cout << "pickup" << endl;
-			WillInst.Interaction();
-		}
-
 		Player.moveWithInputs(key); 
 	}
 private:

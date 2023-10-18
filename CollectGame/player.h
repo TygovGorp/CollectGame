@@ -10,6 +10,7 @@ namespace Tmpl8
     public:
         void moveWithInputs(int key);
         void checkCollisionWall(std::vector<wall> wallVec);
+        void checkCollisionScreenBounds(int screenHight, int screenWidth);
     private:
         collision Col;
         bool collideYN = false;

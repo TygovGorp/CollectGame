@@ -10,6 +10,7 @@ namespace Tmpl8
 	void Game::Init()
 	{
 		Player.buildAnimation(screen, 1, "assets/temp_Player.png");	
+		Player.build(10, 5, vec2(10, 10));
 		levelManager.init(1, screen);
 
 		WillInst.setLoc(levelManager.getWillLoc());
@@ -33,9 +34,16 @@ namespace Tmpl8
 		screen->Clear(0);
 
 		levelManager.update();
+
+		if (Col.AABB(Player.getLoc(), WillInst.getLoc()))
+		{
+			std::cout << "pickup" << endl;
+			WillInst.Interaction();
+		}
 		WillInst.update();
 
-		Player.checkCollisionWall(levelManager.getWallVec());
+		Player.checkCollisionScreenBounds(ScreenHeight, ScreenWidth);
 		Player.update();
+		Player.checkCollisionWall(levelManager.getWallVec());
 	}
 };
