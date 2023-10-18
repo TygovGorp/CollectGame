@@ -10,7 +10,7 @@ namespace Tmpl8
 	void Game::Init()
 	{
 		Player.buildAnimation(screen, 1, "assets/temp_Player.png");	
-		levelManager.init(1);
+		levelManager.init(1, screen);
 	}
 	
 	// -----------------------------------------------------------
@@ -29,7 +29,7 @@ namespace Tmpl8
 		// clear the graphics window
 		screen->Clear(0);
 
-		levelManager.update(screen);
+		levelManager.update();
 		Player.update();
 		
 	}

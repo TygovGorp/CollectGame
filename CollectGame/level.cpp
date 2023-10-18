@@ -7,8 +7,9 @@ using namespace std;
 
 namespace Tmpl8
 {
-	void level::init(int levelNum)
+	void level::init(int levelNum, Surface* ScreenSurface)
 	{
+		screen = ScreenSurface;
 		fstream newfile;
 		newfile.open("levels/level_" + to_string(levelNum) + ".txt", ios::in);
 
@@ -23,7 +24,6 @@ namespace Tmpl8
 			int counter = 1;
 
 			while (getline(newfile, tp, ' ')) {
-				std::cout << tp << std::endl;
 				if (nextWillLocation)
 				{
 				//	if (willx == 0)
@@ -69,11 +69,11 @@ namespace Tmpl8
 
 	}
 
-	void level::update(Surface* screen)
+	void level::update()
 	{
-		for (int i = 0; i <= wallVec.size() - 1; i++)
+		for (int i = 0; i < wallVec.size(); i++)
 		{
-			screen->Box(wallVec[i].getPointA().x, wallVec[i].getPointA().y, wallVec[i].getPointB().x, wallVec[i].getPointB().y, 0xfafafa);
+			wallVec[i].update(screen, 0x666666);
 		}
 	}
 

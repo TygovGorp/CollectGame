@@ -10,6 +10,16 @@ namespace Tmpl8
 
 	void wall::update(Surface* screen, Pixel color)
 	{
-		screen->Box(locPointA.x, locPointA.y, locPointB.x, locPointB.y, color);
+		screen->Bar(locPointA.x, locPointA.y, locPointB.x, locPointB.y, color);
+	}
+
+	void wall::setPointA(vec2 A)
+	{ 
+		locPointA = A; 
+	}
+
+	void wall::setPointB(vec2 B)
+	{
+		locPointB = B;
 	}
 }

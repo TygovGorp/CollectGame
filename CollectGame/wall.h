@@ -14,8 +14,8 @@ namespace Tmpl8
 		vec2 getPointA() { return locPointA; };
 		vec2 getPointB() { return locPointB; };
 
-		void setPointA(vec2 A) { locPointA = A; };
-		void setPointB(vec2 B) { locPointB = B; };
+		void setPointA(vec2 A);
+		void setPointB(vec2 B);
 	private:
 		vec2 locPointA;
 		vec2 locPointB;
