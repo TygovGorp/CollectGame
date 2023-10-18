@@ -222,6 +222,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="collision.cpp" />
     <ClCompile Include="animation.cpp" />
     <ClCompile Include="base.cpp" />
     <ClCompile Include="entity.cpp" />
@@ -235,6 +236,7 @@
     <ClCompile Include="will.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="collision.h" />
     <ClInclude Include="animation.h" />
     <ClInclude Include="base.h" />
     <ClInclude Include="entity.h" />

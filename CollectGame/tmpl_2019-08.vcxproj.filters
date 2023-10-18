@@ -34,6 +34,9 @@
     <ClCompile Include="level.cpp">
       <Filter>game code\environment</Filter>
     </ClCompile>
+    <ClCompile Include="collision.cpp">
+      <Filter>game code\tools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="surface.h">
@@ -68,6 +71,9 @@
     </ClInclude>
     <ClInclude Include="level.h">
       <Filter>game code\environment</Filter>
+    </ClInclude>
+    <ClInclude Include="collision.h">
+      <Filter>game code\tools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
