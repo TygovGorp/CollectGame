@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include "wall.h"
-#include "will.h"
 
 namespace Tmpl8
 {
@@ -10,11 +9,12 @@ namespace Tmpl8
 	public:
 		void init(int levelNum, Surface* ScreenSurface);
 		void update();
+		vec2 getWillLoc();
 		void reset();
 	private:
 		Surface* screen;
 		std::vector<wall> wallVec;
-		will willInstance;
+		vec2 willLoc;
 	};
 }
 

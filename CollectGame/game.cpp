@@ -11,6 +11,9 @@ namespace Tmpl8
 	{
 		Player.buildAnimation(screen, 1, "assets/temp_Player.png");	
 		levelManager.init(1, screen);
+
+		WillInst.setLoc(levelManager.getWillLoc());
+		WillInst.init(screen);
 	}
 	
 	// -----------------------------------------------------------
@@ -30,7 +33,7 @@ namespace Tmpl8
 		screen->Clear(0);
 
 		levelManager.update();
+		WillInst.update();
 		Player.update();
-		
 	}
 };

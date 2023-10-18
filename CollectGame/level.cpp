@@ -18,24 +18,35 @@ namespace Tmpl8
 			string tp;
 
 			bool nextWillLocation = false;
-			int willx = 0;
 			bool pointB = false;
 			int wallx = 0;
 			int counter = 1;
 
 			while (getline(newfile, tp, ' ')) {
+
+				if (tp.find("WillLocation") != std::string::npos)
+				{
+					nextWillLocation = true;
+				}
 				if (nextWillLocation)
 				{
-				//	if (willx == 0)
-				//	{
-				//		willx = stoi(tp);
-				//	}
-				//	else
-				//	{
-				//		willInstance.setLoc(willx, stoi(tp));
-				//		willx = 0;
-				//		nextWillLocation = false;
-				//	}
+
+					switch (counter)
+					{
+					case 1:
+						break;
+					case 2:
+						willLoc.x = stoi(tp);
+						break;
+					case 3:
+						willLoc.y = stoi(tp);
+						nextWillLocation = false;
+						counter = 0;
+						break;
+					default:
+						break;
+					}
+					counter++;
 				} //still need to test this
 
 				else
@@ -60,13 +71,10 @@ namespace Tmpl8
 						break;
 					}
 					counter++;
-				}
-
-				tp.find("WillLocation") != std::string::npos ? nextWillLocation = true : nextWillLocation = false;
+				}		
 			}
 			newfile.close();
 		}
-
 	}
 
 	void level::update()
@@ -76,6 +84,12 @@ namespace Tmpl8
 			wallVec[i].update(screen, 0x666666);
 		}
 	}
+
+	vec2 level::getWillLoc()
+	{
+		return willLoc;
+	}
+
 
 	void level::reset()
 	{

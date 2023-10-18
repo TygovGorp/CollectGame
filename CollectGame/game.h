@@ -1,6 +1,7 @@
 #pragma once
 #include "player.h"
 #include "level.h"
+#include "will.h"
 
 namespace Tmpl8 {
 class Surface;
@@ -28,6 +29,7 @@ private:
 	Surface* screen;
 	player Player;
 	level levelManager;
+	will WillInst;
 
 	const int ScreenWidth = 800;
 	const int ScreenHeight = 560;
