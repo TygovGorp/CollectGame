@@ -15,6 +15,7 @@ namespace Tmpl8
         collision Col;
         bool collideYN = false;
         vec2 lastChangeLoc;
+        vec2 secondLastChangeLoc;
     };
 }
 

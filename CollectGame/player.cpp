@@ -11,41 +11,41 @@ namespace Tmpl8
 		{
 			//w
 		case 26:
-			change = { 0 , -10 };
+			change.y = change.y - 10;
 			break;
 			//a
 		case 4:
-			change = { -10 , 0 };
+			change.x = change.x - 10;
 			break;
 			//s
 		case 22:
-			change = { 0 , 10 };
+			change.y = change.y + 10;
 			break;
 			//d
 		case 7:
-			change = { 10 , 0 };
+			change.x = change.x + 10;
 			break;
 			//arrow keys
 			//up
 		case 82:
-			change = { 0 , -10 };
+			change.y = change.y - 10;
 			break;
 			//left
 		case 80:
-			change = { -10 , 0 };
+			change.x = change.x - 10;
 			break;
 			//down
 		case 81:
-			change = { 0 , 10 };
+			change.y = change.y + 10;
 			break;
 			//right
 		case 79:
-			change = { 10 , 0 };
+			change.x = change.x + 10;
 			break;
 		default:
 			break;
 		}
-
+		secondLastChangeLoc = lastChangeLoc;
 		lastChangeLoc = change;
 		move(change.x, change.y);
 	}
@@ -57,6 +57,10 @@ namespace Tmpl8
 			if (Col.AABB(vec2(loc.x, loc.y), vec2(loc.x + 59, loc.y + 59), wallVec[i].getPointA(), wallVec[i].getPointB()))
 			{
 				move(-lastChangeLoc.x, -lastChangeLoc.y);
+			}
+			if (Col.AABB(vec2(loc.x, loc.y), vec2(loc.x + 59, loc.y + 59), wallVec[i].getPointA(), wallVec[i].getPointB()))
+			{
+				move(-secondLastChangeLoc.x, -secondLastChangeLoc.y);
 			}
 		}
 	}
