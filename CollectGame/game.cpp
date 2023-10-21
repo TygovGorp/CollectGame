@@ -33,7 +33,7 @@ namespace Tmpl8
 	void Game::Tick(float deltaTime)
 	{
 
-		if (WillInst.getState())
+		if (WillInst.getState() && levelNum != maxLevelNum)
 		{
 			levelNum++;
 			Init();

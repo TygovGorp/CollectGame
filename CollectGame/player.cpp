@@ -54,8 +54,9 @@ namespace Tmpl8
 	{
 		for (int i = 0; i < wallVec.size() - 1; i++)
 		{
-			if (Col.AABB(vec2(loc.x + 1, loc.y + 1), vec2(loc.x + 59, loc.y + 59), wallVec[i].getPointA(), wallVec[i].getPointB()))
+			if (Col.AABB(vec2(loc.x, loc.y), vec2(loc.x + 59, loc.y + 59), wallVec[i].getPointA(), wallVec[i].getPointB()))
 			{
+				std::cout << loc.x << ", " << loc.y << " : " << loc.x + 59 << ", " << loc.y + 59 << " hits " << wallVec[i].getPointA().x << ", " << wallVec[i].getPointA().y << " : " << wallVec[i].getPointB().x << ", " << wallVec[i].getPointB().y << endl;
 				move(-lastChangeLoc.x, -lastChangeLoc.y);
 			}
 		}

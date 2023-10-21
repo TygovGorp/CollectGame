@@ -29,7 +29,7 @@ private:
 	collision Col;
 
 	int levelNum = 1;
-	int maxLevelNum = 2;
+	int maxLevelNum = 3;
 
 	const int ScreenWidth = 800;
 	const int ScreenHeight = 560;

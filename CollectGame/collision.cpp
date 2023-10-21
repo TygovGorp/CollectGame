@@ -5,20 +5,20 @@ namespace Tmpl8
 {
 	bool collision::AABB(const vec2 recA1, const vec2 recB1)
 	{
-		vec2 recA2 = { recA1.x + 60, recA1.y + 60 };
-		vec2 recB2 = { recB1.x + 60, recB1.y + 60 };
+		//written using https://tutorialedge.net/gamedev/aabb-collision-detection-tutorial/ as a reference
 
-		int leftA = std::min(recA1.x, recA2.x);
-		int rightA = std::max(recA1.x, recA2.x);
-		int topA = std::min(recA1.y, recA2.y);
-		int bottomA = std::max(recA1.y, recA2.y);
+		int Aw = recA1.x + 60;
+		int Ah = recA1.y + 60;
 
-		int leftB = std::min(recB1.x, recB2.x);
-		int rightB = std::max(recB1.x, recB2.x);
-		int topB = std::min(recB1.y, recB2.y);
-		int bottomB = std::max(recB1.y, recB2.y);
+		int Bw = recB1.x + 60;
+		int Bh = recB1.y + 60;
 
-		if (rightA >= leftB && rightB >= leftA && bottomA >= topB && bottomB >= topA) {
+		if (
+			recA1.x <  recB1.x + Bw &&
+			recA1.x + Aw > recB1.x &&
+			recA1.y <  recB1.y + Bh &&
+			recA1.y + Ah > recB1.y
+			) {
 			return true; // Rectangles overlap
 		}
 
@@ -27,21 +27,25 @@ namespace Tmpl8
 	}
 
 	bool collision::AABB(const vec2 recA1, const vec2 recA2, const vec2 recB1, const vec2 recB2) {
-		int leftA = std::min(recA1.x, recA2.x);
-		int rightA = std::max(recA1.x, recA2.x);
-		int topA = std::min(recA1.y, recA2.y);
-		int bottomA = std::max(recA1.y, recA2.y);
+		//written using https://tutorialedge.net/gamedev/aabb-collision-detection-tutorial/ as a reference
 
-		int leftB = std::min(recB1.x, recB2.x);
-		int rightB = std::max(recB1.x, recB2.x);
-		int topB = std::min(recB1.y, recB2.y);
-		int bottomB = std::max(recB1.y, recB2.y);
+		int Aw = recA2.x - recA1.x;
+		int Ah = recA2.y - recA1.y;
 
-		if (rightA >= leftB && rightB >= leftA && bottomA >= topB && bottomB >= topA) {
+		int Bw = recB2.x - recB1.x;
+		int Bh = recB2.y - recB1.y;
+
+		if (
+			recA1.x <  recB1.x + Bw &&
+			recA1.x + Aw > recB1.x &&
+			recA1.y <  recB1.y + Bh &&
+			recA1.y + Ah > recB1.y
+			) {
 			return true; // Rectangles overlap
 		}
 
 		return false; // Rectangles do not overlap
+
 	}
 
 
