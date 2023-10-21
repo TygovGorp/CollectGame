@@ -51,3 +51,6 @@
 
  WillLocation
  730 490
+
+ PlayerLocation
+ 10 10

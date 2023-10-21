@@ -28,6 +28,9 @@ private:
 	will WillInst;
 	collision Col;
 
+	int levelNum = 1;
+	int maxLevelNum = 2;
+
 	const int ScreenWidth = 800;
 	const int ScreenHeight = 560;
 };

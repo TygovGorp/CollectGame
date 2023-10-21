@@ -15,6 +15,7 @@ namespace Tmpl8
 		void Interaction();
 
 		bool getState() { return pickedUp; };
+		void resetState() { pickedUp = false; };
 	private:
 		bool pickedUp = false;
 		int frameNum = 1;

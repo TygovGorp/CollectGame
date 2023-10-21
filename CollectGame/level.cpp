@@ -9,6 +9,10 @@ namespace Tmpl8
 {
 	void level::init(int levelNum, Surface* ScreenSurface)
 	{
+		wallVec.clear();
+		willLoc = { 0,0 };
+		playerStartLoc = { 0,0 };
+
 		screen = ScreenSurface;
 		fstream newfile;
 		newfile.open("levels/level_" + to_string(levelNum) + ".txt", ios::in);
@@ -18,6 +22,7 @@ namespace Tmpl8
 			string tp;
 
 			bool nextWillLocation = false;
+			bool nextPlayerLocations = false;
 			bool pointB = false;
 			int wallx = 0;
 			int counter = 1;
@@ -27,6 +32,7 @@ namespace Tmpl8
 				if (tp.find("WillLocation") != std::string::npos)
 				{
 					nextWillLocation = true;
+					counter = 1;
 				}
 				if (nextWillLocation)
 				{
@@ -47,9 +53,35 @@ namespace Tmpl8
 						break;
 					}
 					counter++;
-				} //still need to test this
+				}
 
-				else
+				if (tp.find("PlayerLocation") != std::string::npos)
+				{
+					nextPlayerLocations = true;
+					counter = 1;
+				}
+				if (nextPlayerLocations)
+				{
+					switch (counter)
+					{
+					case 1:
+						break;
+					case 2:
+						playerStartLoc.x = stoi(tp);
+						break;
+					case 3:
+						playerStartLoc.y = stoi(tp);
+						nextPlayerLocations = false;
+						counter = 0;
+						std::cout << playerStartLoc.x << ", " << playerStartLoc.x << endl;
+						break;
+					default:
+						break;
+					}
+					counter++;
+				}
+
+				if (!nextWillLocation && !nextPlayerLocations)
 				{
 					switch (counter)
 					{
@@ -93,6 +125,11 @@ namespace Tmpl8
 	vec2 level::getWillLoc()
 	{
 		return willLoc;
+	}
+
+	vec2 level::getPlayerStartLoc()
+	{
+		return playerStartLoc;
 	}
 
 	void level::reset()

@@ -11,6 +11,7 @@ namespace Tmpl8
 		void update();
 
 		vec2 getWillLoc();
+		vec2 getPlayerStartLoc();
 		std::vector<wall> getWallVec();
 
 		void reset();
@@ -18,6 +19,7 @@ namespace Tmpl8
 		Surface* screen;
 		std::vector<wall> wallVec;
 		vec2 willLoc;
+		vec2 playerStartLoc;
 	};
 }
 

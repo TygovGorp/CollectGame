@@ -10,8 +10,10 @@ namespace Tmpl8
 	void Game::Init()
 	{
 		Player.buildAnimation(screen, 1, "assets/temp_Player.png");	
-		Player.build(10, 5, vec2(10, 10));
-		levelManager.init(1, screen);
+
+		levelManager.init(levelNum, screen);
+		
+		Player.init(levelManager.getPlayerStartLoc().x, levelManager.getPlayerStartLoc().y);
 
 		WillInst.setLoc(levelManager.getWillLoc());
 		WillInst.init(screen);
@@ -30,8 +32,17 @@ namespace Tmpl8
 	// -----------------------------------------------------------
 	void Game::Tick(float deltaTime)
 	{
+
+		if (WillInst.getState())
+		{
+			levelNum++;
+			Init();
+			WillInst.resetState();
+		}
+
 		// clear the graphics window
 		screen->Clear(0);
+
 
 		levelManager.update();
 
