@@ -151,7 +151,9 @@ int LineOutCode(float x, float y, float xMin, float xMax, float yMin, float yMax
 void Surface::Line( float x1, float y1, float x2, float y2, Pixel c )
 {
 	// clip (Cohen-Sutherland, https://en.wikipedia.org/wiki/Cohen%E2%80%93Sutherland_algorithm)
-	const float xmin = 0, ymin = 0, xmax = ScreenWidth - 1, ymax = ScreenHeight - 1;
+	const float xmin = 0, ymin = 0, xmax = 
+		
+		- 1, ymax = ScreenHeight - 1;
 	int c0 = LineOutCode( x1, y1, xmin, xmax, ymin, ymax ), c1 = LineOutCode( x2, y2, xmin, xmax, ymin, ymax);
 	bool accept = false;
 	while (1) 
@@ -373,19 +375,6 @@ void Sprite::Build(Surface* a_Surface, unsigned int a_NumFrames)
 	m_CurrentFrame = 0;
 	m_Flags = 0;
 	m_Start = new unsigned int* [a_NumFrames];
-	m_Surface = a_Surface;
-	InitializeStartData();
-}
-
-void Sprite::Build(Surface* a_Surface)
-{
-	m_Width = static_cast<int>(a_Surface->GetWidth() / 1);
-	m_Height = a_Surface->GetHeight();
-	m_Pitch = a_Surface->GetWidth();
-	m_NumFrames = 1;
-	m_CurrentFrame = 1;
-	m_Flags = 0;
-	m_Start = new unsigned int* [1];
 	m_Surface = a_Surface;
 	InitializeStartData();
 }

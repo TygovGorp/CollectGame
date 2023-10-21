@@ -96,12 +96,12 @@ public:
 	};
 	
 	// Structors
+	Sprite() {}; //added by me
 	Sprite( Surface* a_Surface, unsigned int a_NumFrames );
 	~Sprite();
 	// Methods
 
 	void Build(Surface* a_Surface, unsigned int a_NumFrames); //added by me
-	void Build(Surface* a_Surface); //added by me
 
 	void Draw( Surface* a_Target, int a_X, int a_Y );
 	void DrawScaled( int a_X, int a_Y, int a_Width, int a_Height, Surface* a_Target );

@@ -1,7 +1,11 @@
 #pragma once
+#include "player.h"
+#include "level.h"
+#include "will.h"
+#include "collision.h"
+#include<iostream>
 
 namespace Tmpl8 {
-
 class Surface;
 class Game
 {
@@ -14,9 +18,21 @@ public:
 	void MouseDown( int button ) { /* implement if you want to detect mouse button presses */ }
 	void MouseMove( int x, int y ) { /* implement if you want to detect mouse movement */ }
 	void KeyUp( int key ) { /* implement if you want to handle keys */ }
-	void KeyDown( int key ) { /* implement if you want to handle keys */ }
+	void KeyDown(int key) { 
+		Player.moveWithInputs(key); 
+	}
 private:
 	Surface* screen;
+	player Player;
+	level levelManager;
+	will WillInst;
+	collision Col;
+
+	int levelNum = 1;
+	int maxLevelNum = 3;
+
+	const int ScreenWidth = 800;
+	const int ScreenHeight = 560;
 };
 
 }; // namespace Tmpl8
