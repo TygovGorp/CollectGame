@@ -73,7 +73,6 @@ namespace Tmpl8
 						playerStartLoc.y = stoi(tp);
 						nextPlayerLocations = false;
 						counter = 0;
-						std::cout << playerStartLoc.x << ", " << playerStartLoc.x << endl;
 						break;
 					default:
 						break;

@@ -54,7 +54,6 @@ namespace Tmpl8
 
 		if (Col.AABB(Player.getLoc(), WillInst.getLoc()))
 		{
-			std::cout << "pickup" << endl;
 			WillInst.Interaction();
 		}
 	}
