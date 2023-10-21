@@ -54,7 +54,7 @@ namespace Tmpl8
 	{
 		for (int i = 0; i < wallVec.size() - 1; i++)
 		{
-			if (Col.AABB(vec2(loc.x + 10, loc.y + 10), vec2(loc.x + 50, loc.y + 50), wallVec[i].getPointA(), wallVec[i].getPointB()))
+			if (Col.AABB(vec2(loc.x + 1, loc.y + 1), vec2(loc.x + 59, loc.y + 59), wallVec[i].getPointA(), wallVec[i].getPointB()))
 			{
 				move(-lastChangeLoc.x, -lastChangeLoc.y);
 			}
@@ -63,13 +63,12 @@ namespace Tmpl8
 	void player::checkCollisionScreenBounds(int screenHight, int screenWidth)
 	{
 		//working here
-		if (loc.y >= screenHight ||
-			loc.y + 10 <= 0 ||
-			loc.x >= ScreenWidth ||
-			loc.x + 10 <= 0
+		if (loc.y + 60 > screenHight ||
+			loc.y < 0 ||
+			loc.x + 60 > screenWidth ||
+			loc.x < 0
 			)
 		{
-			std::cout << "moved" << std::endl;
 			move(-lastChangeLoc.x, -lastChangeLoc.y);
 		}
 	}

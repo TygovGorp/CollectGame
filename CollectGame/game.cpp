@@ -43,7 +43,7 @@ namespace Tmpl8
 		WillInst.update();
 
 		Player.checkCollisionScreenBounds(ScreenHeight, ScreenWidth);
-		Player.update();
 		Player.checkCollisionWall(levelManager.getWallVec());
+		Player.update();
 	}
 };
