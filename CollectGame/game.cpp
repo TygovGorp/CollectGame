@@ -46,15 +46,16 @@ namespace Tmpl8
 
 		levelManager.update();
 
-		if (Col.AABB(Player.getLoc(), WillInst.getLoc()))
-		{
-			std::cout << "pickup" << endl;
-			WillInst.Interaction();
-		}
 		WillInst.update();
 
 		Player.checkCollisionScreenBounds(ScreenHeight, ScreenWidth);
 		Player.checkCollisionWall(levelManager.getWallVec());
 		Player.update();
+
+		if (Col.AABB(Player.getLoc(), WillInst.getLoc()))
+		{
+			std::cout << "pickup" << endl;
+			WillInst.Interaction();
+		}
 	}
 };

@@ -56,7 +56,6 @@ namespace Tmpl8
 		{
 			if (Col.AABB(vec2(loc.x, loc.y), vec2(loc.x + 59, loc.y + 59), wallVec[i].getPointA(), wallVec[i].getPointB()))
 			{
-				std::cout << loc.x << ", " << loc.y << " : " << loc.x + 59 << ", " << loc.y + 59 << " hits " << wallVec[i].getPointA().x << ", " << wallVec[i].getPointA().y << " : " << wallVec[i].getPointB().x << ", " << wallVec[i].getPointB().y << endl;
 				move(-lastChangeLoc.x, -lastChangeLoc.y);
 			}
 		}

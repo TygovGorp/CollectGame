@@ -7,11 +7,11 @@ namespace Tmpl8
 	{
 		//written using https://tutorialedge.net/gamedev/aabb-collision-detection-tutorial/ as a reference
 
-		int Aw = recA1.x + 60;
-		int Ah = recA1.y + 60;
+		int Aw = 60;
+		int Ah = 60;
 
-		int Bw = recB1.x + 60;
-		int Bh = recB1.y + 60;
+		int Bw = 60;
+		int Bh = 60;
 
 		if (
 			recA1.x <  recB1.x + Bw &&
