@@ -40,6 +40,9 @@
     <ClCompile Include="UI.cpp">
       <Filter>game code\tools</Filter>
     </ClCompile>
+    <ClCompile Include="trap.cpp">
+      <Filter>game code\environment\object\trap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="surface.h">
@@ -81,6 +84,9 @@
     <ClInclude Include="UI.h">
       <Filter>game code\tools</Filter>
     </ClInclude>
+    <ClInclude Include="trap.h">
+      <Filter>game code\environment\object\trap</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="template code">
@@ -112,6 +118,9 @@
     </Filter>
     <Filter Include="game code\environment\wall">
       <UniqueIdentifier>{d295f1a5-007f-435a-bd77-445e15fe4046}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game code\environment\object\trap">
+      <UniqueIdentifier>{0456aae2-2dbc-48de-9b1a-973171f38883}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

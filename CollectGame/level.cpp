@@ -10,6 +10,8 @@ namespace Tmpl8
 	void level::init(int levelNum, Surface* ScreenSurface)
 	{
 		wallVec.clear();
+		trapVec.clear();
+
 		willLoc = { 0,0 };
 		playerStartLoc = { 0,0 };
 
@@ -22,9 +24,11 @@ namespace Tmpl8
 			string tp;
 
 			bool nextWillLocation = false;
-			bool nextPlayerLocations = false;
+			bool nextPlayerLocation = false;
+			bool nextTrapLocation = false;
 			bool pointB = false;
 			int wallx = 0;
+			int trapx = 0;
 			int counter = 1;
 
 			while (getline(newfile, tp, ' ')) {
@@ -57,10 +61,10 @@ namespace Tmpl8
 
 				if (tp.find("PlayerLocation") != std::string::npos)
 				{
-					nextPlayerLocations = true;
+					nextPlayerLocation = true;
 					counter = 1;
 				}
-				if (nextPlayerLocations)
+				if (nextPlayerLocation)
 				{
 					switch (counter)
 					{
@@ -71,7 +75,7 @@ namespace Tmpl8
 						break;
 					case 3:
 						playerStartLoc.y = stoi(tp);
-						nextPlayerLocations = false;
+						nextPlayerLocation = false;
 						counter = 0;
 						break;
 					default:
@@ -80,7 +84,39 @@ namespace Tmpl8
 					counter++;
 				}
 
-				if (!nextWillLocation && !nextPlayerLocations)
+				if (tp.find("TrapLocation") != std::string::npos)
+				{
+					nextTrapLocation = true;
+					counter = 1;
+				}
+				if (nextTrapLocation)
+				{
+					switch (counter)
+					{
+					case 1:
+						trapVec.push_back(trap());
+						break;
+					case 2:
+						trapx = stoi(tp);
+						break;
+					case 3:
+						trapVec.back().setLoc(trapx, stoi(tp));
+						break;
+					case 4:
+						trapx = stoi(tp);
+						break;
+					case 5:
+						trapVec.back().setPointB(vec2(trapx, stoi(tp)));
+						trapVec.back().init(screen);
+						nextTrapLocation = false;
+						counter = 0;
+					default:
+						break;
+					}
+					counter++;
+				}
+
+				if (!nextWillLocation && !nextPlayerLocation && !nextTrapLocation)
 				{
 					switch (counter)
 					{
@@ -114,11 +150,20 @@ namespace Tmpl8
 		{
 			wallVec[i].update(screen, 0x666666);
 		}
+		for (int i = 0; i < trapVec.size(); i++)
+		{
+			trapVec[i].update();
+		}
 	}
 
 	std::vector<wall> level::getWallVec()
 	{
 		return wallVec;
+	}
+
+	std::vector<trap> level::getTrapVec()
+	{
+		return trapVec;
 	}
 
 	vec2 level::getWillLoc()
