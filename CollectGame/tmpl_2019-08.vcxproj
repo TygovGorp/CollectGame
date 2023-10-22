@@ -233,6 +233,7 @@
     <ClCompile Include="player.cpp" />
     <ClCompile Include="surface.cpp" />
     <ClCompile Include="template.cpp" />
+    <ClCompile Include="UI.cpp" />
     <ClCompile Include="wall.cpp" />
     <ClCompile Include="will.cpp" />
   </ItemGroup>
@@ -247,6 +248,7 @@
     <ClInclude Include="player.h" />
     <ClInclude Include="surface.h" />
     <ClInclude Include="template.h" />
+    <ClInclude Include="UI.h" />
     <ClInclude Include="wall.h" />
     <ClInclude Include="will.h" />
   </ItemGroup>

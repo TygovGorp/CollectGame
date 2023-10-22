@@ -3,8 +3,8 @@ namespace Tmpl8
 {
 	entity::entity()
 	{
-		HP = 10;
-		DMG = 5;
+		HP = 3;
+		DMG = 1;
 		loc.x = 0;
 		loc.y = 0;
 	}
@@ -44,7 +44,7 @@ namespace Tmpl8
 
 	void entity::update()
 	{
-		entityAnimation.update(1, int(loc.x), int(loc.y));
+		entityAnimation.update(1, int(loc.x), int(loc.y), 60,60);
 	}
 
 	void entity::move(int xDifference, int yDifference)

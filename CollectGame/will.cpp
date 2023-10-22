@@ -11,7 +11,7 @@ namespace Tmpl8
 	{
 		if (!pickedUp)
 		{
-			willAnim.update(frameNum);
+			willAnim.update(frameNum, 60, 60);
 		}
 	}
 

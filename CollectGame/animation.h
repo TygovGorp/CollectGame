@@ -11,15 +11,15 @@ namespace Tmpl8
 		int NumOfFrames;
 		int Xlocation, Ylocation;
 		Surface* Screen;
-		std::vector <Sprite*> Frames;
+		std::vector<Sprite*> Frames;
 
 	public:
 		~animation() {Frames.clear();}
 
 		void init(int NumFrames, char* filename, int Xloc, int Yloc, Surface* ScreenSurface);
 
-		void update(int FrameCounter);
-		void update(int FrameCounter, int updatedX, int updatedY);
+		void update(int FrameCounter, int w, int h);
+		void update(int FrameCounter, int updatedX, int updatedY, int w, int h);
 
 		char* StrToCharStar(char* filename, int i);
 	};

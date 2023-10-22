@@ -17,6 +17,8 @@ namespace Tmpl8
 
 		WillInst.setLoc(levelManager.getWillLoc());
 		WillInst.init(screen);
+
+		uiInst.init(screen, levelNum, Player.getHP());
 	}
 	
 	// -----------------------------------------------------------
@@ -52,9 +54,13 @@ namespace Tmpl8
 		Player.checkCollisionWall(levelManager.getWallVec());
 		Player.update();
 
+		uiInst.update(screen, levelNum, Player.getHP());
+
 		if (Col.AABB(Player.getLoc(), WillInst.getLoc()))
 		{
 			WillInst.Interaction();
 		}
+
+
 	}
 };

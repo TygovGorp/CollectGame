@@ -3,6 +3,7 @@
 #include "level.h"
 #include "will.h"
 #include "collision.h"
+#include "UI.h"
 #include<iostream>
 
 namespace Tmpl8 {
@@ -27,6 +28,7 @@ private:
 	level levelManager;
 	will WillInst;
 	collision Col;
+	UI uiInst;
 
 	int levelNum = 1;
 	int maxLevelNum = 3;

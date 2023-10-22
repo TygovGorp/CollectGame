@@ -75,5 +75,13 @@ namespace Tmpl8
 		{
 			move(-lastChangeLoc.x, -lastChangeLoc.y);
 		}
+		if (loc.y + 60 > screenHight ||
+			loc.y < 0 ||
+			loc.x + 60 > screenWidth ||
+			loc.x < 0
+			)
+		{
+			move(-secondLastChangeLoc.x, -secondLastChangeLoc.y);
+		}
 	}
 }

@@ -36,8 +36,8 @@ namespace Tmpl8
 		vec2 getLoc() { return loc; };
 
 	protected:
-		int HP = 10;
-		int DMG = 5;
+		int HP = 3;
+		int DMG = 1;
 		animation entityAnimation;
 	};
 }
