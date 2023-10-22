@@ -84,4 +84,14 @@ namespace Tmpl8
 			move(-secondLastChangeLoc.x, -secondLastChangeLoc.y);
 		}
 	}
+
+	void player::setHitStateTrap(bool YN)
+	{
+		hittingATrap = YN;
+	}
+
+	bool player::getHitStateTrap()
+	{
+		return hittingATrap;
+	}
 }

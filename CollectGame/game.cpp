@@ -61,6 +61,22 @@ namespace Tmpl8
 			WillInst.Interaction();
 		}
 
+		vector<trap> tempTrapVec = levelManager.getTrapVec();
 
+		for (int i = 0; i < tempTrapVec.size(); i++)
+		{
+			bool collisionYN = Col.AABB(Player.getLoc(), vec2(Player.getLoc().x + 60, Player.getLoc().y + 60), tempTrapVec[i].getLoc(), tempTrapVec[i].getPointB());
+
+			if (collisionYN && !Player.getHitStateTrap())
+			{
+				Player.setHitStateTrap(true);
+				Player.setHP(Player.getHP() - tempTrapVec[i].getDMG());
+				cout << "hit" << endl;
+			}
+			else if (!collisionYN && Player.getHitStateTrap())
+			{
+				Player.setHitStateTrap(false);
+			}
+		}
 	}
 };

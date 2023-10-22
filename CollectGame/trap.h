@@ -12,7 +12,11 @@ namespace Tmpl8
 		void update();
 
 		void setPointB(vec2 pB);
+		vec2 getPointB();
+
+		int getDMG();
 	private:
+		int DMG = 1;
 		vec2 pointB;
 		animation trapAnim;
 	};

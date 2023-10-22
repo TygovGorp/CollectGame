@@ -11,11 +11,14 @@ namespace Tmpl8
         void moveWithInputs(int key);
         void checkCollisionWall(std::vector<wall> wallVec);
         void checkCollisionScreenBounds(int screenHight, int screenWidth);
+
+        void setHitStateTrap(bool YN);
+        bool getHitStateTrap();
     private:
         collision Col;
-        bool collideYN = false;
         vec2 lastChangeLoc;
         vec2 secondLastChangeLoc;
+        bool hittingATrap = false;
     };
 }
 

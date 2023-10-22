@@ -21,4 +21,14 @@ namespace Tmpl8
 	{
 		pointB = pB;
 	}
+	
+	vec2 trap::getPointB()
+	{
+		return pointB;
+	}
+
+	int trap::getDMG()
+	{
+		return DMG;
+	}
 }
