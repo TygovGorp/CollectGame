@@ -33,6 +33,10 @@ private:
 	collision Col;
 	UI uiInst;
 
+	animation gameOverScreen;
+
+	bool gameOver = false;
+
 	int levelNum = 1;
 	int maxLevelNum = 3;
 
