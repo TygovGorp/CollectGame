@@ -36,8 +36,6 @@ namespace Tmpl8
 		std::strcpy(filenameBuffer, filename.c_str());
 		//until here
 
-		cout << filenameBuffer << endl;
-
 		levelCounterAnimation.init(1, filenameBuffer, levelCounterLoc.x, levelCounterLoc.y, surface);
 	}
 

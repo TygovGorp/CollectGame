@@ -21,6 +21,7 @@ namespace Tmpl8
 		uiInst.init(screen, levelNum, Player.getHP());
 
 		gameOverScreen.init(1, "assets/game_over_screen.png", 1, 1, screen);
+		gameWinScreen.init(1, "assets/game_win_screen.png", 1, 1, screen);
 	}
 	
 	// -----------------------------------------------------------
@@ -91,6 +92,11 @@ namespace Tmpl8
 			levelNum++;
 			Init();
 			WillInst.resetState();
+		}
+
+		if (levelNum == maxLevelNum && WillInst.getState())
+		{
+			gameWinScreen.update(1, ScreenWidth, ScreenHeight);
 		}
 	}
 };

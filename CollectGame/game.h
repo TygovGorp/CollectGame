@@ -34,6 +34,7 @@ private:
 	UI uiInst;
 
 	animation gameOverScreen;
+	animation gameWinScreen;
 
 	bool gameOver = false;
 
