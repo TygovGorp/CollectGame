@@ -33,38 +33,17 @@ namespace Tmpl8
 				vec2 wallPointB = wallVec[j].getPointB();
 				
 				// Calculate ray end-point
-				const vec2 lineAstart = wallPointA;
-				const vec2 lineAend = { wallPointA.x, wallPointB.y };
+				const vec2 cornerA = wallPointA;
+				const vec2 cornerB = { wallPointA.x, wallPointB.y };
+				const vec2 cornerC = wallPointB;
+				const vec2 cornerD = { wallPointB.x, wallPointA.y };
 
-				const vec2 lineBstart = lineAend;
-				const vec2 lineBend = wallPointB;
+				//calculate hit on walls
+				rays[i].calclateHit(cornerA, cornerB, playerLoc);
+				rays[i].calclateHit(cornerB, cornerC, playerLoc);
+				rays[i].calclateHit(cornerC, cornerD, playerLoc);
+				rays[i].calclateHit(cornerD, cornerA, playerLoc);
 
-				const vec2 lineCstart = wallPointB;
-				const vec2 lineCend = { wallPointB.x, wallPointA.y };
-
-				const vec2 lineDstart = lineCend;
-				const vec2 lineDend = wallPointA;
-
-				for (int n = 0; n < 4; n++)
-				{
-					switch (n)
-					{
-					case 0:
-						rays[i].calclateHit(lineAstart, lineAend, playerLoc);
-						break;
-					case 1:
-						rays[i].calclateHit(lineBstart, lineBend, playerLoc);
-						break;
-					case 2:
-						rays[i].calclateHit(lineCstart, lineCend, playerLoc);
-						break;
-					case 3:
-						rays[i].calclateHit(lineDstart, lineDend, playerLoc);
-						break;
-					default:
-						break;
-					}
-				}
 			}
 			screen->Line(playerLoc.x, playerLoc.y, rays[i].getPB().x, rays[i].getPB().y, 0xee9f27); //0xee9f27
 		}
