@@ -9,21 +9,35 @@ namespace Tmpl8
 	// -----------------------------------------------------------
 	void Game::Init()
 	{
-		Player.buildAnimation(screen, 1, "assets/temp_Player.png");	
+		Player.buildAnimation(screen, 1, "assets/temp_Player.png");
 
 		levelManager.init(levelNum, screen);
-		
+
 		Player.init(levelManager.getPlayerStartLoc().x, levelManager.getPlayerStartLoc().y);
 
 		losInst.init();
 
 		WillInst.setLoc(levelManager.getWillLoc());
-		WillInst.init(screen);
+		WillInst.init();
 
 		uiInst.init(screen, levelNum, Player.getHP());
 
-		gameOverScreen.init(1, "assets/game_over_screen.png", 1, 1, screen);
-		gameWinScreen.init(1, "assets/game_win_screen.png", 1, 1, screen);
+		gameOverScreen.init(1, "assets/game_over_screen.png", 1, 1);
+		gameWinScreen.init(1, "assets/game_win_screen.png", 1, 1);
+	}
+
+	void Game::Reset()
+	{
+		levelManager.init(levelNum, screen);
+
+		Player.init(levelManager.getPlayerStartLoc().x, levelManager.getPlayerStartLoc().y);
+
+		losInst.init();
+
+		WillInst.setLoc(levelManager.getWillLoc());
+		WillInst.init();
+
+		uiInst.init(screen, levelNum, Player.getHP());
 	}
 	
 	// -----------------------------------------------------------
@@ -42,15 +56,15 @@ namespace Tmpl8
 		// clear the graphics window
 		screen->Clear(0);
 
-		levelManager.update();
+		levelManager.update(screen);
 
 		losInst.update(screen, Player.getLoc(), levelManager.getWallVec());
 
-		WillInst.update();
+		WillInst.update(screen);
 
 		Player.checkCollisionScreenBounds(ScreenHeight, ScreenWidth);
 		Player.checkCollisionWall(levelManager.getWallVec());
-		Player.update();
+		Player.update(screen);
 
 		uiInst.update(screen, levelNum, Player.getHP());
 
@@ -78,20 +92,21 @@ namespace Tmpl8
 
 		if (Player.getHP() <= 0)
 		{
-			gameOverScreen.update(1, ScreenWidth, ScreenHeight);
+			gameOverScreen.update(1, ScreenWidth, ScreenHeight, screen);
 			gameOver = true;
 		}
 
 		if (WillInst.getState() && levelNum != maxLevelNum)
 		{
 			levelNum++;
-			Init();
+			screen->Clear(0);
+			Reset();
 			WillInst.resetState();
 		}
 
 		if (levelNum == maxLevelNum && WillInst.getState())
 		{
-			gameWinScreen.update(1, ScreenWidth, ScreenHeight);
+			gameWinScreen.update(1, ScreenWidth, ScreenHeight,screen);
 		}
 	}
 };

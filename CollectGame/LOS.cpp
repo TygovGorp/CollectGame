@@ -5,6 +5,8 @@ namespace Tmpl8
 {
 	void LOS::init()
 	{
+		rays.clear();
+
 		const float ray_density = 1000;
 
 		const float step = 1.f / ray_density;
