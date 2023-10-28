@@ -7,13 +7,13 @@ namespace Tmpl8
 	{
 	public:
 		ray() {};
-		ray(vec2 rel_end);
-		void setPoints(vec2 playerPos);
-		void calclateHit(vec2 wallPointA, vec2 wallPointB, vec2 playerPos);
+		ray(float in_sc, float in_b);
+		void calclateHit(vec2 wallPointA, vec2 wallPointB);
 
 		vec2 getPB() { return pB; };
 	private:
+		float sc = 0;
+		float b = 0;
 		vec2 pB;
-		vec2 relative_pB;
 	};
 }

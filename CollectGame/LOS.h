@@ -2,6 +2,7 @@
 #include <vector>
 #include "ray.h"
 #include "wall.h"
+#include "player.h"
 
 namespace Tmpl8
 {
@@ -9,7 +10,7 @@ namespace Tmpl8
 	class LOS
 	{
 	public:
-		void init();
+		void init(std::vector<wall> wallVec, player Player);
 		void update(Surface* screen, vec2 playerPos, std::vector<wall> wallVec);
 
 	private:

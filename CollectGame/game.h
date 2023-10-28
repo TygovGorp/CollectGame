@@ -38,7 +38,7 @@ private:
 
 	bool gameOver = false;
 
-	int levelNum = 1;
+	int levelNum = 3;
 	int maxLevelNum = 3;
 
 	const int ScreenWidth = 800;
