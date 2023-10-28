@@ -1,28 +1,73 @@
 #include "LOS.h"
+#include <cmath>
 
 namespace Tmpl8
 {
-	/*
-	// Calculate intersections and draw rays
-	for (int i = 0; i < rays.size(); i++)
+	void LOS::init()
 	{
-		// Set ray end-point to default
-		rays[i].reset();
+		const float ray_density = 1000;
 
-		// Cycle through every wall and set end point to intersection
-		// When an intersection is found, the end-point is set to that intersection, meaning the next check will check for walls
-		// between mouse and the new end-point. This means the ray will always go to the nearest wall
-		for (int j = 0; j < walls.size(); j++)
+		const float step = 1.f / ray_density;
+		for (float a = 0; a < PI * 2; a += step)
 		{
-			// Calculate ray end-point
-			rays[i].calc_hit(walls[j].start, walls[j].end);
+			const float x = cos(a);
+			const float y = sin(a);
+			rays.push_back(ray(vec2(x, y)));
 		}
-
-		// Set drawing-line end to final intersection
-		ray_line[1].position = rays[i].m_end;
-
-		// Draw ray
-		window.draw(ray_line);
 	}
-	*/
+
+	void LOS::update(Surface* screen, vec2 playerPos, std::vector<wall> wallVec)
+	{
+		vec2 playerLoc = { playerPos.x + 30, playerPos.y + 30 };
+		for (int i = 0; i < rays.size(); i++)
+		{
+			// Set ray end-point to default
+			rays[i].setPoints(playerLoc);
+
+			// Cycle through every wall and set end point to intersection
+			// When an intersection is found, the end-point is set to that intersection, meaning the next check will check for walls
+			// between mouse and the new end-point. This means the ray will always go to the nearest wall
+			for (int j = 0; j < wallVec.size(); j++)
+			{
+				vec2 wallPointA = wallVec[j].getPointA();
+				vec2 wallPointB = wallVec[j].getPointB();
+				
+				// Calculate ray end-point
+				const vec2 lineAstart = wallPointA;
+				const vec2 lineAend = { wallPointA.x, wallPointB.y };
+
+				const vec2 lineBstart = lineAend;
+				const vec2 lineBend = wallPointB;
+
+				const vec2 lineCstart = wallPointB;
+				const vec2 lineCend = { wallPointB.x, wallPointA.y };
+
+				const vec2 lineDstart = lineCend;
+				const vec2 lineDend = wallPointA;
+
+				for (int n = 0; n < 3; n++)
+				{
+					switch (n)
+					{
+					case 0:
+						rays[i].calclateHit(lineAstart, lineAend, playerLoc);
+						break;
+					case 1:
+						rays[i].calclateHit(lineBstart, lineBend, playerLoc);
+						break;
+					case 2:
+						rays[i].calclateHit(lineCstart, lineCend, playerLoc);
+						break;
+					case 3:
+						rays[i].calclateHit(lineDstart, lineDend, playerLoc);
+						break;
+					default:
+						break;
+					}
+				}
+			}
+			screen->Line(playerLoc.x, playerLoc.y, rays[i].getPB().x, rays[i].getPB().y, 0xee9f27); //0xee9f27
+		}
+		
+	}
 }

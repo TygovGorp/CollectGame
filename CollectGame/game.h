@@ -4,6 +4,7 @@
 #include "will.h"
 #include "collision.h"
 #include "UI.h"
+#include "LOS.h"
 #include<iostream>
 
 namespace Tmpl8 {
@@ -32,6 +33,7 @@ private:
 	will WillInst;
 	collision Col;
 	UI uiInst;
+	LOS losInst;
 
 	animation gameOverScreen;
 	animation gameWinScreen;

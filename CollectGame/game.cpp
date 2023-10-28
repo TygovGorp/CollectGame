@@ -15,6 +15,8 @@ namespace Tmpl8
 		
 		Player.init(levelManager.getPlayerStartLoc().x, levelManager.getPlayerStartLoc().y);
 
+		losInst.init();
+
 		WillInst.setLoc(levelManager.getWillLoc());
 		WillInst.init(screen);
 
@@ -37,32 +39,25 @@ namespace Tmpl8
 	// -----------------------------------------------------------
 	void Game::Tick(float deltaTime)
 	{
-
-
-
 		// clear the graphics window
 		screen->Clear(0);
 
-
 		levelManager.update();
 
+		losInst.update(screen, Player.getLoc(), levelManager.getWallVec());
 
 		WillInst.update();
-
 
 		Player.checkCollisionScreenBounds(ScreenHeight, ScreenWidth);
 		Player.checkCollisionWall(levelManager.getWallVec());
 		Player.update();
 
-
 		uiInst.update(screen, levelNum, Player.getHP());
-
 
 		if (Col.AABB(Player.getLoc(), WillInst.getLoc()) && !gameOver)
 		{
 			WillInst.Interaction();
 		}
-
 
 		vector<trap> tempTrapVec = levelManager.getTrapVec();
 		for (int i = 0; i < tempTrapVec.size(); i++)
