@@ -45,7 +45,7 @@ namespace Tmpl8
 				const vec2 lineDstart = lineCend;
 				const vec2 lineDend = wallPointA;
 
-				for (int n = 0; n < 3; n++)
+				for (int n = 0; n < 4; n++)
 				{
 					switch (n)
 					{
