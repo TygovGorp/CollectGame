@@ -23,6 +23,7 @@ public:
 	void KeyUp( int key ) { /* implement if you want to handle keys */ }
 	void KeyDown(int key) { 
 		Player.moveWithInputs(key); 
+		losInst.init(levelManager.getWallVec(), Player.getLoc());
 	}
 private:
 	Surface* screen;
@@ -38,7 +39,7 @@ private:
 
 	bool gameOver = false;
 
-	int levelNum = 3;
+	int levelNum = 1;
 	int maxLevelNum = 3;
 
 	const int ScreenWidth = 800;

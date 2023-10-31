@@ -23,7 +23,7 @@ namespace Tmpl8
 
 		Player.init(levelManager.getPlayerStartLoc().x, levelManager.getPlayerStartLoc().y);
 
-		losInst.init(levelManager.getWallVec(), Player);
+		losInst.init(levelManager.getWallVec(), Player.getLoc());
 
 		WillInst.setLoc(levelManager.getWillLoc());
 		WillInst.init();

@@ -299,7 +299,7 @@ void swap()
 #endif
 
 int main( int argc, char **argv ) 
-{  
+{
 #ifdef _MSC_VER
     if (!redirectIO())
         return 1;

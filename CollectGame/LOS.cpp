@@ -2,49 +2,32 @@
 
 namespace Tmpl8
 {
-	void LOS::init(std::vector<wall> wallVec, player Player)
+	void LOS::init(std::vector<wall> wallVec, vec2 playerLoc)
 	{
 		rays.clear();
 
-		for (float i = 0; i < wallVec.size(); i++)
+		for (int i = 0; i < wallVec.size() - 1; i++)
 		{
-			//y = sc * x + b
-			const float sc = (Player.getLoc().y - wallVec[i].getPointA().y) / (Player.getLoc().x - wallVec[i].getPointA().x);
-			float b = 0;
-			sc* wallVec[i].getPointA().x < wallVec[i].getPointA().y ? b = wallVec[i].getPointA().y - sc * wallVec[i].getPointA().x : b = sc * wallVec[i].getPointA().x - wallVec[i].getPointA().y;
-
-			rays.push_back(ray(sc, b));
+			vec2 midPlayer(playerLoc.x + 30, playerLoc.y + 30);
+			rays.push_back(ray(midPlayer, wallVec[i].getPointA()));
+			rays.push_back(ray(midPlayer, vec2(wallVec[i].getPointA().x, wallVec[i].getPointB().y)));
+			rays.push_back(ray(midPlayer, wallVec[i].getPointB()));
+			rays.push_back(ray(midPlayer, vec2(wallVec[i].getPointB().x, wallVec[i].getPointA().y)));
 		}
 	}
-
-	void LOS::update(Surface* screen, vec2 playerPos, std::vector<wall> wallVec)
+	void LOS::update(Surface* screen, vec2 playerLoc, std::vector<wall> wallVec)
 	{
-		vec2 playerLoc = { playerPos.x + 30, playerPos.y + 30 };
-		for (int i = 0; i < rays.size(); i++)
+		//https://www.cuemath.com/geometry/intersection-of-two-lines/
+		for (int i = 0; i < rays.size() - 1; i++)
 		{
-			// Cycle through every wall and set end point to intersection
-			// When an intersection is found, the end-point is set to that intersection, meaning the next check will check for walls
-			// between mouse and the new end-point. This means the ray will always go to the nearest wall
-			for (int j = 0; j < wallVec.size(); j++)
+			for (int j = 0; j < wallVec.size() - 1; j++)
 			{
-				vec2 wallPointA = wallVec[j].getPointA();
-				vec2 wallPointB = wallVec[j].getPointB();
-				
-				// Calculate ray end-point
-				const vec2 cornerA = wallPointA;
-				const vec2 cornerB = { wallPointA.x, wallPointB.y };
-				const vec2 cornerC = wallPointB;
-				const vec2 cornerD = { wallPointB.x, wallPointA.y };
-
-				//calculate hit on walls
-				rays[i].calclateHit(cornerA, cornerB);
-				rays[i].calclateHit(cornerB, cornerC);
-				rays[i].calclateHit(cornerC, cornerD);
-				rays[i].calclateHit(cornerD, cornerA);
-
+				rays[i].calculateHit(wallVec[j].getPointA(), vec2(wallVec[j].getPointB().x, wallVec[j].getPointA().y));
+				rays[i].calculateHit(vec2(wallVec[j].getPointB().x, wallVec[j].getPointA().y), wallVec[j].getPointB());
+				rays[i].calculateHit(wallVec[j].getPointB(), vec2(wallVec[j].getPointA().x, wallVec[j].getPointB().y));
+				rays[i].calculateHit(vec2(wallVec[j].getPointA().x, wallVec[j].getPointB().y), wallVec[j].getPointA());
 			}
-			screen->Line(playerLoc.x, playerLoc.y, rays[i].getPB().x, rays[i].getPB().y, 0xee9f27);
+			screen->Line(rays[i].getPA().x, rays[i].getPA().y, rays[i].getPB().x, rays[i].getPB().y, 0xee9f27);
 		}
-		
 	}
 }
