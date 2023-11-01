@@ -8,11 +8,10 @@ namespace Tmpl8
 
 		for (int i = 0; i < wallVec.size() - 1; i++)
 		{
-			vec2 midPlayer(playerLoc.x + 30, playerLoc.y + 30);
-			rays.push_back(ray(midPlayer, wallVec[i].getPointA()));
-			rays.push_back(ray(midPlayer, vec2(wallVec[i].getPointA().x, wallVec[i].getPointB().y)));
-			rays.push_back(ray(midPlayer, wallVec[i].getPointB()));
-			rays.push_back(ray(midPlayer, vec2(wallVec[i].getPointB().x, wallVec[i].getPointA().y)));
+			rays.push_back(ray(vec2(playerLoc.x + 30, playerLoc.y + 30), wallVec[i].getPointA()));
+			rays.push_back(ray(vec2(playerLoc.x + 30, playerLoc.y + 30), vec2(wallVec[i].getPointB().x, wallVec[i].getPointA().y)));
+			rays.push_back(ray(vec2(playerLoc.x + 30, playerLoc.y + 30), wallVec[i].getPointB()));
+			rays.push_back(ray(vec2(playerLoc.x + 30, playerLoc.y + 30), vec2(wallVec[i].getPointA().x, wallVec[i].getPointB().y)));
 		}
 	}
 	void LOS::update(Surface* screen, vec2 playerLoc, std::vector<wall> wallVec)
@@ -20,6 +19,7 @@ namespace Tmpl8
 		//https://www.cuemath.com/geometry/intersection-of-two-lines/
 		for (int i = 0; i < rays.size() - 1; i++)
 		{
+			rays[i].reset(playerLoc);
 			for (int j = 0; j < wallVec.size() - 1; j++)
 			{
 				rays[i].calculateHit(wallVec[j].getPointA(), vec2(wallVec[j].getPointB().x, wallVec[j].getPointA().y));

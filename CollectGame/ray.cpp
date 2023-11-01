@@ -1,48 +1,51 @@
 #include "ray.h"
 #include <iostream>
 #include "wall.h"
+#include <math.h>
 
 namespace Tmpl8
 {
-	ray::ray(vec2 rayPointA, vec2 rayPointB)
+	ray::ray(vec2 playerLoc, vec2 wallCord)
 	{
-		m_relative_end = rayPointA * 3000.f;
+		//sc = dY/dX
+		const float dY = (wallCord.y - playerLoc.y) < 0 ? -(wallCord.y - playerLoc.y) : (wallCord.y - playerLoc.y);
+		const float dX = (wallCord.x - playerLoc.x) < 0 ? -(wallCord.x - playerLoc.x) : (wallCord.x - playerLoc.x);
+		const float sc = dY / dX;
+		const float a = atan(sc);
+		relative_end = vec2(cos(a), sin(a)) * 3000.f;
 	}
 
 	// Reset end-point of ray
-	void ray::reset()
+	void ray::reset(vec2 playerLoc)
 	{
 		// Set end-point to (default length) distance away from mouse in set direction
-		pB = pA + m_relative_end;
+		pB = playerLoc + relative_end;
 	}
 
 	void ray::calculateHit(vec2 wallPointA, vec2 wallPointB)
 	{
-		float x1 = pA.x;
-		float x2 = pB.x;
-		float x3 = wallPointA.x;
-		float x4 = wallPointA.x;
-		float y1 = pA.y;
-		float y2 = pB.y;
-		float y3 = wallPointB.y;
-		float y4 = wallPointB.x;
+		const vec2 p1 = pA;
+		const vec2 p2 = pB;
+		const vec2 p3 = wallPointA;
+		const vec2 p4 = wallPointB;
 
 
 		// Calculates denominator of equations
-		const float den = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+		const float den = (p1.x - p2.x) * (p3.y - p4.y) - (p1.y - p2.y) * (p3.x - p4.x);
+		//std::cout << den << std::endl;
 
 		if (den == 0)
 			return;
 
-		const float t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / den;
-		const float u = -((x1 - x2) * (y1 - y3) - (y1 - y2) * (x1 - x3)) / den;
+		const float t = ((p1.x - p3.x) * (p3.y - p4.y) - (p1.y - p3.y) * (p3.x - p4.x)) / den;
+		const float u = -((p1.x - p2.x) * (p1.y - p3.y) - (p1.y - p2.y) * (p1.x - p3.x)) / den;
 
 		// If there's an intersection...
 		if (t > 0 && t < 1 && u > 0 && u < 1)
 		{
 			// Gets intersection point
-			pB.x = x1 + t * (x2 - x1);
-			pB.y = y1 + t * (y2 - y1);
+			pB.x = p1.x + t * (p2.x - p1.x);
+			pB.y = p1.y + t * (p2.y - p1.y);
 		}
 	}
 }
