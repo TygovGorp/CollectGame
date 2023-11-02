@@ -5,6 +5,7 @@
 #include "collision.h"
 #include "UI.h"
 #include "LOS.h"
+#include "main_menu.h"
 #include<iostream>
 
 namespace Tmpl8 {
@@ -32,14 +33,16 @@ private:
 	collision Col;
 	UI uiInst;
 	LOS losInst;
+	main_menu MMinst;
 
 	animation gameOverScreen;
 	animation gameWinScreen;
 
 	bool gameOver = false;
 
-	int levelNum = 1;
-	int maxLevelNum = 3;
+	float levelNum = 0.1;
+	const int maxLevelNum = 3;
+	bool levelCleared[3] = { false };
 
 	const int ScreenWidth = 800;
 	const int ScreenHeight = 560;

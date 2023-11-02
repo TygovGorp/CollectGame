@@ -49,6 +49,9 @@
     <ClCompile Include="LOS.cpp">
       <Filter>game code\tools\line of sight</Filter>
     </ClCompile>
+    <ClCompile Include="main_menu.cpp">
+      <Filter>game code\environment</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="surface.h">
@@ -98,6 +101,9 @@
     </ClInclude>
     <ClInclude Include="LOS.h">
       <Filter>game code\tools\line of sight</Filter>
+    </ClInclude>
+    <ClInclude Include="main_menu.h">
+      <Filter>game code\environment</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

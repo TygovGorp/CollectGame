@@ -230,6 +230,7 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="level.cpp" />
     <ClCompile Include="LOS.cpp" />
+    <ClCompile Include="main_menu.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="ray.cpp" />
@@ -248,6 +249,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="level.h" />
     <ClInclude Include="LOS.h" />
+    <ClInclude Include="main_menu.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="ray.h" />

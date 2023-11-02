@@ -19,16 +19,25 @@ namespace Tmpl8
 
 	void Game::Reset()
 	{
-		levelManager.init(levelNum, screen);
+		if (levelNum > 1)
+		{
+			levelManager.init(levelNum, screen);
 
-		Player.init(levelManager.getPlayerStartLoc().x, levelManager.getPlayerStartLoc().y);
+			Player.init(levelManager.getPlayerStartLoc().x, levelManager.getPlayerStartLoc().y);
 
-		losInst.init();
+			losInst.init();
 
-		WillInst.setLoc(levelManager.getWillLoc());
-		WillInst.init(screen);
+			WillInst.setLoc(levelManager.getWillLoc());
+			WillInst.init(screen);
 
-		uiInst.init(screen, levelNum, Player.getHP());
+			uiInst.init(screen, levelNum, Player.getHP());
+		}
+		else
+		{
+			MMinst.init(screen, ScreenWidth, ScreenHeight);
+		}
+
+
 	}
 	
 	// -----------------------------------------------------------
@@ -47,56 +56,59 @@ namespace Tmpl8
 		// clear the graphics window
 		screen->Clear(0);
 
-		levelManager.update();
-
-		losInst.update(screen, Player.getLoc(), levelManager.getWallVec());
-
-		WillInst.update();
-
-		Player.checkCollisionScreenBounds(ScreenHeight, ScreenWidth);
-		Player.checkCollisionWall(levelManager.getWallVec());
-		Player.update();
-
-		uiInst.update(screen, levelNum, Player.getHP());
-
-		if (Col.AABB(Player.getLoc(), WillInst.getLoc()) && !gameOver)
+		if (levelNum > 1)
 		{
-			WillInst.Interaction();
-		}
+			levelManager.update();
+			losInst.update(screen, Player.getLoc(), levelManager.getWallVec());
+			WillInst.update();
+			Player.checkCollisionScreenBounds(ScreenHeight, ScreenWidth);
+			Player.checkCollisionWall(levelManager.getWallVec());
+			Player.update();
+			uiInst.update(screen, levelNum, Player.getHP());
 
-		vector<trap> tempTrapVec = levelManager.getTrapVec();
-		for (int i = 0; i < tempTrapVec.size(); i++)
-		{
-			bool collisionYN = Col.AABB(Player.getLoc(), vec2(Player.getLoc().x + 60, Player.getLoc().y + 60), tempTrapVec[i].getLoc(), tempTrapVec[i].getPointB());
-
-			if (collisionYN && !Player.getHitStateTrap())
+			if (Col.AABB(Player.getLoc(), WillInst.getLoc()) && !gameOver)
 			{
-				Player.setHitStateTrap(true);
-				Player.setHP(Player.getHP() - tempTrapVec[i].getDMG());
-				cout << "hit" << endl;
+				WillInst.Interaction();
 			}
-			else if (!collisionYN && Player.getHitStateTrap())
+
+			vector<trap> tempTrapVec = levelManager.getTrapVec();
+			for (int i = 0; i < tempTrapVec.size(); i++)
 			{
-				Player.setHitStateTrap(false);
+				bool collisionYN = Col.AABB(Player.getLoc(), vec2(Player.getLoc().x + 60, Player.getLoc().y + 60), tempTrapVec[i].getLoc(), tempTrapVec[i].getPointB());
+
+				if (collisionYN && !Player.getHitStateTrap())
+				{
+					Player.setHitStateTrap(true);
+					Player.setHP(Player.getHP() - tempTrapVec[i].getDMG());
+					cout << "hit" << endl;
+				}
+				else if (!collisionYN && Player.getHitStateTrap())
+				{
+					Player.setHitStateTrap(false);
+				}
+			}
+
+			if (Player.getHP() <= 0)
+			{
+				gameOverScreen.update(1, ScreenWidth, ScreenHeight);
+				gameOver = true;
+			}
+
+			if (WillInst.getState() && levelNum != maxLevelNum)
+			{
+				levelNum++;
+				Init();
+				WillInst.resetState();
+			}
+
+			if (levelNum == maxLevelNum && WillInst.getState())
+			{
+				gameWinScreen.update(1, ScreenWidth, ScreenHeight);
 			}
 		}
-
-		if (Player.getHP() <= 0)
+		else
 		{
-			gameOverScreen.update(1, ScreenWidth, ScreenHeight);
-			gameOver = true;
-		}
-
-		if (WillInst.getState() && levelNum != maxLevelNum)
-		{
-			levelNum++;
-			Init();
-			WillInst.resetState();
-		}
-
-		if (levelNum == maxLevelNum && WillInst.getState())
-		{
-			gameWinScreen.update(1, ScreenWidth, ScreenHeight);
+			MMinst.update(levelNum);
 		}
 	}
 };
