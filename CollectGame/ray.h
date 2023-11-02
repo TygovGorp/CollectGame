@@ -1,25 +1,19 @@
 #pragma once
 #include "template.h"
-#include "wall.h"
 
 namespace Tmpl8
 {
 	class ray
 	{
-		//based on https://github.com/user-simon/2D-RayCasting/
 	public:
 		ray() {};
-		ray(vec2 playerLoc, vec2 wallCord);
-		void reset(vec2 playerLoc);
-		void calculateHit(vec2 wallPointA, vec2 wallPointB);
+		ray(vec2 rel_end);
+		void setPoints(vec2 playerPos);
+		void calclateHit(vec2 wallPointA, vec2 wallPointB, vec2 playerPos);
 
-		vec2 getPA() { return pA; };
-		void setPA(vec2 pointA) { pA = pointA; };
 		vec2 getPB() { return pB; };
-		void setPB(vec2 pointB) { pB = pointB; };
 	private:
-		vec2 relative_end;
-		vec2 pA;
 		vec2 pB;
+		vec2 relative_pB;
 	};
 }

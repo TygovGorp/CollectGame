@@ -2,8 +2,10 @@
 
 namespace Tmpl8
 {
-	void LOS::init(std::vector<wall> wallVec, vec2 playerLoc)
+	void LOS::init()
 	{
+		rays.clear();
+
 		const float ray_density = 1000;
 
 		const float step = 1.f / ray_density;
@@ -30,7 +32,7 @@ namespace Tmpl8
 			{
 				vec2 wallPointA = wallVec[j].getPointA();
 				vec2 wallPointB = wallVec[j].getPointB();
-				
+
 				// Calculate ray end-point
 				const vec2 cornerA = wallPointA;
 				const vec2 cornerB = { wallPointA.x, wallPointB.y };

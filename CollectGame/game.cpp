@@ -9,12 +9,12 @@ namespace Tmpl8
 	// -----------------------------------------------------------
 	void Game::Init()
 	{
-		Player.buildAnimation(screen, 1, "assets/temp_Player.png");	
+		Player.buildAnimation(screen, 1, "assets/temp_Player.png");
 
 		Reset();
 
-		gameOverScreen.init(1, "assets/game_over_screen.png", 1, 1);
-		gameWinScreen.init(1, "assets/game_win_screen.png", 1, 1);
+		gameOverScreen.init(1, "assets/game_over_screen.png", 1, 1, screen);
+		gameWinScreen.init(1, "assets/game_win_screen.png", 1, 1, screen);
 	}
 
 	void Game::Reset()
@@ -23,10 +23,10 @@ namespace Tmpl8
 
 		Player.init(levelManager.getPlayerStartLoc().x, levelManager.getPlayerStartLoc().y);
 
-		losInst.init(levelManager.getWallVec(), Player.getLoc());
+		losInst.init();
 
 		WillInst.setLoc(levelManager.getWillLoc());
-		WillInst.init();
+		WillInst.init(screen);
 
 		uiInst.init(screen, levelNum, Player.getHP());
 	}
