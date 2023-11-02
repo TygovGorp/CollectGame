@@ -8,8 +8,8 @@ namespace Tmpl8
 	{
 	public:
 		trap();
-		void init();
-		void update(Surface* screen);
+		void init(Surface* screen);
+		void update();
 
 		void setPointB(vec2 pB);
 		vec2 getPointB();

@@ -9,7 +9,7 @@ namespace Tmpl8
 	// -----------------------------------------------------------
 	void Game::Init()
 	{
-		Player.buildAnimation(screen, 1, "assets/temp_Player.png");
+		Player.buildAnimation(screen, 1, "assets/temp_Player.png");	
 
 		Reset();
 
@@ -47,15 +47,15 @@ namespace Tmpl8
 		// clear the graphics window
 		screen->Clear(0);
 
-		levelManager.update(screen);
+		levelManager.update();
 
 		losInst.update(screen, Player.getLoc(), levelManager.getWallVec());
 
-		WillInst.update(screen);
+		WillInst.update();
 
 		Player.checkCollisionScreenBounds(ScreenHeight, ScreenWidth);
 		Player.checkCollisionWall(levelManager.getWallVec());
-		Player.update(screen);
+		Player.update();
 
 		uiInst.update(screen, levelNum, Player.getHP());
 
@@ -83,21 +83,20 @@ namespace Tmpl8
 
 		if (Player.getHP() <= 0)
 		{
-			gameOverScreen.update(1, ScreenWidth, ScreenHeight, screen);
+			gameOverScreen.update(1, ScreenWidth, ScreenHeight);
 			gameOver = true;
 		}
 
 		if (WillInst.getState() && levelNum != maxLevelNum)
 		{
 			levelNum++;
-			screen->Clear(0);
-			Reset();
+			Init();
 			WillInst.resetState();
 		}
 
 		if (levelNum == maxLevelNum && WillInst.getState())
 		{
-			gameWinScreen.update(1, ScreenWidth, ScreenHeight,screen);
+			gameWinScreen.update(1, ScreenWidth, ScreenHeight);
 		}
 	}
 };

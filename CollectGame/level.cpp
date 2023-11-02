@@ -107,7 +107,7 @@ namespace Tmpl8
 						break;
 					case 5:
 						trapVec.back().setPointB(vec2(trapx, stoi(tp)));
-						trapVec.back().init();
+						trapVec.back().init(screen);
 						nextTrapLocation = false;
 						counter = 0;
 					default:
@@ -144,7 +144,7 @@ namespace Tmpl8
 		}
 	}
 
-	void level::update(Surface* surface)
+	void level::update()
 	{
 		for (int i = 0; i < wallVec.size(); i++)
 		{
@@ -152,7 +152,7 @@ namespace Tmpl8
 		}
 		for (int i = 0; i < trapVec.size(); i++)
 		{
-			trapVec[i].update(screen);
+			trapVec[i].update();
 		}
 	}
 

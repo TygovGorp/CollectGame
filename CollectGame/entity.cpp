@@ -24,7 +24,7 @@ namespace Tmpl8
 
 	void entity::buildAnimation(Surface* surface, int numofframes, char* filename)
 	{
-		entityAnimation.init(numofframes, filename, int(loc.x), int(loc.y));
+		entityAnimation.init(numofframes, filename, int(loc.x), int(loc.y), surface);
 	}
 	void entity::build(int hp, int dmg, vec2 LOC)
 	{
@@ -42,9 +42,9 @@ namespace Tmpl8
 
 	}
 
-	void entity::update(Surface* ScreenSurface)
+	void entity::update()
 	{
-		entityAnimation.update(1, int(loc.x), int(loc.y), 60,60, ScreenSurface);
+		entityAnimation.update(1, int(loc.x), int(loc.y), 60,60);
 	}
 
 	void entity::move(int xDifference, int yDifference)

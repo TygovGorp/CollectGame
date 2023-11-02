@@ -19,7 +19,7 @@ namespace Tmpl8
 		void updateLevelCounter(Surface* surface, int levelNum);
 
 		void initHpCounter(Surface* surface, int hp);
-		void updateHpCounter(int hp, Surface* surface);
+		void updateHpCounter(int hp);
 
 		int currentLevelNum;
 

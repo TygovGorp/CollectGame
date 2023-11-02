@@ -8,9 +8,9 @@ namespace Tmpl8
 	class will : public object
 	{
 	public:
-		void init();
+		void init(Surface* screen);
 
-		void update(Surface* surface);
+		void update();
 
 		void Interaction();
 

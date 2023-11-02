@@ -9,7 +9,7 @@ namespace Tmpl8
 	{
 	public:
 		void init(int levelNum, Surface* ScreenSurface);
-		void update(Surface* surface);
+		void update();
 
 		vec2 getWillLoc();
 		vec2 getPlayerStartLoc();

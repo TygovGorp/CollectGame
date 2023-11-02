@@ -19,7 +19,7 @@ namespace Tmpl8
 		void build(int hp, int dmg, vec2 LOC);
 		void build(int hp, int dmg, int xloc, int yloc);
 
-		void update(Surface* ScreenSurface);
+		void update();
 
 		void move(int xDifference, int yDifference);
 
