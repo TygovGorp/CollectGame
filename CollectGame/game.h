@@ -19,8 +19,14 @@ public:
 	void Shutdown();
 	void Tick(float deltaTime);
 	void MouseUp(int button) { /* implement if you want to detect mouse button presses */ }
-	void MouseDown(int button) { /* implement if you want to detect mouse button presses */ }
-	void MouseMove(int x, int y) { /* implement if you want to detect mouse movement */ }
+	void MouseDown(int button) 
+	{ 
+		MMinst.Button(levelNum, mainMenuStage, mouseLoc, button);
+	}
+	void MouseMove(int x, int y) 
+	{ 
+
+	}
 	void KeyUp(int key) { /* implement if you want to handle keys */ }
 	void KeyDown(int key) {
 		Player.moveWithInputs(key);
@@ -38,9 +44,12 @@ private:
 	animation gameOverScreen;
 	animation gameWinScreen;
 
+	vec2 mouseLoc;
+
 	bool gameOver = false;
 
-	float levelNum = 0.1;
+	int levelNum = 0;
+	int mainMenuStage = 1;
 	const int maxLevelNum = 3;
 	bool levelCleared[3] = { false };
 

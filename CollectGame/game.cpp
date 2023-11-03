@@ -80,7 +80,6 @@ namespace Tmpl8
 				{
 					Player.setHitStateTrap(true);
 					Player.setHP(Player.getHP() - tempTrapVec[i].getDMG());
-					cout << "hit" << endl;
 				}
 				else if (!collisionYN && Player.getHitStateTrap())
 				{
@@ -108,7 +107,7 @@ namespace Tmpl8
 		}
 		else
 		{
-			MMinst.update(levelNum);
+			MMinst.update(levelNum, mainMenuStage);
 		}
 	}
 };
