@@ -144,7 +144,7 @@ namespace Tmpl8
 		}
 	}
 
-	void level::update()
+	void level::update(Surface* screen)
 	{
 		for (int i = 0; i < wallVec.size(); i++)
 		{
@@ -152,7 +152,7 @@ namespace Tmpl8
 		}
 		for (int i = 0; i < trapVec.size(); i++)
 		{
-			trapVec[i].update();
+			trapVec[i].update(screen);
 		}
 	}
 

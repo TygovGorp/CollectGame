@@ -42,9 +42,9 @@ namespace Tmpl8
 
 	}
 
-	void entity::update()
+	void entity::update(Surface* surface)
 	{
-		entityAnimation.update(1, int(loc.x), int(loc.y), 60,60);
+		entityAnimation.update(1, int(loc.x), int(loc.y), 60,60, surface);
 	}
 
 	void entity::move(int xDifference, int yDifference)

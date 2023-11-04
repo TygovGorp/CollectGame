@@ -10,7 +10,6 @@ namespace Tmpl8
 	private:
 		int NumOfFrames;
 		int Xlocation, Ylocation;
-		Surface* Screen;
 		std::vector<Sprite*> Frames;
 
 	public:
@@ -18,8 +17,8 @@ namespace Tmpl8
 
 		void init(int NumFrames, char* filename, int Xloc, int Yloc, Surface* ScreenSurface);
 
-		void update(int FrameCounter, int w, int h);
-		void update(int FrameCounter, int updatedX, int updatedY, int w, int h);
+		void update(int FrameCounter, int w, int h, Surface* screen);
+		void update(int FrameCounter, int updatedX, int updatedY, int w, int h, Surface* screen);
 
 		char* StrToCharStar(char* filename, int i);
 	};

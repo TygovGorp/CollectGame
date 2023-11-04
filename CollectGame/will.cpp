@@ -7,11 +7,11 @@ namespace Tmpl8
 		willAnim.init(frameNum, "assets/temp_will.png", loc.x, loc.y, screen);
 	}
 
-	void will::update()
+	void will::update(Surface* screen)
 	{
 		if (!pickedUp)
 		{
-			willAnim.update(frameNum, 60, 60);
+			willAnim.update(frameNum, 60, 60, screen);
 		}
 	}
 

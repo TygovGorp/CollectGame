@@ -8,8 +8,8 @@ namespace Tmpl8
 	{
 	public:
 		void init(Surface* screen, int ScreenWidth, int ScreenHeight);
-		void update(int levelNum, int mainMenuStage);
-		void Button(int& levelNum, int& mainMenuStage, vec2 mouseLoc, int key);
+		void update(int levelNum, int mainMenuStage, Surface* screen);
+		void Button(int& levelNum, int& mainMenuStage, int& difficulty, int mouseX, int mouseY, int key);
 	private:
 		animation title;
 		animation playAndSettings;

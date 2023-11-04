@@ -56,14 +56,14 @@ namespace Tmpl8
 		// clear the graphics window
 		screen->Clear(0);
 
-		if (levelNum > 1)
+		if (levelNum != 0)
 		{
-			levelManager.update();
+			levelManager.update(screen);
 			losInst.update(screen, Player.getLoc(), levelManager.getWallVec());
-			WillInst.update();
+			WillInst.update(screen);
 			Player.checkCollisionScreenBounds(ScreenHeight, ScreenWidth);
 			Player.checkCollisionWall(levelManager.getWallVec());
-			Player.update();
+			Player.update(screen);
 			uiInst.update(screen, levelNum, Player.getHP());
 
 			if (Col.AABB(Player.getLoc(), WillInst.getLoc()) && !gameOver)
@@ -89,12 +89,13 @@ namespace Tmpl8
 
 			if (Player.getHP() <= 0)
 			{
-				gameOverScreen.update(1, ScreenWidth, ScreenHeight);
+				gameOverScreen.update(1, ScreenWidth, ScreenHeight, screen);
 				gameOver = true;
 			}
 
 			if (WillInst.getState() && levelNum != maxLevelNum)
 			{
+				levelCleared[levelNum] = true;
 				levelNum++;
 				Init();
 				WillInst.resetState();
@@ -102,12 +103,12 @@ namespace Tmpl8
 
 			if (levelNum == maxLevelNum && WillInst.getState())
 			{
-				gameWinScreen.update(1, ScreenWidth, ScreenHeight);
+				gameWinScreen.update(1, ScreenWidth, ScreenHeight, screen);
 			}
 		}
 		else
 		{
-			MMinst.update(levelNum, mainMenuStage);
+			MMinst.update(levelNum, mainMenuStage, screen);
 		}
 	}
 };

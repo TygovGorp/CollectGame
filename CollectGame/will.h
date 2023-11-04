@@ -10,7 +10,7 @@ namespace Tmpl8
 	public:
 		void init(Surface* screen);
 
-		void update();
+		void update(Surface* screen);
 
 		void Interaction();
 

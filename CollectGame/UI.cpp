@@ -17,7 +17,7 @@ namespace Tmpl8
 	{
 		updateLevelCounter(surface, levelNum);
 		
-		updateHpCounter(hp);
+		updateHpCounter(hp, surface);
 	}
 
 	void UI::initLevelTxt(Surface* surface)
@@ -41,14 +41,14 @@ namespace Tmpl8
 
 	void UI::updateLevelCounter(Surface* surface, int levelNum)
 	{
-		levelTxtAnimation.update(1, levelTxtLoc.x, levelTxtLoc.y, 120, 30);
+		levelTxtAnimation.update(1, levelTxtLoc.x, levelTxtLoc.y, 120, 30, surface);
 
 		if (currentLevelNum != levelNum)
 		{
 			initLevelCounter(surface, levelNum);
 		}
 		
-		levelCounterAnimation.update(1, levelCounterLoc.x, levelCounterLoc.y, 30, 30);
+		levelCounterAnimation.update(1, levelCounterLoc.x, levelCounterLoc.y, 30, 30, surface);
 	}
 
 	void UI::initHpCounter(Surface* surface, int hp)
@@ -59,11 +59,11 @@ namespace Tmpl8
 			heartAnimVec.back()->init(1, "assets/temp_Heart.png", heartLoc.x - 40 * i, heartLoc.y, surface);
 		}
 	}
-	void UI::updateHpCounter(int hp)
+	void UI::updateHpCounter(int hp, Surface* surface)
 	{
 		for (int i = 0; i < hp; i++)
 		{
-			heartAnimVec[i]->update(1, 30, 30);
+			heartAnimVec[i]->update(1, 30, 30, surface);
 		}
 	}
 }

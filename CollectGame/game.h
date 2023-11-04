@@ -21,11 +21,12 @@ public:
 	void MouseUp(int button) { /* implement if you want to detect mouse button presses */ }
 	void MouseDown(int button) 
 	{ 
-		MMinst.Button(levelNum, mainMenuStage, mouseLoc, button);
+		MMinst.Button(levelNum, mainMenuStage, difficulty, mouseX, mouseY, button);
 	}
 	void MouseMove(int x, int y) 
 	{ 
-
+		mouseX = x;
+		mouseY = y;
 	}
 	void KeyUp(int key) { /* implement if you want to handle keys */ }
 	void KeyDown(int key) {
@@ -44,12 +45,14 @@ private:
 	animation gameOverScreen;
 	animation gameWinScreen;
 
-	vec2 mouseLoc;
+	int mouseX;
+	int mouseY;
 
 	bool gameOver = false;
 
 	int levelNum = 0;
 	int mainMenuStage = 1;
+	int difficulty; //1 = easy 2 = medium 3 = hard
 	const int maxLevelNum = 3;
 	bool levelCleared[3] = { false };
 
