@@ -19,7 +19,7 @@ namespace Tmpl8
 
 	void Game::Reset()
 	{
-		if (levelNum > 1)
+		if (levelNum != 0)
 		{
 			levelManager.init(levelNum, screen);
 

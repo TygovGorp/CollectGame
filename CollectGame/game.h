@@ -6,7 +6,7 @@
 #include "UI.h"
 #include "LOS.h"
 #include "main_menu.h"
-#include<iostream>
+#include <iostream>
 
 namespace Tmpl8 {
 class Surface;
@@ -21,7 +21,12 @@ public:
 	void MouseUp(int button) { /* implement if you want to detect mouse button presses */ }
 	void MouseDown(int button) 
 	{ 
+		int temp_level = levelNum;
 		MMinst.Button(levelNum, mainMenuStage, difficulty, mouseX, mouseY, button);
+		if (temp_level != levelNum)
+		{
+			Init();
+		}
 	}
 	void MouseMove(int x, int y) 
 	{ 

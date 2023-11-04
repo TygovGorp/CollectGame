@@ -1,4 +1,6 @@
 #include "main_menu.h"
+#include <iostream>
+
 namespace Tmpl8
 {
 	void main_menu::init(Surface* screen, int ScreenWidth, int ScreenHeight)
@@ -32,10 +34,34 @@ namespace Tmpl8
 				mainMenuStage = 3;
 			}
 			else if (mouseX < 600 && mouseX > 200 &&
-				mouseY < 414 && mouseY > 355 &&
+					mouseY < 414 && mouseY > 355 &&
+					key == 1)
+			{
+				//settings
+				std::cout << "settings" << std::endl;
+			}
+		}
+		else if (levelNum == 0 && mainMenuStage == 3)
+		{
+			if (mouseX < 505 && mouseX > 296 &&
+				mouseY < 349 && mouseY > 290 &&
 				key == 1)
 			{
 				levelNum = 1;
+				difficulty = 1;
+			}
+			else if (mouseX < 554 && mouseX > 246 &&
+					mouseY < 412 && mouseY > 354 &&
+					key == 1)
+			{
+				//medium
+				std::cout << "medium" << std::endl;
+			}
+			else if (mouseX < 501 && mouseX > 300 &&
+				mouseY < 478 && mouseY > 419 &&
+				key == 1)
+			{
+				std::cout << "hard" << std::endl;
 			}
 		}
 	}
