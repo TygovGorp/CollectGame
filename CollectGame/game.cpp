@@ -21,7 +21,7 @@ namespace Tmpl8
 	{
 		if (levelNum != 0)
 		{
-			levelManager.init(levelNum, screen);
+			levelManager.init(levelNum, difficulty, screen);
 
 			Player.init(levelManager.getPlayerStartLoc().x, levelManager.getPlayerStartLoc().y);
 

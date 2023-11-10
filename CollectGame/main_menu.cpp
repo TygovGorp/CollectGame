@@ -47,6 +47,7 @@ namespace Tmpl8
 				mouseY < 349 && mouseY > 290 &&
 				key == 1)
 			{
+				//easy
 				levelNum = 1;
 				difficulty = 1;
 			}
@@ -55,13 +56,16 @@ namespace Tmpl8
 					key == 1)
 			{
 				//medium
-				std::cout << "medium" << std::endl;
+				levelNum = 1;
+				difficulty = 2;
 			}
 			else if (mouseX < 501 && mouseX > 300 &&
 				mouseY < 478 && mouseY > 419 &&
 				key == 1)
 			{
-				std::cout << "hard" << std::endl;
+				//hard
+				levelNum = 1;
+				difficulty = 3;
 			}
 		}
 	}

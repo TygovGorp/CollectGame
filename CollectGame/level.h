@@ -8,7 +8,7 @@ namespace Tmpl8
 	class level
 	{
 	public:
-		void init(int levelNum, Surface* ScreenSurface);
+		void init(int levelNum, int difficulty, Surface* ScreenSurface);
 		void update(Surface* screen);
 
 		vec2 getWillLoc();

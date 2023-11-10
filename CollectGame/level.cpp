@@ -7,7 +7,7 @@ using namespace std;
 
 namespace Tmpl8
 {
-	void level::init(int levelNum, Surface* ScreenSurface)
+	void level::init(int levelNum, int difficulty, Surface* ScreenSurface)
 	{
 		wallVec.clear();
 		trapVec.clear();
@@ -17,7 +17,7 @@ namespace Tmpl8
 
 		screen = ScreenSurface;
 		fstream newfile;
-		newfile.open("levels/level_" + to_string(levelNum) + ".txt", ios::in);
+		newfile.open("levels/level_" + to_string(difficulty) + "_" + to_string(levelNum) + ".txt", ios::in);
 
 		if (newfile.is_open()) {
 
