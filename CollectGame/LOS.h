@@ -6,6 +6,7 @@
 
 namespace Tmpl8
 {
+	//based on https://github.com/user-simon/2D-RayCasting/
 	class LOS
 	{
 	public:

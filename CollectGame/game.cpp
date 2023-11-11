@@ -24,6 +24,7 @@ namespace Tmpl8
 			levelManager.init(levelNum, difficulty, screen);
 
 			Player.init(levelManager.getPlayerStartLoc().x, levelManager.getPlayerStartLoc().y);
+			Player.init(levelManager.getTrapVec().size());
 
 			losInst.init();
 
@@ -76,14 +77,15 @@ namespace Tmpl8
 			{
 				bool collisionYN = Col.AABB(Player.getLoc(), vec2(Player.getLoc().x + 60, Player.getLoc().y + 60), tempTrapVec[i].getLoc(), tempTrapVec[i].getPointB());
 
-				if (collisionYN && !Player.getHitStateTrap())
+				//std::cout << "hitstate: " << Player.getHitStateTrap() << " collision: " << collisionYN << endl;
+				if (collisionYN && !Player.getHitStateTrap(i))
 				{
-					Player.setHitStateTrap(true);
+					Player.setHitStateTrap(true, i);
 					Player.setHP(Player.getHP() - tempTrapVec[i].getDMG());
 				}
-				else if (!collisionYN && Player.getHitStateTrap())
+				else if (!collisionYN && Player.getHitStateTrap(i))
 				{
-					Player.setHitStateTrap(false);
+					Player.setHitStateTrap(false, i);
 				}
 			}
 

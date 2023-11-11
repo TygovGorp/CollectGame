@@ -3,6 +3,14 @@
 
 namespace Tmpl8
 {
+	void player::init(int numOfTraps)
+	{
+		for (int i = 0; i < numOfTraps; i++)
+		{
+			hittingATrap.push_back(false);
+		}
+	}
+
 	void player::moveWithInputs(int key)
 	{
 		vec2 change = { 0, 0 };
@@ -85,13 +93,13 @@ namespace Tmpl8
 		}
 	}
 
-	void player::setHitStateTrap(bool YN)
+	void player::setHitStateTrap(bool YN, int trapNum)
 	{
-		hittingATrap = YN;
+		hittingATrap[trapNum] = YN;
 	}
 
-	bool player::getHitStateTrap()
+	bool player::getHitStateTrap(int trapNum)
 	{
-		return hittingATrap;
+		return hittingATrap[trapNum];
 	}
 }
