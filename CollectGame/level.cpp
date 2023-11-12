@@ -24,11 +24,20 @@ namespace Tmpl8
 			string tp;
 
 			bool nextWillLocation = false;
+
 			bool nextPlayerLocation = false;
+
 			bool nextTrapLocation = false;
+			int trapx = 0;
+
+			bool nextEnemyLocation = false;
+			vector<vec2> enemyTargets;
+			bool nextIsATarget = false;
+			int currentTargetNum = 0;
+
 			bool pointB = false;
 			int wallx = 0;
-			int trapx = 0;
+			
 			int counter = 1;
 
 			while (getline(newfile, tp, ' ')) {
@@ -116,7 +125,52 @@ namespace Tmpl8
 					counter++;
 				}
 
-				if (!nextWillLocation && !nextPlayerLocation && !nextTrapLocation)
+				if (tp.find("EnemyLocation") != std::string::npos)
+				{
+					nextEnemyLocation = true;
+					counter = 1;
+				}
+				if (nextEnemyLocation)
+				{
+					if (tp.find("target") != std::string::npos)
+					{
+						nextIsATarget = true;
+						counter = 1;
+					}
+
+					if (!nextIsATarget && !(tp.find("EnemyLocation") != std::string::npos))
+					{
+						std::cout << "nextEnemyLocation = false" << endl;
+						for (int i = 0; i < enemyTargets.size(); i++)
+						{
+							std::cout << enemyTargets[i].x << ", " << enemyTargets[i].y << endl;
+						}
+						nextEnemyLocation = false;
+					}
+
+					if (nextIsATarget)
+					{
+						switch (counter)
+						{
+						case 1:
+							enemyTargets.push_back(vec2());
+							break;
+						case 2:
+							enemyTargets[currentTargetNum].x = stoi(tp);
+							break;
+						case 3:
+							enemyTargets[currentTargetNum].y = stoi(tp);
+							nextIsATarget = false;
+							counter = 0;
+							break;
+						default:
+							break;
+						}
+					}
+					counter++;
+				}
+
+				if (!nextWillLocation && !nextPlayerLocation && !nextTrapLocation && !nextEnemyLocation)
 				{
 					switch (counter)
 					{
@@ -154,6 +208,10 @@ namespace Tmpl8
 		{
 			trapVec[i].update(screen);
 		}
+		for (int i = 0; i < enemyVec.size(); i++)
+		{
+			enemyVec[i].update(screen);
+		}
 	}
 
 	std::vector<wall> level::getWallVec()
@@ -164,6 +222,11 @@ namespace Tmpl8
 	std::vector<trap> level::getTrapVec()
 	{
 		return trapVec;
+	}
+
+	std::vector<enemy> level::getEnemyVec()
+	{
+		return enemyVec;
 	}
 
 	vec2 level::getWillLoc()

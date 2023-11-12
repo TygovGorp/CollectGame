@@ -32,6 +32,9 @@ namespace Tmpl8
 			WillInst.init(screen);
 
 			uiInst.init(screen, levelNum, Player.getHP());
+
+			trapVec = levelManager.getTrapVec();
+			enemyVec = levelManager.getEnemyVec();
 		}
 		else
 		{
@@ -72,16 +75,15 @@ namespace Tmpl8
 				WillInst.Interaction();
 			}
 
-			vector<trap> tempTrapVec = levelManager.getTrapVec();
-			for (int i = 0; i < tempTrapVec.size(); i++)
+			for (int i = 0; i < trapVec.size(); i++)
 			{
-				bool collisionYN = Col.AABB(Player.getLoc(), vec2(Player.getLoc().x + 60, Player.getLoc().y + 60), tempTrapVec[i].getLoc(), tempTrapVec[i].getPointB());
+				bool collisionYN = Col.AABB(Player.getLoc(), vec2(Player.getLoc().x + 60, Player.getLoc().y + 60), trapVec[i].getLoc(), trapVec[i].getPointB());
 
 				//std::cout << "hitstate: " << Player.getHitStateTrap() << " collision: " << collisionYN << endl;
 				if (collisionYN && !Player.getHitStateTrap(i))
 				{
 					Player.setHitStateTrap(true, i);
-					Player.setHP(Player.getHP() - tempTrapVec[i].getDMG());
+					Player.setHP(Player.getHP() - trapVec[i].getDMG());
 				}
 				else if (!collisionYN && Player.getHitStateTrap(i))
 				{

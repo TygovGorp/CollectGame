@@ -64,5 +64,18 @@
  WillLocation
  170 410
 
+ EnemyLocation
+ target
+ 490 410
+
+ target
+ 730 410
+
+ target
+ 730 490
+
+ target
+ 490 490
+
  PlayerLocation
  570 90

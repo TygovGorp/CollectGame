@@ -42,6 +42,8 @@ private:
 	player Player;
 	level levelManager;
 	will WillInst;
+	vector<trap> trapVec;
+	vector<enemy> enemyVec;
 	collision Col;
 	UI uiInst;
 	LOS losInst;

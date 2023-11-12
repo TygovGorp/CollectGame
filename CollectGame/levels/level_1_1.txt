@@ -54,7 +54,3 @@
 
  PlayerLocation
  10 10
-
- TrapLocation
- 169 4
- 198 77

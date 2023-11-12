@@ -226,6 +226,7 @@
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="animation.cpp" />
     <ClCompile Include="base.cpp" />
+    <ClCompile Include="enemy.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="level.cpp" />
@@ -245,6 +246,7 @@
     <ClInclude Include="collision.h" />
     <ClInclude Include="animation.h" />
     <ClInclude Include="base.h" />
+    <ClInclude Include="enemy.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="level.h" />
