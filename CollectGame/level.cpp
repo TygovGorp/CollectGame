@@ -140,12 +140,10 @@ namespace Tmpl8
 
 					if (!nextIsATarget && !(tp.find("EnemyLocation") != std::string::npos))
 					{
-						std::cout << "nextEnemyLocation = false" << endl;
-						for (int i = 0; i < enemyTargets.size(); i++)
-						{
-							std::cout << enemyTargets[i].x << ", " << enemyTargets[i].y << endl;
-						}
+						enemyVec.push_back(enemy());
+						enemyVec.back().init(enemyTargets, screen);
 						nextEnemyLocation = false;
+						currentTargetNum = 0;
 					}
 
 					if (nextIsATarget)
@@ -161,13 +159,14 @@ namespace Tmpl8
 						case 3:
 							enemyTargets[currentTargetNum].y = stoi(tp);
 							nextIsATarget = false;
+							currentTargetNum++;
 							counter = 0;
 							break;
 						default:
 							break;
 						}
+						counter++;
 					}
-					counter++;
 				}
 
 				if (!nextWillLocation && !nextPlayerLocation && !nextTrapLocation && !nextEnemyLocation)

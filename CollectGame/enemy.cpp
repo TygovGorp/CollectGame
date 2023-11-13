@@ -2,10 +2,11 @@
 
 namespace Tmpl8
 {
-	void enemy::init(vector<vec2> points)
+	void enemy::init(vector<vec2> points, Surface* screen)
 	{
 		targets = points;
 		loc = points[0];
+		enemyAnim.init(1, "assets/temp_Enemy.png", loc.x, loc.y, screen);
 	}
 	void enemy::update(Surface* screen)
 	{
@@ -14,14 +15,9 @@ namespace Tmpl8
 		//	if location == next target
 		//		latestAchievedTarget++
 
-		if (targets.size() != 0)
+		if (targets.size() != 1)
 		{
-			int xDif = 0;
-			loc.x - targets[latestAchievedTarget].x >= 0 ? xDif = loc.x - targets[latestAchievedTarget].x : xDif = -(loc.x - targets[latestAchievedTarget].x);
-
-			int yDif = 0;
-			loc.y - targets[latestAchievedTarget].y >= 0 ? yDif = loc.y - targets[latestAchievedTarget].y : yDif = -(loc.y - targets[latestAchievedTarget].y);
-			move(xDif, yDif);
+			move(loc.x - targets[latestAchievedTarget].x, loc.y - targets[latestAchievedTarget].y);
 
 			if (loc.x == targets[latestAchievedTarget].x && 
 				loc.y == targets[latestAchievedTarget].y)
@@ -36,5 +32,6 @@ namespace Tmpl8
 				}
 			}
 		}
+		enemyAnim.update(1, loc.x, loc.y, 60, 60, screen);
 	}
 }

@@ -40,8 +40,6 @@ namespace Tmpl8
 		{
 			MMinst.init(screen, ScreenWidth, ScreenHeight);
 		}
-
-
 	}
 	
 	// -----------------------------------------------------------
