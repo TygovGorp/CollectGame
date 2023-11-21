@@ -14,7 +14,10 @@ namespace Tmpl8
 	private:
 		std::vector<vec2> targets;
 		animation enemyAnim;
+		int prevOrientation;
+		int orientation = 2; //1 = left 2 = forwards 3 = right 4 = backwards
 		int latestAchievedTarget = 0;
+		int movementSpeed = 2;
 	};
 }
 

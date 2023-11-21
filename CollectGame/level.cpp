@@ -11,6 +11,7 @@ namespace Tmpl8
 	{
 		wallVec.clear();
 		trapVec.clear();
+		enemyVec.clear();
 
 		willLoc = { 0,0 };
 		playerStartLoc = { 0,0 };
@@ -201,7 +202,7 @@ namespace Tmpl8
 	{
 		for (int i = 0; i < wallVec.size(); i++)
 		{
-			wallVec[i].update(screen, 0x666666);
+			wallVec[i].update(screen, 0x666666); //0x000000 
 		}
 		for (int i = 0; i < trapVec.size(); i++)
 		{
