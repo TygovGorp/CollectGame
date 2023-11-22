@@ -60,8 +60,9 @@ namespace Tmpl8
 
 		if (levelNum != 0)
 		{
-			levelManager.update(screen);
 			losInst.update(screen, Player.getLoc(), levelManager.getWallVec());
+			levelManager.update(screen, Player.getLoc());
+			
 			WillInst.update(screen);
 			Player.checkCollisionScreenBounds(ScreenHeight, ScreenWidth);
 			Player.checkCollisionWall(levelManager.getWallVec());

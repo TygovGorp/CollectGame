@@ -8,6 +8,7 @@ namespace Tmpl8
 	public:
 		ray() {};
 		ray(vec2 rel_end);
+		void init(vec2 rel_end);
 		void setPoints(vec2 playerPos);
 		void calclateHit(vec2 wallPointA, vec2 wallPointB, vec2 playerPos);
 

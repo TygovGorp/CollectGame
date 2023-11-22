@@ -1,5 +1,6 @@
 #include "enemy.h"
 #include <iostream>
+#include <math.h>
 
 namespace Tmpl8
 {
@@ -9,14 +10,35 @@ namespace Tmpl8
 		loc = points[0];
 		enemyAnim.init(1, "assets/temp_Enemy.png", loc.x, loc.y, screen);
 	}
-	void enemy::update(Surface* screen)
+
+	void enemy::setOrientation(Surface* screen)
+	{
+		if (prevOrientation != orientation)
+		{
+			switch (orientation)
+			{
+			case 1:
+				enemyAnim.init(1, "assets/temp_Enemy_240.png", loc.x, loc.y, screen);
+				break;
+			case 2:
+				enemyAnim.init(1, "assets/temp_Enemy.png", loc.x, loc.y, screen);
+				break;
+			case 3:
+				enemyAnim.init(1, "assets/temp_Enemy_90.png", loc.x, loc.y, screen);
+				break;
+			case 4:
+				enemyAnim.init(1, "assets/temp_Enemy_180.png", loc.x, loc.y, screen);
+				break;
+			}
+		}
+	}
+
+	void enemy::movement()
 	{
 		//if targets != 0
 		//	move in direction of next target
 		//	if location == next target
 		//		latestAchievedTarget++
-
-		prevOrientation = orientation;
 
 		if (targets.size() != 1)
 		{
@@ -43,12 +65,14 @@ namespace Tmpl8
 					if (loc.x - targets[latestAchievedTarget].x > 0)
 					{
 						move(-movementSpeed, 0);
-						orientation = 1;
+						orientation = 1; 
+						playerDetectionRay.init(vec2(cos(PI), sin(PI)));
 					}
 					else
 					{
 						move(movementSpeed, 0);
 						orientation = 3;
+						playerDetectionRay.init(vec2(cos(PI * 2), sin(PI * 2)));
 					}
 
 				}
@@ -58,34 +82,30 @@ namespace Tmpl8
 					{
 						move(0, -movementSpeed);
 						orientation = 2;
+						playerDetectionRay.init(vec2(cos(PI * 1.5), sin(PI * 1.5)));
 					}
 					else
 					{
 						move(0, movementSpeed);
 						orientation = 4;
+						playerDetectionRay.init(vec2(cos(PI * 0.5), sin(PI * 0.5)));
 					}
-
 				}
 			}
 		}
-		if (prevOrientation != orientation)
-		{
-			switch (orientation)
-			{
-			case 1:
-				enemyAnim.init(1, "assets/temp_Enemy_240.png", loc.x, loc.y, screen);
-				break;
-			case 2:
-				enemyAnim.init(1, "assets/temp_Enemy.png", loc.x, loc.y, screen);
-				break;
-			case 3:
-				enemyAnim.init(1, "assets/temp_Enemy_90.png", loc.x, loc.y, screen);
-				break;
-			case 4:
-				enemyAnim.init(1, "assets/temp_Enemy_180.png", loc.x, loc.y, screen);
-				break;
-			}
-		}
+	}
+
+	void enemy::update(Surface* screen, vec2 playerLoc)
+	{
+		prevOrientation = orientation;
+
+		movement();
+		setOrientation(screen);
+
+		playerDetectionRay.setPoints(loc + 30);
+		playerDetectionRay.calclateHit(playerLoc, (playerLoc + 60), loc);
+
 		enemyAnim.update(1, loc.x, loc.y, 60, 60, screen);
+		screen->Line(loc.x + 30, loc.y + 30, playerDetectionRay.getPB().x, playerDetectionRay.getPB().y, 0xFFFFFF);
 	}
 }

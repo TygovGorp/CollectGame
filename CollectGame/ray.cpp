@@ -1,12 +1,20 @@
 #include "ray.h"
+#include <iostream>
 
 namespace Tmpl8
 {
-	ray::ray(vec2 rel_end)
+	ray::ray(vec2 rel_end) //in radian
 	{
-		// Set end point relative to mouse cursor
+		// Set end point relative to point A
 		// Add arbitrary length
 		relative_pB = rel_end * 3000.f;
+	}
+	void ray::init(vec2 rel_end) //in radian
+	{
+		// Set end point relative to point A
+		// Add arbitrary length
+		relative_pB = rel_end * 2000.f;
+		std::cout << relative_pB.x << "," << relative_pB.y << std::endl;
 	}
 	void ray::setPoints(vec2 playerPos)
 	{

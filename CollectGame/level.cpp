@@ -198,7 +198,7 @@ namespace Tmpl8
 		}
 	}
 
-	void level::update(Surface* screen)
+	void level::update(Surface* screen, vec2 playerLoc)
 	{
 		for (int i = 0; i < wallVec.size(); i++)
 		{
@@ -210,7 +210,7 @@ namespace Tmpl8
 		}
 		for (int i = 0; i < enemyVec.size(); i++)
 		{
-			enemyVec[i].update(screen);
+			enemyVec[i].update(screen, playerLoc);
 		}
 	}
 
