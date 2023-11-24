@@ -74,5 +74,19 @@
  target
  490 490
 
+ EnemyLocation
+ target
+ 10 10
+ target
+ 10 250
+ target
+ 170 250
+ target
+ 170 90
+ target
+ 90 90
+ target
+ 90 10
+
  WillLocation
  170 410
