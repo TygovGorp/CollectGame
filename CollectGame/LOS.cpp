@@ -24,11 +24,15 @@ namespace Tmpl8
 		//based on https://github.com/user-simon/2D-RayCasting/
 
 		vec2 playerLoc = { playerPos.x + 30, playerPos.y + 30 };
-
 		for (int i = 0; i < rays.size(); i++)
 		{
 			colInst.rayWallCol(playerLoc, rays[i], wallVec);
-			rays[i].draw(playerLoc, screen, 0xee9f27);//0xee9f27
+			vector<vec2> allPointsOnRay = rays[i].getAllPointOnRay(playerLoc);
+			for (int j = 0; j < allPointsOnRay.size(); j++)
+			{
+				screen->Plot(allPointsOnRay[j].x, allPointsOnRay[j].y, 0xee9f27);//0xee9f27
+			}
+			//rays[i].draw(playerLoc, screen, 0xee9f27);//0xee9f27
 		}
 	}
 }

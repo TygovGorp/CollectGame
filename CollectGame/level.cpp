@@ -217,7 +217,7 @@ namespace Tmpl8
 	{
 		for (int i = 0; i < wallVec.size(); i++)
 		{
-			wallVec[i].update(screen, 0x666666); //0x000000 
+			wallVec[i].update(screen, 0x666666); //0x000000 0x666666
 		}
 		for (int i = 0; i < trapVec.size(); i++)
 		{

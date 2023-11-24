@@ -1,5 +1,6 @@
 #include "ray.h"
 #include <iostream>
+#include <math.h>
 
 namespace Tmpl8
 {
@@ -44,5 +45,9 @@ namespace Tmpl8
 	void ray::draw(vec2 pointA, Surface* screen, Pixel color)
 	{
 		screen->Line(pointA.x, pointA.y, pB.x, pB.y, color);
+	}
+	std::vector<vec2> ray::getAllPointOnRay(vec2 pointA)
+	{
+	//working here
 	}
 }
