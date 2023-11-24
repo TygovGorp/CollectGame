@@ -48,5 +48,31 @@ namespace Tmpl8
 
 	}
 
+	void collision::rayWallCol(vec2 pointA, ray& R, std::vector<wall> wallVec)
+	{
+		// Set ray end-point to default
+		R.setPoints(pointA);
 
+		// Cycle through every wall and set end point to intersection
+		// When an intersection is found, the end-point is set to that intersection, meaning the next check will check for walls
+		// between mouse and the new end-point. This means the ray will always go to the nearest wall
+		for (int j = 0; j < wallVec.size(); j++)
+		{
+			vec2 wallPointA = wallVec[j].getPointA();
+			vec2 wallPointB = wallVec[j].getPointB();
+
+			// Calculate ray end-point
+			const vec2 cornerA = wallPointA;
+			const vec2 cornerB = { wallPointA.x, wallPointB.y };
+			const vec2 cornerC = wallPointB;
+			const vec2 cornerD = { wallPointB.x, wallPointA.y };
+
+			//calculate hit on walls
+			R.calclateHit(cornerA, cornerB, pointA);
+			R.calclateHit(cornerB, cornerC, pointA);
+			R.calclateHit(cornerC, cornerD, pointA);
+			R.calclateHit(cornerD, cornerA, pointA);
+
+		}
+	}
 }

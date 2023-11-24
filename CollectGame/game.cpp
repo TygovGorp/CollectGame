@@ -15,6 +15,7 @@ namespace Tmpl8
 
 		gameOverScreen.init(1, "assets/game_over_screen.png", 1, 1, screen);
 		gameWinScreen.init(1, "assets/game_win_screen.png", 1, 1, screen);
+		gameSpottedScreen.init(1, "assets/spotted_screen.png", 1, 1, screen);
 	}
 
 	void Game::Reset()
@@ -61,7 +62,7 @@ namespace Tmpl8
 		if (levelNum != 0)
 		{
 			losInst.update(screen, Player.getLoc(), levelManager.getWallVec());
-			levelManager.update(screen, Player.getLoc());
+			levelManager.update(screen, Player);
 			
 			WillInst.update(screen);
 			Player.checkCollisionScreenBounds(ScreenHeight, ScreenWidth);
@@ -89,6 +90,16 @@ namespace Tmpl8
 					Player.setHitStateTrap(false, i);
 				}
 			}
+
+			//work in progress
+			//std::cout << Player.spotted << std::endl;
+
+			//if (Player.spotted == true)
+			//{
+			//	std::cout << "spotted" << std::endl;
+			//	gameSpottedScreen.update(1, ScreenWidth, ScreenHeight, screen);
+			//	gameOver = true;
+			//}
 
 			if (Player.getHP() <= 0)
 			{

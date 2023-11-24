@@ -1,5 +1,6 @@
 #pragma once
 #include "template.h"
+#include "surface.h"
 
 namespace Tmpl8
 {
@@ -11,6 +12,7 @@ namespace Tmpl8
 		void init(vec2 rel_end);
 		void setPoints(vec2 playerPos);
 		void calclateHit(vec2 wallPointA, vec2 wallPointB, vec2 playerPos);
+		void draw(vec2 pointA, Surface* screen);
 
 		vec2 getPB() { return pB; };
 	private:

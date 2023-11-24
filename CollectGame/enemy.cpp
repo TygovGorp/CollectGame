@@ -95,7 +95,7 @@ namespace Tmpl8
 		}
 	}
 
-	void enemy::update(Surface* screen, vec2 playerLoc)
+	void enemy::update(Surface* screen, player Player)
 	{
 		prevOrientation = orientation;
 
@@ -103,8 +103,10 @@ namespace Tmpl8
 		setOrientation(screen);
 
 		playerDetectionRay.setPoints(loc + 30);
-		playerDetectionRay.calclateHit(playerLoc, (playerLoc + 60), loc);
-
+		if (colInst.AABB(Player.getLoc(), Player.getLoc() + 60, loc, vec2(playerDetectionRay.getPB().x, playerDetectionRay.getPB().y)))
+		{
+			std::cout << "spotted" << std::endl;
+		}
 		enemyAnim.update(1, loc.x, loc.y, 60, 60, screen);
 		screen->Line(loc.x + 30, loc.y + 30, playerDetectionRay.getPB().x, playerDetectionRay.getPB().y, 0xFFFFFF);
 	}

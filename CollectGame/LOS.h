@@ -3,6 +3,7 @@
 #include "ray.h"
 #include "wall.h"
 #include "player.h"
+#include "collision.h"
 
 namespace Tmpl8
 {
@@ -14,6 +15,7 @@ namespace Tmpl8
 		void update(Surface* screen, vec2 playerPos, std::vector<wall> wallVec);
 
 	private:
+		collision colInst;
 		std::vector<ray> rays;
 	};
 }

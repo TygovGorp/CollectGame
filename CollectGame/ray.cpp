@@ -14,7 +14,6 @@ namespace Tmpl8
 		// Set end point relative to point A
 		// Add arbitrary length
 		relative_pB = rel_end * 2000.f;
-		std::cout << relative_pB.x << "," << relative_pB.y << std::endl;
 	}
 	void ray::setPoints(vec2 playerPos)
 	{
@@ -41,5 +40,9 @@ namespace Tmpl8
 			pB.x = p1.x + t * (p2.x - p1.x);
 			pB.y = p1.y + t * (p2.y - p1.y);
 		}
+	}
+	void ray::draw(vec2 pointA, Surface* screen)
+	{
+		screen->Line(pointA.x, pointA.y, pB.x, pB.y, 0xee9f27); //0xee9f27
 	}
 }

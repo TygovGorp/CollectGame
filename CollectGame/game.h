@@ -51,6 +51,7 @@ private:
 
 	animation gameOverScreen;
 	animation gameWinScreen;
+	animation gameSpottedScreen;
 
 	int mouseX;
 	int mouseY;
