@@ -11,7 +11,7 @@ namespace Tmpl8
 	{
 	public:
 		void init(vector<vec2> points, Surface* screen);
-		void update(Surface* screen, player Player);
+		void update(Surface* screen, player Player, std::vector<wall>& wallVec);
 
 		void setTargets(std::vector<vec2> trgts) { targets = trgts; }
 	private:

@@ -210,7 +210,7 @@ namespace Tmpl8
 		}
 		for (int i = 0; i < enemyVec.size(); i++)
 		{
-			enemyVec[i].update(screen, Player);
+			enemyVec[i].update(screen, Player, wallVec);
 		}
 	}
 
