@@ -162,14 +162,6 @@ namespace Tmpl8
 						counter = 1;
 					}
 
-					//ifcurrentTargetNum = 0; (!nextIsATarget && !(tp.find("EnemyLocation") != std::string::npos))
-					//{
-					//	enemyVec.push_back(enemy());
-					//	enemyVec.back().init(enemyTargets, screen);
-					//	nextEnemyLocation = false;
-					//	currentTargetNum = 0;
-					//}
-
 					if (nextIsATarget)
 					{
 						switch (counter)
