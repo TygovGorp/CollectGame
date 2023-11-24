@@ -35,6 +35,7 @@ namespace Tmpl8
 			vector<vec2> enemyTargets;
 			bool nextIsATarget = false;
 			int currentTargetNum = 0;
+			bool endOfTargetList = false;
 
 			bool pointB = false;
 			int wallx = 0;
@@ -139,13 +140,35 @@ namespace Tmpl8
 						counter = 1;
 					}
 
-					if (!nextIsATarget && !(tp.find("EnemyLocation") != std::string::npos))
+					if (endOfTargetList == true)
 					{
 						enemyVec.push_back(enemy());
 						enemyVec.back().init(enemyTargets, screen);
+						enemyTargets.clear();
 						nextEnemyLocation = false;
 						currentTargetNum = 0;
+						nextIsATarget = false;
+						endOfTargetList = false;
+
+						if (tp.find("EnemyLocation") != std::string::npos)
+						{
+							nextEnemyLocation = true;
+							counter = 1;
+						}
 					}
+					if (tp.find("end") != std::string::npos)
+					{
+						endOfTargetList = true;
+						counter = 1;
+					}
+
+					//ifcurrentTargetNum = 0; (!nextIsATarget && !(tp.find("EnemyLocation") != std::string::npos))
+					//{
+					//	enemyVec.push_back(enemy());
+					//	enemyVec.back().init(enemyTargets, screen);
+					//	nextEnemyLocation = false;
+					//	currentTargetNum = 0;
+					//}
 
 					if (nextIsATarget)
 					{
