@@ -28,7 +28,7 @@ namespace Tmpl8
 		for (int i = 0; i < rays.size(); i++)
 		{
 			colInst.rayWallCol(playerLoc, rays[i], wallVec);
-			rays[i].draw(playerLoc, screen);
+			rays[i].draw(playerLoc, screen, 0xee9f27);//0xee9f27
 		}
 	}
 }

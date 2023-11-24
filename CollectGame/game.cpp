@@ -70,6 +70,7 @@ namespace Tmpl8
 			Player.update(screen);
 			uiInst.update(screen, levelNum, Player.getHP());
 
+			//set will collection state to true when colliding with it
 			if (Col.AABB(Player.getLoc(), WillInst.getLoc()) && !gameOver)
 			{
 				WillInst.Interaction();
@@ -91,22 +92,21 @@ namespace Tmpl8
 				}
 			}
 
-			//work in progress
-			//std::cout << Player.spotted << std::endl;
+			//game over if player is spotted
+			if (Player.getSpotState() == true)
+			{
+				gameSpottedScreen.update(1, ScreenWidth, ScreenHeight, screen);
+				gameOver = true;
+			}
 
-			//if (Player.spotted == true)
-			//{
-			//	std::cout << "spotted" << std::endl;
-			//	gameSpottedScreen.update(1, ScreenWidth, ScreenHeight, screen);
-			//	gameOver = true;
-			//}
-
+			//game over if player heath reaches 0
 			if (Player.getHP() <= 0)
 			{
 				gameOverScreen.update(1, ScreenWidth, ScreenHeight, screen);
 				gameOver = true;
 			}
 
+			//load next level when will is collected
 			if (WillInst.getState() && levelNum != maxLevelNum)
 			{
 				levelCleared[levelNum] = true;
@@ -115,6 +115,7 @@ namespace Tmpl8
 				WillInst.resetState();
 			}
 
+			//game win screen when will is collected in the last level
 			if (levelNum == maxLevelNum && WillInst.getState())
 			{
 				gameWinScreen.update(1, ScreenWidth, ScreenHeight, screen);

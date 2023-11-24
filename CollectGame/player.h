@@ -16,11 +16,15 @@ namespace Tmpl8
 
         void setHitStateTrap(bool YN, int trapNum);
         bool getHitStateTrap(int trapNum);
+
+        void setSpotState(bool YN) { spotted = YN; };
+        bool getSpotState() { return spotted; };
     private:
         collision Col;
         vec2 lastChangeLoc;
         vec2 secondLastChangeLoc;
         vector<bool> hittingATrap;
+        bool spotted;
     };
 }
 

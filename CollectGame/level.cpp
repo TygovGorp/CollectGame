@@ -198,7 +198,7 @@ namespace Tmpl8
 		}
 	}
 
-	void level::update(Surface* screen, player Player)
+	void level::update(Surface* screen, player& Player)
 	{
 		for (int i = 0; i < wallVec.size(); i++)
 		{

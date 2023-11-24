@@ -41,8 +41,8 @@ namespace Tmpl8
 			pB.y = p1.y + t * (p2.y - p1.y);
 		}
 	}
-	void ray::draw(vec2 pointA, Surface* screen)
+	void ray::draw(vec2 pointA, Surface* screen, Pixel color)
 	{
-		screen->Line(pointA.x, pointA.y, pB.x, pB.y, 0xee9f27); //0xee9f27
+		screen->Line(pointA.x, pointA.y, pB.x, pB.y, color);
 	}
 }

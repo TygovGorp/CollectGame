@@ -95,22 +95,21 @@ namespace Tmpl8
 		}
 	}
 
-	void enemy::update(Surface* screen, player Player, std::vector<wall>& wallVec)
+	void enemy::update(Surface* screen, player& Player, std::vector<wall>& wallVec)
 	{
 		prevOrientation = orientation;
 
 		movement();
 		setOrientation(screen);
 
-		//playerDetectionRay.setPoints(loc + 30);
-
 		colInst.rayWallCol(loc + 30, playerDetectionRay, wallVec);
 
-		if (colInst.AABB(Player.getLoc(), Player.getLoc() + 60, loc, vec2(playerDetectionRay.getPB().x, playerDetectionRay.getPB().y)))
+		if (colInst.AABB(Player.getLoc(), Player.getLoc() + 60, loc, vec2(playerDetectionRay.getPB().x, playerDetectionRay.getPB().y)) && Player.getSpotState() != true)
 		{
-			std::cout << "spotted" << std::endl;
+			Player.setSpotState(true);
 		}
 		enemyAnim.update(1, loc.x, loc.y, 60, 60, screen);
-		screen->Line(loc.x + 30, loc.y + 30, playerDetectionRay.getPB().x, playerDetectionRay.getPB().y, 0xFFFFFF);
+
+		playerDetectionRay.draw(loc + 30, screen, 0xFFFFFF);
 	}
 }
