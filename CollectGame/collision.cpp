@@ -68,10 +68,10 @@ namespace Tmpl8
 			const vec2 cornerD = { wallPointB.x, wallPointA.y };
 
 			//calculate hit on walls
-			R.calclateHit(cornerA, cornerB, pointA);
-			R.calclateHit(cornerB, cornerC, pointA);
-			R.calclateHit(cornerC, cornerD, pointA);
-			R.calclateHit(cornerD, cornerA, pointA);
+			R.calculateHit(cornerA, cornerB, pointA);
+			R.calculateHit(cornerB, cornerC, pointA);
+			R.calculateHit(cornerC, cornerD, pointA);
+			R.calculateHit(cornerD, cornerA, pointA);
 
 		}
 	}

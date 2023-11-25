@@ -20,7 +20,7 @@ namespace Tmpl8
 	{
 		pB = playerPos + relative_pB;
 	}
-	void ray::calclateHit(vec2 linePointA, vec2 linePointB, vec2 playerPos)
+	void ray::calculateHit(vec2 linePointA, vec2 linePointB, vec2 playerPos)
 	{
 		const vec2 p1 = playerPos;
 		const vec2 p2 = pB;
@@ -46,8 +46,8 @@ namespace Tmpl8
 	{
 		screen->Line(pointA.x, pointA.y, pB.x, pB.y, color);
 	}
-	std::vector<vec2> ray::getAllPointOnRay(vec2 pointA)
-	{
-	//working here
-	}
+	//std::vector<vec2> ray::getAllPointOnRay(vec2 pointA)
+	//{
+	//	//working here
+	//}
 }
