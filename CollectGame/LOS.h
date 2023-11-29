@@ -11,7 +11,7 @@ namespace Tmpl8
 	class LOS
 	{
 	public:
-		void init();
+		void init(vec2 playerLoc);
 		void update(Surface* screen, vec2 playerPos, std::vector<wall> wallVec);
 
 	private:

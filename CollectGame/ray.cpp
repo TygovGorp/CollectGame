@@ -4,25 +4,31 @@
 
 namespace Tmpl8
 {
-	ray::ray(vec2 rel_end) //in radian
+	ray::ray(vec2 rel_end, vec2 pointA) //in radian
 	{
 		// Set end point relative to point A
 		// Add arbitrary length
 		relative_pB = rel_end * 3000.f;
+		pA = pointA;
 	}
-	void ray::init(vec2 rel_end) //in radian
+	void ray::init(vec2 rel_end, vec2 pointA) //in radian
 	{
 		// Set end point relative to point A
 		// Add arbitrary length
 		relative_pB = rel_end * 2000.f;
+		pA = pointA;
 	}
-	void ray::setPoints(vec2 playerPos)
+	void ray::update(vec2 playerLoc)
 	{
-		pB = playerPos + relative_pB;
+		pA = playerLoc;
 	}
-	void ray::calculateHit(vec2 linePointA, vec2 linePointB, vec2 playerPos)
+	void ray::resetPB()
 	{
-		const vec2 p1 = playerPos;
+		pB = pA + relative_pB;
+	}
+	void ray::calculatePB(vec2 linePointA, vec2 linePointB)
+	{
+		const vec2 p1 = pA;
 		const vec2 p2 = pB;
 
 		// Calculates denominator of equations
@@ -42,12 +48,29 @@ namespace Tmpl8
 			pB.y = p1.y + t * (p2.y - p1.y);
 		}
 	}
-	void ray::draw(vec2 pointA, Surface* screen, Pixel color)
+	vec2 ray::calculatePA(vec2 linePointA, vec2 linePointB)
 	{
-		screen->Line(pointA.x, pointA.y, pB.x, pB.y, color);
+		const vec2 p1 = pA;
+		const vec2 p2 = pB;
+
+		// Calculates denominator of equations
+		const float den = (p1.x - p2.x) * (linePointA.y - linePointB.y) - (p1.y - p2.y) * (linePointA.x - linePointB.x);
+
+		if (den == 0)
+			return pA;
+
+		const float t = ((p1.x - linePointA.x) * (linePointA.y - linePointB.y) - (p1.y - linePointA.y) * (linePointA.x - linePointB.x)) / den;
+		const float u = -((p1.x - p2.x) * (p1.y - linePointA.y) - (p1.y - p2.y) * (p1.x - linePointA.x)) / den;
+
+		// If there's an intersection...
+		if (t > 0 && t < 1 && u > 0 && u < 1)
+		{
+			// Gets intersection point
+			return vec2((p1.x + t * (p2.x - p1.x)), (p1.y + t * (p2.y - p1.y)));
+		}
 	}
-	//std::vector<vec2> ray::getAllPointOnRay(vec2 pointA)
-	//{
-	//	//working here
-	//}
+	void ray::draw(Surface* screen, Pixel color)
+	{
+		screen->Line(pA.x, pA.y, pB.x, pB.y, color);
+	}
 }

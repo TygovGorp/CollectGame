@@ -27,7 +27,7 @@ namespace Tmpl8
 			Player.init(levelManager.getPlayerStartLoc().x, levelManager.getPlayerStartLoc().y);
 			Player.init(levelManager.getTrapVec().size());
 
-			losInst.init();
+			losInst.init(Player.getLoc() + 30);
 
 			WillInst.setLoc(levelManager.getWillLoc());
 			WillInst.init(screen);

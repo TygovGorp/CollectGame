@@ -66,13 +66,13 @@ namespace Tmpl8
 					{
 						move(-movementSpeed, 0);
 						orientation = 1; 
-						playerDetectionRay.init(vec2(cos(PI), sin(PI)));
+						playerDetectionRay.init(vec2(cos(PI), sin(PI)), loc + 30);
 					}
 					else
 					{
 						move(movementSpeed, 0);
 						orientation = 3;
-						playerDetectionRay.init(vec2(cos(PI * 2), sin(PI * 2)));
+						playerDetectionRay.init(vec2(cos(PI * 2), sin(PI * 2)), loc + 30);
 					}
 
 				}
@@ -82,13 +82,13 @@ namespace Tmpl8
 					{
 						move(0, -movementSpeed);
 						orientation = 2;
-						playerDetectionRay.init(vec2(cos(PI * 1.5), sin(PI * 1.5)));
+						playerDetectionRay.init(vec2(cos(PI * 1.5), sin(PI * 1.5)), loc + 30);
 					}
 					else
 					{
 						move(0, movementSpeed);
 						orientation = 4;
-						playerDetectionRay.init(vec2(cos(PI * 0.5), sin(PI * 0.5)));
+						playerDetectionRay.init(vec2(cos(PI * 0.5), sin(PI * 0.5)), loc + 30);
 					}
 				}
 			}
@@ -110,6 +110,6 @@ namespace Tmpl8
 		}
 		enemyAnim.update(1, loc.x, loc.y, 60, 60, screen);
 
-		playerDetectionRay.draw(loc + 30, screen, 0xFFFFFF);
+		playerDetectionRay.draw(screen, 0xFFFFFF);
 	}
 }
