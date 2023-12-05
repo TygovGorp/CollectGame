@@ -11,7 +11,7 @@ namespace Tmpl8
 		ray() {};
 		ray(vec2 rel_end, vec2 pointA);
 		void init(vec2 rel_end, vec2 pointA);
-		void update(vec2 playerLoc);
+		void resetPA(vec2 playerLoc);
 		
 		void calculatePB(vec2 linePointA, vec2 linePointB);
 		vec2 calculatePA(vec2 linePointA, vec2 linePointB);

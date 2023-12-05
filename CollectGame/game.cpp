@@ -61,13 +61,17 @@ namespace Tmpl8
 
 		if (levelNum != 0)
 		{
-			losInst.update(screen, Player.getLoc(), levelManager.getWallVec());
+			losInst.update_light(screen, Player.getLoc());
+
 			levelManager.update(screen, Player);
 			
 			WillInst.update(screen);
 			Player.checkCollisionScreenBounds(ScreenHeight, ScreenWidth);
 			Player.checkCollisionWall(levelManager.getWallVec());
 			Player.update(screen);
+
+			losInst.update_darkness(screen, Player.getLoc(), levelManager.getWallVec());
+
 			uiInst.update(screen, levelNum, Player.getHP());
 
 			//set will collection state to true when colliding with it

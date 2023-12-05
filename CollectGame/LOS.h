@@ -12,7 +12,8 @@ namespace Tmpl8
 	{
 	public:
 		void init(vec2 playerLoc);
-		void update(Surface* screen, vec2 playerPos, std::vector<wall> wallVec);
+		void update_darkness(Surface* screen, vec2 playerPos, std::vector<wall>& wallVec);
+		void update_light(Surface* screen, vec2 playerPos);
 
 	private:
 		collision colInst;

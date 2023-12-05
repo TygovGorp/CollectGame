@@ -18,7 +18,7 @@ namespace Tmpl8
 		relative_pB = rel_end * 2000.f;
 		pA = pointA;
 	}
-	void ray::update(vec2 playerLoc)
+	void ray::resetPA(vec2 playerLoc)
 	{
 		pA = playerLoc;
 	}
@@ -28,45 +28,50 @@ namespace Tmpl8
 	}
 	void ray::calculatePB(vec2 linePointA, vec2 linePointB)
 	{
-		const vec2 p1 = pA;
-		const vec2 p2 = pB;
 
 		// Calculates denominator of equations
-		const float den = (p1.x - p2.x) * (linePointA.y - linePointB.y) - (p1.y - p2.y) * (linePointA.x - linePointB.x);
+		const float den = (pA.x - pB.x) * (linePointA.y - linePointB.y) - (pA.y - pB.y) * (linePointA.x - linePointB.x);
 
 		if (den == 0)
 			return;
 
-		const float t = ((p1.x - linePointA.x) * (linePointA.y - linePointB.y) - (p1.y - linePointA.y) * (linePointA.x - linePointB.x)) / den;
-		const float u = -((p1.x - p2.x) * (p1.y - linePointA.y) - (p1.y - p2.y) * (p1.x - linePointA.x)) / den;
+		const float t = ((pA.x - linePointA.x) * (linePointA.y - linePointB.y) - (pA.y - linePointA.y) * (linePointA.x - linePointB.x)) / den;
+		const float u = -((pA.x - pB.x) * (pA.y - linePointA.y) - (pA.y - pB.y) * (pA.x - linePointA.x)) / den;
 
 		// If there's an intersection...
 		if (t > 0 && t < 1 && u > 0 && u < 1)
 		{
 			// Gets intersection point
-			pB.x = p1.x + t * (p2.x - p1.x);
-			pB.y = p1.y + t * (p2.y - p1.y);
+			pB.x = pA.x + t * (pB.x - pA.x);
+			pB.y = pA.y + t * (pB.y - pA.y);
 		}
 	}
 	vec2 ray::calculatePA(vec2 linePointA, vec2 linePointB)
 	{
-		const vec2 p1 = pA;
-		const vec2 p2 = pB;
+		const float difXpApB = pA.x - pB.x;
+		const float difYpApB = pA.y - pB.y;
 
+		const float difXlAlB = linePointA.x - linePointB.x;
+		const float difYlAlB = linePointA.y - linePointB.y;
 		// Calculates denominator of equations
-		const float den = (p1.x - p2.x) * (linePointA.y - linePointB.y) - (p1.y - p2.y) * (linePointA.x - linePointB.x);
+		const float den = difXpApB * difYlAlB - difYpApB * difXlAlB;
 
 		if (den == 0)
-			return pA;
+		{
+			return pB;
+		}
 
-		const float t = ((p1.x - linePointA.x) * (linePointA.y - linePointB.y) - (p1.y - linePointA.y) * (linePointA.x - linePointB.x)) / den;
-		const float u = -((p1.x - p2.x) * (p1.y - linePointA.y) - (p1.y - p2.y) * (p1.x - linePointA.x)) / den;
+		const float difXpAlA = pA.x - linePointA.x;
+		const float difYpAlA = pA.y - linePointA.y;
+
+		const float t = (difXpAlA * difYlAlB - difYpAlA * difXlAlB) / den;
+		const float u = -(difXpApB * difYpAlA - difYpApB * difXpAlA) / den;
 
 		// If there's an intersection...
 		if (t > 0 && t < 1 && u > 0 && u < 1)
 		{
 			// Gets intersection point
-			return vec2((p1.x + t * (p2.x - p1.x)), (p1.y + t * (p2.y - p1.y)));
+			return vec2((pA.x + t * (pB.x - pA.x)), (pA.y + t * (pB.y - pA.y)));
 		}
 	}
 	void ray::draw(Surface* screen, Pixel color)
