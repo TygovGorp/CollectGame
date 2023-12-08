@@ -16,6 +16,7 @@ namespace Tmpl8
 		void update_light(Surface* screen, vec2 playerPos);
 
 	private:
+		vec2 prevPlayerLoc;
 		collision colInst;
 		std::vector<ray> rays;
 	};

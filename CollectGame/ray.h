@@ -27,5 +27,6 @@ namespace Tmpl8
 		vec2 pA;
 		vec2 pB;
 		vec2 relative_pB;
+		std::vector<vec2> collidedScreenFragments;
 	};
 }
