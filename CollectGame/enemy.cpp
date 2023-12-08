@@ -8,7 +8,7 @@ namespace Tmpl8
 	{
 		targets = points;
 		loc = points[0];
-		enemyAnim.init(1, "assets/temp_Enemy.png", loc.x, loc.y, screen);
+		enemyAnim.init(1, "assets/temp_Enemy.png", static_cast<int>(loc.x), static_cast<int>(loc.y), screen);
 	}
 
 	void enemy::setOrientation(Surface* screen)
@@ -18,16 +18,16 @@ namespace Tmpl8
 			switch (orientation)
 			{
 			case 1:
-				enemyAnim.init(1, "assets/temp_Enemy_240.png", loc.x, loc.y, screen);
+				enemyAnim.init(1, "assets/temp_Enemy_240.png", static_cast<int>(loc.x), static_cast<int>(loc.y), screen);
 				break;
 			case 2:
-				enemyAnim.init(1, "assets/temp_Enemy.png", loc.x, loc.y, screen);
+				enemyAnim.init(1, "assets/temp_Enemy.png", static_cast<int>(loc.x), static_cast<int>(loc.y), screen);
 				break;
 			case 3:
-				enemyAnim.init(1, "assets/temp_Enemy_90.png", loc.x, loc.y, screen);
+				enemyAnim.init(1, "assets/temp_Enemy_90.png", static_cast<int>(loc.x), static_cast<int>(loc.y), screen);
 				break;
 			case 4:
-				enemyAnim.init(1, "assets/temp_Enemy_180.png", loc.x, loc.y, screen);
+				enemyAnim.init(1, "assets/temp_Enemy_180.png", static_cast<int>(loc.x), static_cast<int>(loc.y), screen);
 				break;
 			}
 		}
@@ -82,13 +82,13 @@ namespace Tmpl8
 					{
 						move(vec2(0,-1), deltaTime);
 						orientation = 2;
-						playerDetectionRay.init(vec2(cos(PI * 1.5), sin(PI * 1.5)), loc + 30);
+						playerDetectionRay.init(vec2(static_cast<float>(cos(PI * 1.5)), static_cast<float>(sin(PI * 1.5))), loc + 30);
 					}
 					else
 					{
 						move(vec2(0, 1), deltaTime);
 						orientation = 4;
-						playerDetectionRay.init(vec2(cos(PI * 0.5), sin(PI * 0.5)), loc + 30);
+						playerDetectionRay.init(vec2(static_cast<float>(cos(PI * 0.5)), static_cast<float>(sin(PI * 0.5))), loc + 30);
 					}
 				}
 			}
@@ -108,7 +108,7 @@ namespace Tmpl8
 		{
 			Player.setSpotState(true);
 		}
-		enemyAnim.update(1, loc.x, loc.y, 60, 60, screen);
+		enemyAnim.update(1, static_cast<int>(loc.x), static_cast<int>(loc.y), 60, 60, screen);
 
 		playerDetectionRay.draw(screen, 0xFFFFFF);
 	}
