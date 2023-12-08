@@ -33,7 +33,7 @@ namespace Tmpl8
 		}
 	}
 
-	void enemy::movement()
+	void enemy::movement(float deltaTime)
 	{
 		//if targets != 0
 		//	move in direction of next target
@@ -64,13 +64,13 @@ namespace Tmpl8
 				{
 					if (loc.x - targets[latestAchievedTarget].x > 0)
 					{
-						move(-movementSpeed, 0);
+						move(vec2(-1,0), deltaTime);
 						orientation = 1; 
 						playerDetectionRay.init(vec2(cos(PI), sin(PI)), loc + 30);
 					}
 					else
 					{
-						move(movementSpeed, 0);
+						move(vec2(1, 0), deltaTime);
 						orientation = 3;
 						playerDetectionRay.init(vec2(cos(PI * 2), sin(PI * 2)), loc + 30);
 					}
@@ -80,13 +80,13 @@ namespace Tmpl8
 				{
 					if (loc.y - targets[latestAchievedTarget].y > 0)
 					{
-						move(0, -movementSpeed);
+						move(vec2(0,-1), deltaTime);
 						orientation = 2;
 						playerDetectionRay.init(vec2(cos(PI * 1.5), sin(PI * 1.5)), loc + 30);
 					}
 					else
 					{
-						move(0, movementSpeed);
+						move(vec2(0, 1), deltaTime);
 						orientation = 4;
 						playerDetectionRay.init(vec2(cos(PI * 0.5), sin(PI * 0.5)), loc + 30);
 					}
@@ -95,11 +95,11 @@ namespace Tmpl8
 		}
 	}
 
-	void enemy::update(Surface* screen, player& Player, std::vector<wall>& wallVec)
+	void enemy::update(Surface* screen, player& Player, std::vector<wall>& wallVec, float deltaTime)
 	{
 		prevOrientation = orientation;
 
-		movement();
+		movement(deltaTime);
 		setOrientation(screen);
 
 		colInst.rayWallCol(loc + 30, playerDetectionRay, wallVec);

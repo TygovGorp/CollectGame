@@ -213,7 +213,7 @@ namespace Tmpl8
 		}
 	}
 
-	void level::update(Surface* screen, player& Player)
+	void level::update(Surface* screen, player& Player, float deltaTime)
 	{
 		for (int i = 0; i < wallVec.size(); i++)
 		{
@@ -225,7 +225,7 @@ namespace Tmpl8
 		}
 		for (int i = 0; i < enemyVec.size(); i++)
 		{
-			enemyVec[i].update(screen, Player, wallVec);
+			enemyVec[i].update(screen, Player, wallVec, deltaTime);
 		}
 	}
 

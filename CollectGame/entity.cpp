@@ -47,9 +47,8 @@ namespace Tmpl8
 		entityAnimation.update(1, int(loc.x), int(loc.y), 60,60, surface);
 	}
 
-	void entity::move(int xDifference, int yDifference)
+	void entity::move(vec2 change, float deltaTime)
 	{
-		loc.x += xDifference;
-		loc.y += yDifference;
+		loc += change * speed * deltaTime;
 	}
 }

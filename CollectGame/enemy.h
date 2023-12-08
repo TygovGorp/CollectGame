@@ -11,12 +11,12 @@ namespace Tmpl8
 	{
 	public:
 		void init(vector<vec2> points, Surface* screen);
-		void update(Surface* screen, player& Player, std::vector<wall>& wallVec);
+		void update(Surface* screen, player& Player, std::vector<wall>& wallVec, float deltaTime);
 
 		void setTargets(std::vector<vec2> trgts) { targets = trgts; }
 	private:
 		void setOrientation(Surface* screen);
-		void movement();
+		void movement(float deltaTime);
 		std::vector<vec2> targets;
 		animation enemyAnim;
 		ray playerDetectionRay;

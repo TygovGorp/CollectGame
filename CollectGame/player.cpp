@@ -1,5 +1,6 @@
 #include "player.h"
 #include <iostream>
+#include <SDL_scancode.h>
 
 namespace Tmpl8
 {
@@ -11,77 +12,60 @@ namespace Tmpl8
 		}
 	}
 
+	void player::update(Surface* surface, float deltaTime)
+	{
+		entityAnimation.update(1, int(loc.x), int(loc.y), 60, 60, surface);
+		move(change, deltaTime);
+	}
+
 	void player::moveWithInputs(int key)
 	{
-		vec2 change = { 0, 0 };
+		lastChangeLoc = change;
 		//player movement with WASD and the arrow keys
 		switch (key)
 		{
-			//w
-		case 26:
-			change.y = change.y - 10;
+		case SDL_SCANCODE_W:
+		case SDL_SCANCODE_UP:
+			change.y = -1.0f;
 			break;
-			//a
-		case 4:
-			change.x = change.x - 10;
+		case SDL_SCANCODE_S:
+		case SDL_SCANCODE_DOWN:
+			change.y = 1.0f;
 			break;
-			//s
-		case 22:
-			change.y = change.y + 10;
+		case SDL_SCANCODE_A:
+		case SDL_SCANCODE_LEFT:
+			change.x = -1.0f;
 			break;
-			//d
-		case 7:
-			change.x = change.x + 10;
-			break;
-			//arrow keys
-			//up
-		case 82:
-			change.y = change.y - 10;
-			break;
-			//left
-		case 80:
-			change.x = change.x - 10;
-			break;
-			//down
-		case 81:
-			change.y = change.y + 10;
-			break;
-			//right
-		case 79:
-			change.x = change.x + 10;
-			break;
-		default:
+		case SDL_SCANCODE_D:
+		case SDL_SCANCODE_RIGHT:
+			change.x = 1.0f;
 			break;
 		}
-		secondLastChangeLoc = lastChangeLoc;
-		lastChangeLoc = change;
-		move(change.x, change.y);
 	}
 
-	void player::checkCollisionWall(std::vector<wall> wallVec)
+	void player::checkCollisionWall(std::vector<wall> wallVec, float deltaTime)
 	{
 		for (int i = 0; i < wallVec.size() - 1; i++)
 		{
 			if (Col.AABB(vec2(loc.x, loc.y), vec2(loc.x + 59, loc.y + 59), wallVec[i].getPointA(), wallVec[i].getPointB()))
 			{
-				move(-lastChangeLoc.x, -lastChangeLoc.y);
+				move(-change, deltaTime);
 			}
 			if (Col.AABB(vec2(loc.x, loc.y), vec2(loc.x + 59, loc.y + 59), wallVec[i].getPointA(), wallVec[i].getPointB()))
 			{
-				move(-secondLastChangeLoc.x, -secondLastChangeLoc.y);
+				move(-lastChangeLoc, deltaTime);
 			}
 		}
 	}
-	void player::checkCollisionScreenBounds(int screenHight, int screenWidth)
+	void player::checkCollisionScreenBounds(int screenHight, int screenWidth, float deltaTime)
 	{
-		//working here
 		if (loc.y + 60 > screenHight ||
 			loc.y < 0 ||
 			loc.x + 60 > screenWidth ||
 			loc.x < 0
 			)
 		{
-			move(-lastChangeLoc.x, -lastChangeLoc.y);
+			move(-lastChangeLoc, deltaTime);
 		}
 		if (loc.y + 60 > screenHight ||
 			loc.y < 0 ||
@@ -89,7 +73,7 @@ namespace Tmpl8
 			loc.x < 0
 			)
 		{
-			move(-secondLastChangeLoc.x, -secondLastChangeLoc.y);
+			move(-secondLastChangeLoc, deltaTime);
 		}
 	}
 

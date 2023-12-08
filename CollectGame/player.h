@@ -10,9 +10,11 @@ namespace Tmpl8
     public:
         using entity::init;
         void init(int numOfTraps);
+        void update(Surface* surface, float deltaTime);
         void moveWithInputs(int key);
-        void checkCollisionWall(std::vector<wall> wallVec);
-        void checkCollisionScreenBounds(int screenHight, int screenWidth);
+        void resetInputs() { change = { 0,0 }; }
+        void checkCollisionWall(std::vector<wall> wallVec, float deltaTime);
+        void checkCollisionScreenBounds(int screenHight, int screenWidth, float deltaTime);
 
         void setHitStateTrap(bool YN, int trapNum);
         bool getHitStateTrap(int trapNum);
@@ -21,6 +23,7 @@ namespace Tmpl8
         bool getSpotState() { return spotted; };
     private:
         collision Col;
+        vec2 change = { 0, 0 };
         vec2 lastChangeLoc;
         vec2 secondLastChangeLoc;
         vector<bool> hittingATrap;

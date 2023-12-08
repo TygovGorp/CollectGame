@@ -56,6 +56,9 @@ namespace Tmpl8
 	// -----------------------------------------------------------
 	void Game::Tick(float deltaTime)
 	{
+		//coversion to seconds
+		deltaTime /= 1000;
+
 		// clear the graphics window
 		screen->Clear(0);
 
@@ -63,12 +66,12 @@ namespace Tmpl8
 		{
 			losInst.update_light(screen, Player.getLoc());
 
-			levelManager.update(screen, Player);
+			levelManager.update(screen, Player, deltaTime);
 			
 			WillInst.update(screen);
-			Player.checkCollisionScreenBounds(ScreenHeight, ScreenWidth);
-			Player.checkCollisionWall(levelManager.getWallVec());
-			Player.update(screen);
+			Player.checkCollisionScreenBounds(ScreenHeight, ScreenWidth, deltaTime);
+			Player.checkCollisionWall(levelManager.getWallVec(), deltaTime);
+			Player.update(screen, deltaTime);
 
 			losInst.update_darkness(screen, Player.getLoc(), levelManager.getWallVec());
 

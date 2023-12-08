@@ -33,10 +33,8 @@ public:
 		mouseX = x;
 		mouseY = y;
 	}
-	void KeyUp(int key) { /* implement if you want to handle keys */ }
-	void KeyDown(int key) {
-		Player.moveWithInputs(key);
-	}
+	void KeyUp(int key) { Player.resetInputs(); }
+	void KeyDown(int key) {	Player.moveWithInputs(key);	}
 private:
 	Surface* screen;
 	player Player;
