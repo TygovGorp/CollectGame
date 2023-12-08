@@ -6,6 +6,7 @@
 #include "UI.h"
 #include "LOS.h"
 #include "main_menu.h"
+#include "screenFragment.h"
 #include <iostream>
 
 namespace Tmpl8 {
@@ -46,6 +47,8 @@ private:
 	UI uiInst;
 	LOS losInst;
 	main_menu MMinst;
+
+	screenFragment screenFragVec[ScreenWidth / 30][ScreenHeight / 30];
 
 	animation gameOverScreen;
 	animation gameWinScreen;

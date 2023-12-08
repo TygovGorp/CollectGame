@@ -22,7 +22,7 @@ namespace Tmpl8
 	{
 		if (levelNum != 0)
 		{
-			levelManager.init(levelNum, difficulty, screen);
+			levelManager.init(levelNum, difficulty, screenFragVec, screen);
 
 			Player.init(levelManager.getPlayerStartLoc().x, levelManager.getPlayerStartLoc().y);
 			Player.init(levelManager.getTrapVec().size());
