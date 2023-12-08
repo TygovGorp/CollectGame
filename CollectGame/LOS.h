@@ -4,6 +4,7 @@
 #include "wall.h"
 #include "player.h"
 #include "collision.h"
+#include "screenFragment.h"
 
 namespace Tmpl8
 {

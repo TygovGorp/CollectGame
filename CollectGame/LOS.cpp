@@ -33,6 +33,7 @@ namespace Tmpl8
 				rays[i].resetPB();
 				vec2 nearestWallCol = rays[i].getPB();
 
+
 				// Cycle through every wall and set end point to intersection
 				// When an intersection is found, the start point is set to that intersection, meaning the next check will check for walls
 				// between the new start point and the end-point. This means the ray will always start at the nearest wall
