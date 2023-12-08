@@ -8,7 +8,7 @@ namespace Tmpl8
 	class animation
 	{
 	private:
-		int NumOfFrames;
+		int NumOfFrames = 1;
 		int Xlocation, Ylocation;
 		std::vector<Sprite*> Frames;
 

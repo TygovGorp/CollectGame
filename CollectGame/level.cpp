@@ -57,10 +57,10 @@ namespace Tmpl8
 					case 1:
 						break;
 					case 2:
-						willLoc.x = stoi(tp);
+						willLoc.x = static_cast<float>(stoi(tp));
 						break;
 					case 3:
-						willLoc.y = stoi(tp);
+						willLoc.y = static_cast<float>(stoi(tp));
 						nextWillLocation = false;
 						counter = 0;
 						break;
@@ -82,10 +82,10 @@ namespace Tmpl8
 					case 1:
 						break;
 					case 2:
-						playerStartLoc.x = stoi(tp);
+						playerStartLoc.x = static_cast<float>(stoi(tp));
 						break;
 					case 3:
-						playerStartLoc.y = stoi(tp);
+						playerStartLoc.y = static_cast<float>(stoi(tp));
 						nextPlayerLocation = false;
 						counter = 0;
 						break;
@@ -117,7 +117,7 @@ namespace Tmpl8
 						trapx = stoi(tp);
 						break;
 					case 5:
-						trapVec.back().setPointB(vec2(trapx, stoi(tp)));
+						trapVec.back().setPointB(vec2(static_cast<float>(trapx), static_cast<float>(stoi(tp))));
 						trapVec.back().init(screen);
 						nextTrapLocation = false;
 						counter = 0;
@@ -170,10 +170,10 @@ namespace Tmpl8
 							enemyTargets.push_back(vec2());
 							break;
 						case 2:
-							enemyTargets[currentTargetNum].x = stoi(tp);
+							enemyTargets[currentTargetNum].x = static_cast<float>(stoi(tp));
 							break;
 						case 3:
-							enemyTargets[currentTargetNum].y = stoi(tp);
+							enemyTargets[currentTargetNum].y = static_cast<float>(stoi(tp));
 							nextIsATarget = false;
 							currentTargetNum++;
 							counter = 0;
@@ -194,13 +194,13 @@ namespace Tmpl8
 						wallx = stoi(tp);
 						break;
 					case 2:
-						wallVec.back().setPointA(vec2(wallx, stoi(tp)));
+						wallVec.back().setPointA(vec2(static_cast<float>(wallx), static_cast<float>(stoi(tp))));
 						break;
 					case 3:
 						wallx = stoi(tp);
 						break;
 					case 4:
-						wallVec.back().setPointB(vec2(wallx, stoi(tp)));
+						wallVec.back().setPointB(vec2(static_cast<float>(wallx), static_cast<float>(stoi(tp))));
 						counter = 0;
 						break;
 					default:
