@@ -34,8 +34,8 @@ public:
 		mouseX = x;
 		mouseY = y;
 	}
-	void KeyUp(int key) { Player.resetInputs(); }
-	void KeyDown(int key) {	Player.moveWithInputs(key);	}
+	void KeyUp(int key) { Player.resetInputs(key); }
+	void KeyDown(int key) { Player.moveWithInputs(key); MMinst.returnToPrevScreen(key, mainMenuStage); }
 private:
 	Surface* screen;
 	player Player;

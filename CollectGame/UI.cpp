@@ -22,14 +22,14 @@ namespace Tmpl8
 
 	void UI::initLevelTxt(Surface* surface)
 	{
-		levelTxtAnimation.init(1, "assets/temp_Level_txt.png", static_cast<int>(levelTxtLoc.x), static_cast<int>(levelTxtLoc.y), surface);
+		levelTxtAnimation.init(1, "assets/Level_txt.png", static_cast<int>(levelTxtLoc.x), static_cast<int>(levelTxtLoc.y), surface);
 	}
 	void UI::initLevelCounter(Surface* surface, int levelNum)
 	{
 		currentLevelNum = levelNum;
 
 		//written with the help of ChatGPT
-		std::string filename = "assets/temp_" + std::to_string(levelNum) + "_txt.png";
+		std::string filename = "assets/" + std::to_string(levelNum) + "_txt.png";
 
 		// Create a character array and copy the content of the std::string into it
 		char filenameBuffer[256]; // Adjust the size as needed

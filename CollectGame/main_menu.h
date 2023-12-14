@@ -10,6 +10,7 @@ namespace Tmpl8
 		void init(Surface* screen, int ScreenWidth, int ScreenHeight);
 		void update(int levelNum, int mainMenuStage, Surface* screen);
 		void Button(int& levelNum, int& mainMenuStage, int& difficulty, int mouseX, int mouseY, int key);
+		void returnToPrevScreen(int key, int& mainMenuStage);
 	private:
 		animation title;
 		animation playAndSettings;

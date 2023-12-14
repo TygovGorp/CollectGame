@@ -1,5 +1,6 @@
 #include "main_menu.h"
 #include <iostream>
+#include <SDL_scancode.h>
 
 namespace Tmpl8
 {
@@ -7,9 +8,9 @@ namespace Tmpl8
 	{
 		screenH = ScreenHeight;
 		screenW = ScreenWidth;
-		title.init(1, "assets/temp_Title_Screen.png", 1, 1, screen);
-		playAndSettings.init(1, "assets/temp_Title_Screen_PlaySettings.png", 1, 1, screen);
-		difficultys.init(1, "assets/temp_Title_Screen_Difficultys.png", 1, 1, screen);
+		title.init(1, "assets/Title_Screen.png", 1, 1, screen);
+		playAndSettings.init(1, "assets/Title_Screen_Play.png", 1, 1, screen);
+		difficultys.init(1, "assets/Title_Screen_Difficultys.png", 1, 1, screen);
 	}
 	void main_menu::update(int levelNum, int mainMenuStage, Surface* screen)
 	{
@@ -32,13 +33,6 @@ namespace Tmpl8
 				key == 1)
 			{
 				mainMenuStage = 3;
-			}
-			else if (mouseX < 600 && mouseX > 200 &&
-					mouseY < 414 && mouseY > 355 &&
-					key == 1)
-			{
-				//settings
-				std::cout << "settings" << std::endl;
 			}
 		}
 		else if (levelNum == 0 && mainMenuStage == 3)
@@ -66,6 +60,24 @@ namespace Tmpl8
 				//hard
 				levelNum = 1;
 				difficulty = 3;
+			}
+		}
+	}
+
+	void main_menu::returnToPrevScreen(int key, int& mainMenuStage)
+	{
+		if (key == SDL_SCANCODE_BACKSPACE)
+		{
+			switch (mainMenuStage)
+			{
+			case 1:
+
+				break;
+			case 3:
+				mainMenuStage = 1;
+				break;
+			default:
+				break;
 			}
 		}
 	}

@@ -12,7 +12,7 @@ namespace Tmpl8
         void init(int numOfTraps);
         void update(Surface* surface, float deltaTime);
         void moveWithInputs(int key);
-        void resetInputs() { change = { 0,0 }; }
+        void resetInputs(int key);
         void checkCollisionWall(std::vector<wall> wallVec, float deltaTime);
         void checkCollisionScreenBounds(int screenHight, int screenWidth, float deltaTime);
 
