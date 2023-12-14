@@ -15,7 +15,7 @@ namespace Tmpl8
 	void player::update(Surface* surface, float deltaTime)
 	{
 		totalTimeFromLastFrame += deltaTime;
-		if (/*change.x != 0 && change.y != 0 && */totalTimeFromLastFrame >= 0.250 && animFrame < 4)
+		if (totalTimeFromLastFrame >= 0.250 && animFrame < 4)
 		{
 			animFrame++;
 			totalTimeFromLastFrame = 0;
