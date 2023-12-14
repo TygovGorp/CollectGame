@@ -12,6 +12,14 @@ namespace Tmpl8
 		}
 	}
 
+	void player::buildAnimation(Surface* surface)
+	{
+		playerDownAnim.init(12, "assets/player_down_", int(loc.x), int(loc.y), surface);
+		playerForwardAnim.init(12, "assets/player_forward_", int(loc.x), int(loc.y), surface);
+		playerLeftAnim.init(12, "assets/player_left_", int(loc.x), int(loc.y), surface);
+		playerRightAnim.init(12, "assets/player_right_", int(loc.x), int(loc.y), surface);
+	}
+
 	void player::update(Surface* surface, float deltaTime)
 	{
 		totalTimeFromLastFrame += deltaTime;
@@ -35,18 +43,22 @@ namespace Tmpl8
 		{
 		case SDL_SCANCODE_W:
 		case SDL_SCANCODE_UP:
+			facingDirection = 2;
 			change.y = -1.0f;
 			break;
 		case SDL_SCANCODE_S:
 		case SDL_SCANCODE_DOWN:
+			facingDirection = 1;
 			change.y = 1.0f;
 			break;
 		case SDL_SCANCODE_A:
 		case SDL_SCANCODE_LEFT:
+			facingDirection = 3;
 			change.x = -1.0f;
 			break;
 		case SDL_SCANCODE_D:
 		case SDL_SCANCODE_RIGHT:
+			facingDirection = 4;
 			change.x = 1.0f;
 			break;
 		}

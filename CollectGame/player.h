@@ -10,6 +10,7 @@ namespace Tmpl8
     public:
         using entity::init;
         void init(int numOfTraps);
+        void buildAnimation(Surface* surface);
         void update(Surface* surface, float deltaTime);
         void moveWithInputs(int key);
         void resetInputs(int key);
@@ -28,6 +29,11 @@ namespace Tmpl8
         vec2 secondLastChangeLoc;
         vector<bool> hittingATrap;
         bool spotted;
+        int facingDirection = 1; //1 = down, 2 = forward, 3 = left, 4 = right
+        animation playerDownAnim;
+        animation playerForwardAnim;
+        animation playerLeftAnim;
+        animation playerRightAnim;
     };
 }
 
