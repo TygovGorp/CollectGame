@@ -1,5 +1,6 @@
 #include "LOS.h"
 #include <iostream>
+#include <thread>
 
 namespace Tmpl8
 {
@@ -21,52 +22,22 @@ namespace Tmpl8
 
 	void LOS::update_darkness(Surface* screen, vec2 playerPos, std::vector<wall>& wallVec)
 	{
-		////based on https://github.com/user-simon/2D-RayCasting/
+		//based on https://github.com/user-simon/2D-RayCasting/
 
 		vec2 playerLoc = { playerPos.x + 30, playerPos.y + 30 };
 		if (prevPlayerLoc.x != playerLoc.x || prevPlayerLoc.y != playerLoc.y)
 		{
-			for (int i = 0; i < rays.size(); i++)
-			{
+			int oneForthOfRaysSize = rays.size() / 4;
 
-				rays[i].resetPA(playerLoc);
-				rays[i].resetPB();
-				vec2 nearestWallCol = rays[i].getPB();
+			std::thread darknessThread_1(&LOS::splitDarknessCalculation, this, screen, playerLoc, wallVec, 0, oneForthOfRaysSize);
+			std::thread darknessThread_2(&LOS::splitDarknessCalculation, this, screen, playerLoc, wallVec, oneForthOfRaysSize, oneForthOfRaysSize * 2);
+			std::thread darknessThread_3(&LOS::splitDarknessCalculation, this, screen, playerLoc, wallVec, oneForthOfRaysSize * 2, oneForthOfRaysSize * 3);
+			std::thread darknessThread_4(&LOS::splitDarknessCalculation, this, screen, playerLoc, wallVec, oneForthOfRaysSize * 3, rays.size());
 
-
-				// Cycle through every wall and set end point to intersection
-				// When an intersection is found, the start point is set to that intersection, meaning the next check will check for walls
-				// between the new start point and the end-point. This means the ray will always start at the nearest wall
-				for (int j = 0; j < wallVec.size(); j++)
-				{
-					vec2 wallPointA = wallVec[j].getPointA();
-					vec2 wallPointB = wallVec[j].getPointB();
-
-					// Calculate ray end-point
-					vec2 pA[4] = {
-						rays[i].calculatePA(wallPointA, vec2(wallPointA.x, wallPointB.y)),
-						rays[i].calculatePA(vec2(wallPointA.x, wallPointB.y), wallPointB),
-						rays[i].calculatePA(wallPointB, vec2(wallPointB.x, wallPointA.y)),
-						rays[i].calculatePA(vec2(wallPointB.x, wallPointA.y), wallPointA)
-					};
-
-					for (int q = 0; q < 4; q++)
-					{
-						float a1 = (rays[i].getPA().x - pA[q].x);
-						float b1 = (rays[i].getPA().y - pA[q].y);
-
-						float a2 = (rays[i].getPA().x - nearestWallCol.x);
-						float b2 = (rays[i].getPA().y - nearestWallCol.y);
-
-						if ((a1 * a1) + (b1 * b1) < (a2 * a2) + (b2 * b2))
-						{
-							nearestWallCol = pA[q];
-						}
-					}
-				}
-				rays[i].setPA(nearestWallCol);
-				rays[i].draw(screen, 0x000000);
-			}
+			darknessThread_1.join();
+			darknessThread_2.join();
+			darknessThread_3.join();
+			darknessThread_4.join();
 		}
 		else
 		{
@@ -83,6 +54,51 @@ namespace Tmpl8
 		for (int i = 0; i < rays.size(); i++)
 		{
 			screen->Line(playerPos.x + 30, playerPos.y + 30, rays[i].getPA().x, rays[i].getPA().y, 0xee9f27);
+		}
+	}
+
+	void LOS::splitDarknessCalculation(Surface* screen, vec2 playerLoc, std::vector<wall>& wallVec, int start, int end)
+	{
+		for (int i = start; i < end; i++)
+		{
+
+			rays[i].resetPA(playerLoc);
+			rays[i].resetPB();
+			vec2 nearestWallCol = rays[i].getPB();
+
+
+			// Cycle through every wall and set end point to intersection
+			// When an intersection is found, the start point is set to that intersection, meaning the next check will check for walls
+			// between the new start point and the end-point. This means the ray will always start at the nearest wall
+			for (int j = 0; j < wallVec.size(); j++)
+			{
+				vec2 wallPointA = wallVec[j].getPointA();
+				vec2 wallPointB = wallVec[j].getPointB();
+
+				// Calculate ray end-point
+				vec2 pA[4] = {
+					rays[i].calculatePA(wallPointA, vec2(wallPointA.x, wallPointB.y)),
+					rays[i].calculatePA(vec2(wallPointA.x, wallPointB.y), wallPointB),
+					rays[i].calculatePA(wallPointB, vec2(wallPointB.x, wallPointA.y)),
+					rays[i].calculatePA(vec2(wallPointB.x, wallPointA.y), wallPointA)
+				};
+
+				for (int q = 0; q < 4; q++)
+				{
+					float a1 = (rays[i].getPA().x - pA[q].x);
+					float b1 = (rays[i].getPA().y - pA[q].y);
+
+					float a2 = (rays[i].getPA().x - nearestWallCol.x);
+					float b2 = (rays[i].getPA().y - nearestWallCol.y);
+
+					if ((a1 * a1) + (b1 * b1) < (a2 * a2) + (b2 * b2))
+					{
+						nearestWallCol = pA[q];
+					}
+				}
+			}
+			rays[i].setPA(nearestWallCol);
+			rays[i].draw(screen, 0x000000);
 		}
 	}
 }
