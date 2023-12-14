@@ -14,7 +14,17 @@ namespace Tmpl8
 
 	void player::update(Surface* surface, float deltaTime)
 	{
-		entityAnimation.update(1, int(loc.x), int(loc.y), 60, 60, surface);
+		totalTimeFromLastFrame += deltaTime;
+		if (/*change.x != 0 && change.y != 0 && */totalTimeFromLastFrame >= 0.250 && animFrame < 4)
+		{
+			animFrame++;
+			totalTimeFromLastFrame = 0;
+		}
+		else if (animFrame >= 4)
+		{
+			animFrame = 1;
+		}
+		entityAnimation.update(animFrame, int(loc.x), int(loc.y), 60, 60, surface);
 		move(change, deltaTime);
 	}
 
