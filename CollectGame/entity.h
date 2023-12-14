@@ -36,7 +36,7 @@ namespace Tmpl8
 		vec2 getLoc() { return loc; };
 
 	protected:
-		int speed = 30;
+		int speed = 50;
 		int HP = 3;
 		int DMG = 1;
 		int animFrame = 1;
