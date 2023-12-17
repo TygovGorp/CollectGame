@@ -110,11 +110,11 @@ namespace Tmpl8
 	{
 		for (int i = 0; i < wallVec.size() - 1; i++)
 		{
-			if (Col.AABB(vec2(loc.x, loc.y), vec2(loc.x + 59, loc.y + 59), wallVec[i].getPointA(), wallVec[i].getPointB()))
+			if (Col.AABB(vec2(loc.x + 7, loc.y), vec2(loc.x + 52, loc.y + 59), wallVec[i].getPointA(), wallVec[i].getPointB()))
 			{
 				move(-change, deltaTime);
 			}
-			if (Col.AABB(vec2(loc.x, loc.y), vec2(loc.x + 59, loc.y + 59), wallVec[i].getPointA(), wallVec[i].getPointB()))
+			if (Col.AABB(vec2(loc.x + 7, loc.y), vec2(loc.x + 52, loc.y + 59), wallVec[i].getPointA(), wallVec[i].getPointB()))
 			{
 				move(-lastChangeLoc, deltaTime);
 			}
@@ -124,8 +124,8 @@ namespace Tmpl8
 	{
 		if (loc.y + 60 > screenHight) loc.y = ScreenHeight - 60;
 		if (loc.y < 0) loc.y = 0;
-		if (loc.x + 60 > screenWidth) loc.x = screenWidth - 60;
-		if (loc.x < 0) loc.x = 0;
+		if (loc.x + 52 > screenWidth) loc.x = screenWidth - 52;
+		if (loc.x + 7 < 0) loc.x = 0 - 7;
 	}
 
 	void player::setHitStateTrap(bool YN, int trapNum)

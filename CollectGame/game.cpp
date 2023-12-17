@@ -64,7 +64,7 @@ namespace Tmpl8
 
 		if (levelNum != 0)
 		{
-			//losInst.update_light(screen, Player.getLoc());
+			losInst.update_light(screen, Player.getLoc());
 
 			levelManager.update(screen, Player, deltaTime);
 			
@@ -73,7 +73,7 @@ namespace Tmpl8
 			Player.checkCollisionWall(levelManager.getWallVec(), deltaTime);
 			Player.update(screen, deltaTime);
 
-			//losInst.update_darkness(screen, Player.getLoc(), levelManager.getWallVec());
+			losInst.update_darkness(screen, Player.getLoc(), levelManager.getWallVec());
 
 			uiInst.update(screen, levelNum, Player.getHP());
 
