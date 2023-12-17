@@ -55,6 +55,7 @@ namespace Tmpl8
 
 	void player::moveWithInputs(int key)
 	{
+		lastChangeLoc = change;
 		//player movement with WASD and the arrow keys
 		switch (key)
 		{
@@ -79,7 +80,7 @@ namespace Tmpl8
 			change.x = 1.0f;
 			break;
 		}
-		lastChangeLoc = change;
+
 	}
 
 	void player::resetInputs(int key)
@@ -123,7 +124,7 @@ namespace Tmpl8
 	{
 		if (loc.y + 60 > screenHight) loc.y = ScreenHeight - 60;
 		if (loc.y < 0) loc.y = 0;
-		if (loc.x + 60 > screenHight) loc.x = ScreenHeight - 60;
+		if (loc.x + 60 > screenWidth) loc.x = screenWidth - 60;
 		if (loc.x < 0) loc.x = 0;
 	}
 
