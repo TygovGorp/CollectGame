@@ -235,7 +235,7 @@ namespace Tmpl8
 		}
 		for (int i = 0; i < trapVec.size(); i++)
 		{
-			trapVec[i].update(screen);
+			trapVec[i].update(screen, Player.getHitStateTrap(i));
 		}
 		for (int i = 0; i < enemyVec.size(); i++)
 		{

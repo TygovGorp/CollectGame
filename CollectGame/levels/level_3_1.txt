@@ -83,12 +83,12 @@
  160 160
 
  TrapLocation
- 350 244
- 371 316
+ 320 240
+ 400 320
 
  TrapLocation
- 644 270
- 716 291
+ 640 240
+ 720 320
 
  EnemyLocation
  target

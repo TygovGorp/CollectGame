@@ -9,13 +9,15 @@ namespace Tmpl8
 
 	void trap::init(Surface* screen)
 	{
-		trapAnim.init(1, "assets/temp_Trap.png", loc.x, loc.y, screen);
+		trapAnim.init(2, "assets/trap_", loc.x, loc.y, screen);
 	}
 
-	void trap::update(Surface* screen)
+	void trap::update(Surface* screen, bool trapHitState)
 	{
-		trapAnim.update(1, pointB.x - loc.x, pointB.y - loc.y, screen);
+		animFrame = trapHitState ? 2 : 1;
+		trapAnim.update(animFrame, pointB.x - loc.x, pointB.y - loc.y, screen);
 	}
+
 
 	void trap::setPointB(vec2 pB)
 	{
