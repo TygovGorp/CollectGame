@@ -4,7 +4,7 @@ namespace Tmpl8
 {
 	void will::init(Surface* screen)
 	{
-		willAnim.init(frameNum, "assets/temp_will.png", loc.x, loc.y, screen);
+		willAnim.init(frameNum, "assets/will.png", loc.x, loc.y, screen);
 	}
 
 	void will::update(Surface* screen)
