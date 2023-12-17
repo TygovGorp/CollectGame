@@ -14,25 +14,42 @@ namespace Tmpl8
 
 	void player::buildAnimation(Surface* surface)
 	{
-		playerDownAnim.init(12, "assets/player_down_", int(loc.x), int(loc.y), surface);
-		playerForwardAnim.init(12, "assets/player_forward_", int(loc.x), int(loc.y), surface);
-		playerLeftAnim.init(12, "assets/player_left_", int(loc.x), int(loc.y), surface);
-		playerRightAnim.init(12, "assets/player_right_", int(loc.x), int(loc.y), surface);
+		playerDownAnim.init(12, "assets/player/player_down_", int(loc.x), int(loc.y), surface);
+		playerForwardAnim.init(12, "assets/player/player_forward_", int(loc.x), int(loc.y), surface);
+		playerLeftAnim.init(12, "assets/player/player_left_", int(loc.x), int(loc.y), surface);
+		playerRightAnim.init(12, "assets/player/player_right_", int(loc.x), int(loc.y), surface);
 	}
 
 	void player::update(Surface* surface, float deltaTime)
 	{
 		totalTimeFromLastFrame += deltaTime;
-		if (totalTimeFromLastFrame >= 0.250 && animFrame < 4)
+		if (totalTimeFromLastFrame >= 0.150 && animFrame < 12)
 		{
 			animFrame++;
 			totalTimeFromLastFrame = 0;
 		}
-		else if (animFrame >= 4)
+		else if (totalTimeFromLastFrame >= 0.150 && animFrame >= 12)
 		{
 			animFrame = 1;
 		}
-		entityAnimation.update(animFrame, int(loc.x), int(loc.y), 60, 60, surface);
+
+		switch (facingDirection)
+		{
+		case 1:
+			playerDownAnim.update(animFrame, int(loc.x), int(loc.y), 60, 60, surface);
+			break;
+		case 2:
+			playerForwardAnim.update(animFrame, int(loc.x), int(loc.y), 60, 60, surface);
+			break;
+		case 3:
+			playerLeftAnim.update(animFrame, int(loc.x), int(loc.y), 60, 60, surface);
+			break;
+		case 4:
+			playerRightAnim.update(animFrame, int(loc.x), int(loc.y), 60, 60, surface);
+			break;
+		default:
+			break;
+		}
 		move(change, deltaTime);
 	}
 
@@ -104,22 +121,10 @@ namespace Tmpl8
 	}
 	void player::checkCollisionScreenBounds(int screenHight, int screenWidth, float deltaTime)
 	{
-		if (loc.y + 60 > screenHight ||
-			loc.y < 0 ||
-			loc.x + 60 > screenWidth ||
-			loc.x < 0
-			)
-		{
-			move(-lastChangeLoc, deltaTime);
-		}
-		if (loc.y + 60 > screenHight ||
-			loc.y < 0 ||
-			loc.x + 60 > screenWidth ||
-			loc.x < 0
-			)
-		{
-			move(-secondLastChangeLoc, deltaTime);
-		}
+		if (loc.y + 60 > screenHight) loc.y = ScreenHeight - 60;
+		if (loc.y < 0) loc.y = 0;
+		if (loc.x + 60 > screenHight) loc.x = ScreenHeight - 60;
+		if (loc.x < 0) loc.x = 0;
 	}
 
 	void player::setHitStateTrap(bool YN, int trapNum)

@@ -9,7 +9,7 @@ namespace Tmpl8
 	// -----------------------------------------------------------
 	void Game::Init()
 	{
-		Player.buildAnimation(screen, 4, "assets/player_");
+		Player.buildAnimation(screen);
 
 		Reset();
 
