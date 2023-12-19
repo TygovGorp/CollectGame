@@ -29,11 +29,11 @@ namespace Tmpl8
         vec2 secondLastChangeLoc;
         vector<bool> hittingATrap;
         bool spotted;
-        int facingDirection = 1; //1 = down, 2 = forward, 3 = left, 4 = right
-        animation playerDownAnim;
-        animation playerForwardAnim;
-        animation playerLeftAnim;
-        animation playerRightAnim;
+        int facingDirection = 0; //0 = idle, 1 = down, 2 = forward, 3 = left, 4 = right
+        animation playerAnim[5]; //0 = idle, 1 = down, 2 = forward, 3 = left, 4 = right
+
+
+
     };
 }
 

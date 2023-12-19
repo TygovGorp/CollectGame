@@ -6,18 +6,16 @@ namespace Tmpl8
 {
 	void player::init(int numOfTraps)
 	{
-		for (int i = 0; i < numOfTraps; i++)
-		{
-			hittingATrap.push_back(false);
-		}
+		for (int i = 0; i < numOfTraps; i++) hittingATrap.push_back(false);
 	}
 
 	void player::buildAnimation(Surface* surface)
 	{
-		playerDownAnim.init(12, "assets/player/player_down_", int(loc.x), int(loc.y), surface);
-		playerForwardAnim.init(12, "assets/player/player_forward_", int(loc.x), int(loc.y), surface);
-		playerLeftAnim.init(12, "assets/player/player_left_", int(loc.x), int(loc.y), surface);
-		playerRightAnim.init(12, "assets/player/player_right_", int(loc.x), int(loc.y), surface);
+		playerAnim[0].init(1, "assets/player/player_idle.png", int(loc.x), int(loc.y), surface);
+		playerAnim[1].init(12, "assets/player/player_down_", int(loc.x), int(loc.y), surface);
+		playerAnim[2].init(12, "assets/player/player_forward_", int(loc.x), int(loc.y), surface);
+		playerAnim[3].init(12, "assets/player/player_left_", int(loc.x), int(loc.y), surface);
+		playerAnim[4].init(12, "assets/player/player_right_", int(loc.x), int(loc.y), surface);
 	}
 
 	void player::update(Surface* surface, float deltaTime)
@@ -28,28 +26,14 @@ namespace Tmpl8
 			animFrame++;
 			totalTimeFromLastFrame = 0;
 		}
-		else if (totalTimeFromLastFrame >= 0.150 && animFrame >= 12)
+		else if ((totalTimeFromLastFrame >= 0.150 && animFrame >= 12) || facingDirection == 0)
 		{
+			totalTimeFromLastFrame = 0;
 			animFrame = 1;
 		}
+		
+		playerAnim[facingDirection].update(animFrame, int(loc.x), int(loc.y), 60, 60, surface);
 
-		switch (facingDirection)
-		{
-		case 1:
-			playerDownAnim.update(animFrame, int(loc.x), int(loc.y), 60, 60, surface);
-			break;
-		case 2:
-			playerForwardAnim.update(animFrame, int(loc.x), int(loc.y), 60, 60, surface);
-			break;
-		case 3:
-			playerLeftAnim.update(animFrame, int(loc.x), int(loc.y), 60, 60, surface);
-			break;
-		case 4:
-			playerRightAnim.update(animFrame, int(loc.x), int(loc.y), 60, 60, surface);
-			break;
-		default:
-			break;
-		}
 		move(change, deltaTime);
 	}
 
@@ -79,6 +63,8 @@ namespace Tmpl8
 			facingDirection = 4;
 			change.x = 1.0f;
 			break;
+		default:			
+			break;
 		}
 
 	}
@@ -89,21 +75,18 @@ namespace Tmpl8
 		{
 		case SDL_SCANCODE_W:
 		case SDL_SCANCODE_UP:
-			change.y = 0.0f;
-			break;
 		case SDL_SCANCODE_S:
 		case SDL_SCANCODE_DOWN:
 			change.y = 0.0f;
 			break;
 		case SDL_SCANCODE_A:
 		case SDL_SCANCODE_LEFT:
-			change.x = 0.0f;
-			break;
 		case SDL_SCANCODE_D:
 		case SDL_SCANCODE_RIGHT:
 			change.x = 0.0f;
 			break;
 		}
+		facingDirection = 0;
 	}
 
 	void player::checkCollisionWall(std::vector<wall> wallVec, float deltaTime)

@@ -24,10 +24,7 @@ public:
 	{ 
 		int temp_level = levelNum;
 		MMinst.Button(levelNum, mainMenuStage, difficulty, mouseX, mouseY, button);
-		if (temp_level != levelNum)
-		{
-			Init();
-		}
+		if (temp_level != levelNum) Init();
 	}
 	void MouseMove(int x, int y) 
 	{ 
