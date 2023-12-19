@@ -20,17 +20,51 @@ namespace Tmpl8
 
 	void player::update(Surface* surface, float deltaTime)
 	{
+		lastChangeLoc = change;
+		if (keyPressed[0] == true || keyPressed[1] == true) 
+		{
+			if (keyPressed[0] == true)//down
+			{
+				facingDirection = 1;
+				change.y = 1.0f;
+			}
+			if (keyPressed[1] == true) //up
+			{
+				facingDirection = 2;
+				change.y = -1.0f;
+			}
+		}
+		else { change.y = 0; }
+		if (keyPressed[2] == true || keyPressed[3] == true)
+		{
+			if (keyPressed[2] == true) //left
+			{
+				facingDirection = 3;
+				change.x = -1.0f;
+			}
+			if (keyPressed[3] == true) //right
+			{
+				facingDirection = 4;
+				change.x = 1.0f;
+			}
+		}
+		else { change.x = 0; }
+
+		if (keyPressed[0] == false && keyPressed[1] == false && keyPressed[2] == false && keyPressed[3] == false) facingDirection = 0;
+
+
 		totalTimeFromLastFrame += deltaTime;
 		if (totalTimeFromLastFrame >= 0.150 && animFrame < 12)
 		{
 			animFrame++;
 			totalTimeFromLastFrame = 0;
 		}
-		else if ((totalTimeFromLastFrame >= 0.150 && animFrame >= 12) || facingDirection == 0)
+		else if ((totalTimeFromLastFrame >= 0.150 && animFrame >= 12))
 		{
 			totalTimeFromLastFrame = 0;
 			animFrame = 1;
 		}
+		if(facingDirection == 0) animFrame = 1;
 		
 		playerAnim[facingDirection].update(animFrame, int(loc.x), int(loc.y), 60, 60, surface);
 
@@ -39,29 +73,24 @@ namespace Tmpl8
 
 	void player::moveWithInputs(int key)
 	{
-		lastChangeLoc = change;
 		//player movement with WASD and the arrow keys
 		switch (key)
 		{
-		case SDL_SCANCODE_W:
-		case SDL_SCANCODE_UP:
-			facingDirection = 2;
-			change.y = -1.0f;
-			break;
 		case SDL_SCANCODE_S:
 		case SDL_SCANCODE_DOWN:
-			facingDirection = 1;
-			change.y = 1.0f;
+			keyPressed[0] = true;
+			break;
+		case SDL_SCANCODE_W:
+		case SDL_SCANCODE_UP:
+			keyPressed[1] = true;
 			break;
 		case SDL_SCANCODE_A:
 		case SDL_SCANCODE_LEFT:
-			facingDirection = 3;
-			change.x = -1.0f;
+			keyPressed[2] = true;
 			break;
 		case SDL_SCANCODE_D:
 		case SDL_SCANCODE_RIGHT:
-			facingDirection = 4;
-			change.x = 1.0f;
+			keyPressed[3] = true;
 			break;
 		default:			
 			break;
@@ -73,20 +102,23 @@ namespace Tmpl8
 	{
 		switch (key)
 		{
-		case SDL_SCANCODE_W:
-		case SDL_SCANCODE_UP:
 		case SDL_SCANCODE_S:
 		case SDL_SCANCODE_DOWN:
-			change.y = 0.0f;
+			keyPressed[0] = false;
+			break;
+		case SDL_SCANCODE_W:
+		case SDL_SCANCODE_UP:
+			keyPressed[1] = false;
 			break;
 		case SDL_SCANCODE_A:
 		case SDL_SCANCODE_LEFT:
+			keyPressed[2] = false;
+			break;
 		case SDL_SCANCODE_D:
 		case SDL_SCANCODE_RIGHT:
-			change.x = 0.0f;
+			keyPressed[3] = false;
 			break;
 		}
-		facingDirection = 0;
 	}
 
 	void player::checkCollisionWall(std::vector<wall> wallVec, float deltaTime)

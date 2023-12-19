@@ -32,7 +32,7 @@ namespace Tmpl8
         int facingDirection = 0; //0 = idle, 1 = down, 2 = forward, 3 = left, 4 = right
         animation playerAnim[5]; //0 = idle, 1 = down, 2 = forward, 3 = left, 4 = right
 
-
+        bool keyPressed[4];//0 = down, 1 = forward, 2 = left, 3 = right
 
     };
 }
