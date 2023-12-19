@@ -42,22 +42,15 @@ namespace Tmpl8
 
 		if (targets.size() != 1)
 		{
-			if (targets.size() == latestAchievedTarget)
+			if (targets.size() == latestAchievedTarget) latestAchievedTarget = 0;
+
+			if ((loc.x == targets[latestAchievedTarget].x &&
+				loc.y == targets[latestAchievedTarget].y) || std::hypot(loc.x - targets[latestAchievedTarget].x, loc.y - targets[latestAchievedTarget].y) < 10)
 			{
-				latestAchievedTarget = 0;
+				loc = targets[latestAchievedTarget];
+				latestAchievedTarget++;
 			}
-			if (loc.x == targets[latestAchievedTarget].x &&
-				loc.y == targets[latestAchievedTarget].y)
-			{
-				if (latestAchievedTarget != targets.size())
-				{
-					latestAchievedTarget++;
-				}
-				else
-				{
-					latestAchievedTarget = 0;
-				}
-			}
+
 			else
 			{
 				if (loc.x - targets[latestAchievedTarget].x != 0)
@@ -68,6 +61,7 @@ namespace Tmpl8
 						orientation = 1; 
 						playerDetectionRay.init(vec2(cos(PI), sin(PI)), loc + 30);
 					}
+
 					else
 					{
 						move(vec2(1, 0), deltaTime);
@@ -76,6 +70,7 @@ namespace Tmpl8
 					}
 
 				}
+
 				else if (loc.y - targets[latestAchievedTarget].y != 0)
 				{
 					if (loc.y - targets[latestAchievedTarget].y > 0)
@@ -84,6 +79,7 @@ namespace Tmpl8
 						orientation = 2;
 						playerDetectionRay.init(vec2(static_cast<float>(cos(PI * 1.5)), static_cast<float>(sin(PI * 1.5))), loc + 30);
 					}
+
 					else
 					{
 						move(vec2(0, 1), deltaTime);
