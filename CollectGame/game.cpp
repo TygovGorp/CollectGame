@@ -78,7 +78,7 @@ namespace Tmpl8
 			uiInst.update(screen, levelNum, Player.getHP());
 
 			//set will collection state to true when colliding with it
-			if (Col.AABB(Player.getLoc() + 7 , Player.getLoc() + 52, WillInst.getLoc(), WillInst.getLoc() + 60) && !gameOver)
+			if (Col.AABB(Player.getLoc() + 7 , Player.getLoc() + 52, WillInst.getLoc() + 21, WillInst.getLoc() + 41) && !gameOver)
 			{
 				WillInst.Interaction();
 			}
