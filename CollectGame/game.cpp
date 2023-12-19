@@ -78,14 +78,14 @@ namespace Tmpl8
 			uiInst.update(screen, levelNum, Player.getHP());
 
 			//set will collection state to true when colliding with it
-			if (Col.AABB(Player.getLoc(), WillInst.getLoc()) && !gameOver)
+			if (Col.AABB(Player.getLoc() + 7 , Player.getLoc() + 52, WillInst.getLoc(), WillInst.getLoc() + 60) && !gameOver)
 			{
 				WillInst.Interaction();
 			}
 
 			for (int i = 0; i < trapVec.size(); i++)
 			{
-				bool collisionYN = Col.AABB(Player.getLoc(), vec2(Player.getLoc().x + 60, Player.getLoc().y + 60), trapVec[i].getLoc(), trapVec[i].getPointB());
+				bool collisionYN = Col.AABB(Player.getLoc() + 7, Player.getLoc().x + 52, trapVec[i].getLoc(), trapVec[i].getPointB());
 
 				//std::cout << "hitstate: " << Player.getHitStateTrap() << " collision: " << collisionYN << endl;
 				if (collisionYN && !Player.getHitStateTrap(i))

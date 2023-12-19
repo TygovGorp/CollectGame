@@ -8,29 +8,10 @@ namespace Tmpl8
 	{
 		targets = points;
 		loc = points[0];
-		enemyAnim.init(1, "assets/temp_Enemy.png", static_cast<int>(loc.x), static_cast<int>(loc.y), screen);
-	}
-
-	void enemy::setOrientation(Surface* screen)
-	{
-		if (prevOrientation != orientation)
-		{
-			switch (orientation)
-			{
-			case 1:
-				enemyAnim.init(1, "assets/temp_Enemy_240.png", static_cast<int>(loc.x), static_cast<int>(loc.y), screen);
-				break;
-			case 2:
-				enemyAnim.init(1, "assets/temp_Enemy.png", static_cast<int>(loc.x), static_cast<int>(loc.y), screen);
-				break;
-			case 3:
-				enemyAnim.init(1, "assets/temp_Enemy_90.png", static_cast<int>(loc.x), static_cast<int>(loc.y), screen);
-				break;
-			case 4:
-				enemyAnim.init(1, "assets/temp_Enemy_180.png", static_cast<int>(loc.x), static_cast<int>(loc.y), screen);
-				break;
-			}
-		}
+		enemyAnim[0].init(3, "assets/enemy/enemy_left_", static_cast<int>(loc.x), static_cast<int>(loc.y), screen);
+		enemyAnim[1].init(4, "assets/enemy/enemy_up_", static_cast<int>(loc.x), static_cast<int>(loc.y), screen);
+		enemyAnim[2].init(3, "assets//enemy/enemy_right_", static_cast<int>(loc.x), static_cast<int>(loc.y), screen);
+		enemyAnim[3].init(4, "assets/enemy/enemy_down_", static_cast<int>(loc.x), static_cast<int>(loc.y), screen);
 	}
 
 	void enemy::movement(float deltaTime)
@@ -58,14 +39,14 @@ namespace Tmpl8
 					if (loc.x - targets[latestAchievedTarget].x > 0)
 					{
 						move(vec2(-1,0), deltaTime);
-						orientation = 1; 
+						orientation = 0; 
 						playerDetectionRay.init(vec2(cos(PI), sin(PI)), loc + 30);
 					}
 
 					else
 					{
 						move(vec2(1, 0), deltaTime);
-						orientation = 3;
+						orientation = 2;
 						playerDetectionRay.init(vec2(cos(PI * 2), sin(PI * 2)), loc + 30);
 					}
 
@@ -76,14 +57,14 @@ namespace Tmpl8
 					if (loc.y - targets[latestAchievedTarget].y > 0)
 					{
 						move(vec2(0,-1), deltaTime);
-						orientation = 2;
+						orientation = 1;
 						playerDetectionRay.init(vec2(static_cast<float>(cos(PI * 1.5)), static_cast<float>(sin(PI * 1.5))), loc + 30);
 					}
 
 					else
 					{
 						move(vec2(0, 1), deltaTime);
-						orientation = 4;
+						orientation = 3;
 						playerDetectionRay.init(vec2(static_cast<float>(cos(PI * 0.5)), static_cast<float>(sin(PI * 0.5))), loc + 30);
 					}
 				}
@@ -93,10 +74,41 @@ namespace Tmpl8
 
 	void enemy::update(Surface* screen, player& Player, std::vector<wall>& wallVec, float deltaTime)
 	{
-		prevOrientation = orientation;
 
 		movement(deltaTime);
-		setOrientation(screen);
+
+		totalTimeFromLastFrame += deltaTime;
+
+
+		if (orientation == 0 || orientation == 2)
+		{
+			if (totalTimeFromLastFrame >= 0.150 && animFrame < 3)
+			{
+				animFrame++;
+				totalTimeFromLastFrame = 0;
+			}
+			else if ((animFrame >= 3))
+			{
+				totalTimeFromLastFrame = 0;
+				animFrame = 1;
+			}
+			enemyAnim[orientation].update(animFrame, loc.x, loc.y, 60, 60, screen);
+		}
+		else
+		{
+			if (totalTimeFromLastFrame >= 0.150 && animFrame < 4)
+			{
+				animFrame++;
+				totalTimeFromLastFrame = 0;
+			}
+			else if ((animFrame >= 4))
+			{
+				totalTimeFromLastFrame = 0;
+				animFrame = 1;
+			}
+			enemyAnim[orientation].update(animFrame, loc.x, loc.y, 60, 60, screen);
+		}
+		
 
 		colInst.rayWallCol(loc + 30, playerDetectionRay, wallVec);
 
@@ -104,7 +116,6 @@ namespace Tmpl8
 		{
 			Player.setSpotState(true);
 		}
-		enemyAnim.update(1, static_cast<int>(loc.x), static_cast<int>(loc.y), 60, 60, screen);
 
 		playerDetectionRay.draw(screen, 0xFFFFFF);
 	}
