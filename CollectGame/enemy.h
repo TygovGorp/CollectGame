@@ -10,9 +10,12 @@ namespace Tmpl8
 	class enemy : public entity
 	{
 	public:
+		//initialize the enemy animations
 		void init(vector<vec2> points, Surface* screen);
+		//update the player location and animations
 		void update(Surface* screen, player& Player, std::vector<wall>& wallVec, float deltaTime);
 
+		//set targets
 		void setTargets(std::vector<vec2> trgts) { targets = trgts; }
 	private:
 		void movement(float deltaTime);

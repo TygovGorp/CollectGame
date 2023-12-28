@@ -16,22 +16,25 @@ namespace Tmpl8
 
 	void enemy::movement(float deltaTime)
 	{
-		//if targets != 0
-		//	move in direction of next target
+		
+		
 		//	if location == next target
 		//		latestAchievedTarget++
-
+		//if targets != 0
 		if (targets.size() != 1)
 		{
+			//set next target to 0 if latestAchievedTarget is equal to number of targets
 			if (targets.size() == latestAchievedTarget) latestAchievedTarget = 0;
 
+			//set latestAchievedTarget to latestAchievedTarget + 1 if location is equal to latestAchievedTarget
 			if ((loc.x == targets[latestAchievedTarget].x &&
 				loc.y == targets[latestAchievedTarget].y) || std::hypot(loc.x - targets[latestAchievedTarget].x, loc.y - targets[latestAchievedTarget].y) < speed * deltaTime * 1.9f)
 			{
 				loc = targets[latestAchievedTarget];
 				latestAchievedTarget++;
 			}
-
+			
+			//move in direction of next target
 			else
 			{
 				if (loc.x - targets[latestAchievedTarget].x != 0)
@@ -79,7 +82,7 @@ namespace Tmpl8
 
 		totalTimeFromLastFrame += deltaTime;
 
-
+		//update animation depending on the orientation
 		if (orientation == 0 || orientation == 2)
 		{
 			if (totalTimeFromLastFrame >= 0.150 && animFrame < 3)
