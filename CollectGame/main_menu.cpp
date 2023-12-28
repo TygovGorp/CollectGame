@@ -26,6 +26,7 @@ namespace Tmpl8
 	}
 	void main_menu::Button(int& levelNum, int& mainMenuStage, int& difficulty, int mouseX, int mouseY, int key)
 	{
+		//goes to difficulty screen
 		if (levelNum == 0 && mainMenuStage == 1)
 		{
 			if (mouseX < 501 && mouseX > 300 &&
@@ -37,6 +38,7 @@ namespace Tmpl8
 		}
 		else if (levelNum == 0 && mainMenuStage == 3)
 		{
+			//goes to easy
 			if (mouseX < 505 && mouseX > 296 &&
 				mouseY < 349 && mouseY > 290 &&
 				key == 1)
@@ -45,6 +47,7 @@ namespace Tmpl8
 				levelNum = 1;
 				difficulty = 1;
 			}
+			//goes to medium
 			else if (mouseX < 554 && mouseX > 246 &&
 					mouseY < 412 && mouseY > 354 &&
 					key == 1)
@@ -53,6 +56,7 @@ namespace Tmpl8
 				levelNum = 1;
 				difficulty = 2;
 			}
+			//goes to hard
 			else if (mouseX < 501 && mouseX > 300 &&
 				mouseY < 478 && mouseY > 419 &&
 				key == 1)
@@ -66,19 +70,6 @@ namespace Tmpl8
 
 	void main_menu::returnToPrevScreen(int key, int& mainMenuStage)
 	{
-		if (key == SDL_SCANCODE_BACKSPACE)
-		{
-			switch (mainMenuStage)
-			{
-			case 1:
-
-				break;
-			case 3:
-				mainMenuStage = 1;
-				break;
-			default:
-				break;
-			}
-		}
+		if (key == SDL_SCANCODE_BACKSPACE && mainMenuStage == 3) mainMenuStage = 1;
 	}
 }
