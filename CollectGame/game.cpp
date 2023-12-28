@@ -28,8 +28,8 @@ namespace Tmpl8
 			levelManager.init(levelNum, difficulty, screen);
 
 			//initializes the player
-			Player.init(levelManager.getPlayerStartLoc().x, levelManager.getPlayerStartLoc().y);
-			Player.init(levelManager.getTrapVec().size());
+			Player.init(static_cast<int>(levelManager.getPlayerStartLoc().x), static_cast<int>(levelManager.getPlayerStartLoc().y));
+			Player.init(static_cast<int>(levelManager.getTrapVec().size()));
 
 			//initializes the line of sight system
 			losInst.init(Player.getLoc() + 30);
@@ -74,7 +74,7 @@ namespace Tmpl8
 		if (levelNum != 0)
 		{
 			//updates the light part of the line of sight system
-			//losInst.update_light(screen, Player.getLoc());
+			losInst.update_light(screen, Player.getLoc());
 
 			//updates the enemy, trap, walls
 			levelManager.update(screen, Player, deltaTime);
@@ -90,7 +90,7 @@ namespace Tmpl8
 			Player.update(screen, deltaTime);
 
 			//updates the dark part of the line of sight system
-			//losInst.update_darkness(screen, Player.getLoc(), levelManager.getWallVec());
+			losInst.update_darkness(screen, Player.getLoc(), levelManager.getWallVec());
 
 			//update the UI (level tracker and health)
 			uiInst.update(screen, levelNum, Player.getHP());

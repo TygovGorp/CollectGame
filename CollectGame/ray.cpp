@@ -75,7 +75,9 @@ namespace Tmpl8
 			// Gets intersection point
 			return vec2((pA.x + t * (pB.x - pA.x)), (pA.y + t * (pB.y - pA.y)));
 		}
+		return pB;
 	}
+
 	void ray::draw(Surface* screen, Pixel color)
 	{
 		screen->Line(pA.x, pA.y, pB.x, pB.y, color);

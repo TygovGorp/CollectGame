@@ -12,8 +12,8 @@ namespace Tmpl8
 	}
 	object::object(int LOCx, int LOCy)
 	{
-		loc.x = LOCx;
-		loc.y = LOCy;
+		loc.x = static_cast<float>(LOCx);
+		loc.y = static_cast<float>(LOCy);
 	}
 
 	void object::setLoc(vec2 LOC)
@@ -22,7 +22,7 @@ namespace Tmpl8
 	}
 	void object::setLoc(int LOCx, int LOCy)
 	{
-		loc.x = LOCx;
-		loc.y = LOCy;
+		loc.x = static_cast<float>(LOCx);
+		loc.y = static_cast<float>(LOCy);
 	}
 }

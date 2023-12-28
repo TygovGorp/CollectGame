@@ -23,7 +23,8 @@ namespace Tmpl8
 
 	private:
 		int NumOfFrames = 1;
-		int Xlocation, Ylocation;
+		int Xlocation = 0;
+		int Ylocation = 0;
 		std::vector<Sprite*> Frames;
 
 	};

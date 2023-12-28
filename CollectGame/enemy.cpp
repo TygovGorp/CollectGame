@@ -95,7 +95,7 @@ namespace Tmpl8
 				totalTimeFromLastFrame = 0;
 				animFrame = 1;
 			}
-			enemyAnim[orientation].update(animFrame, loc.x, loc.y, 60, 60, screen);
+			enemyAnim[orientation].update(animFrame, static_cast<int>(loc.x), static_cast<int>(loc.y), 60, 60, screen);
 		}
 		else
 		{
@@ -109,7 +109,7 @@ namespace Tmpl8
 				totalTimeFromLastFrame = 0;
 				animFrame = 1;
 			}
-			enemyAnim[orientation].update(animFrame, loc.x, loc.y, 60, 60, screen);
+			enemyAnim[orientation].update(animFrame, static_cast<int>(loc.x), static_cast<int>(loc.y), 60, 60, screen);
 		}
 		
 

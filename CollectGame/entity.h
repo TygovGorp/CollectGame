@@ -40,7 +40,7 @@ namespace Tmpl8
 		int HP = 3;
 		int DMG = 1;
 		int animFrame = 1;
-		float totalTimeFromLastFrame;
+		float totalTimeFromLastFrame = 0.0f;
 		animation entityAnimation;
 	};
 }

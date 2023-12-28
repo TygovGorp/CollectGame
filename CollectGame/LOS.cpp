@@ -33,7 +33,7 @@ namespace Tmpl8
 		//checks if the player has moved since last frame so it only preforms splitDarknessCalculation when it is necessary (when the player moved)
 		if (prevPlayerLoc.x != playerLoc.x || prevPlayerLoc.y != playerLoc.y)
 		{
-			int oneForthOfRaysSize = rays.size() / 4;
+			int oneForthOfRaysSize = static_cast<int>(rays.size()) / 4;
 
 			//creates new threads and sets them to preform the function: splitDarknessCalculation
 			std::thread darknessThread_1(&LOS::splitDarknessCalculation, this, screen, playerLoc, wallVec, 0, oneForthOfRaysSize);

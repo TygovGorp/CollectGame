@@ -4,13 +4,13 @@ namespace Tmpl8
 {
 	void trap::init(Surface* screen)
 	{
-		trapAnim.init(2, "assets/trap_", loc.x, loc.y, screen);
+		trapAnim.init(2, "assets/trap_", static_cast<int>(loc.x), static_cast<int>(loc.y), screen);
 	}
 
 	void trap::update(Surface* screen, bool trapHitState)
 	{
 		animFrame = trapHitState ? 2 : 1;
-		trapAnim.update(animFrame, pointB.x - loc.x, pointB.y - loc.y, screen);
+		trapAnim.update(animFrame, static_cast<int>(pointB.x - loc.x), static_cast<int>(pointB.y - loc.y), screen);
 	}
 
 

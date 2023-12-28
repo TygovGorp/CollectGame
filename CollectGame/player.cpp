@@ -147,10 +147,10 @@ namespace Tmpl8
 	void player::checkCollisionScreenBounds(int screenHight, int screenWidth, float deltaTime)
 	{
 		//checks if the player collides with a screen border and respond accordingly
-		if (loc.y + 60 > screenHight) loc.y = ScreenHeight - 60;
-		if (loc.y < 0) loc.y = 0;
-		if (loc.x + 52 > screenWidth) loc.x = screenWidth - 52;
-		if (loc.x + 7 < 0) loc.x = 0 - 7;
+		if (loc.y + 60 > screenHight) loc.y = static_cast<float>(ScreenHeight - 60);
+		if (loc.y < 0) loc.y = 0.0f;
+		if (loc.x + 52 > screenWidth) loc.x = static_cast<float>(screenWidth - 52);
+		if (loc.x + 7 < 0) loc.x = 0.0f - 7;
 	}
 
 	void player::setHitStateTrap(bool YN, int trapNum)

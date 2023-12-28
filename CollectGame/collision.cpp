@@ -29,11 +29,11 @@ namespace Tmpl8
 	bool collision::AABB(const vec2 recA1, const vec2 recA2, const vec2 recB1, const vec2 recB2) {
 		//written using https://tutorialedge.net/gamedev/aabb-collision-detection-tutorial/ as a reference
 
-		int Aw = recA2.x - recA1.x;
-		int Ah = recA2.y - recA1.y;
+		int Aw = static_cast<int>(recA2.x - recA1.x);
+		int Ah = static_cast<int>(recA2.y - recA1.y);
 
-		int Bw = recB2.x - recB1.x;
-		int Bh = recB2.y - recB1.y;
+		int Bw = static_cast<int>(recB2.x - recB1.x);
+		int Bh = static_cast<int>(recB2.y - recB1.y);
 
 		if (
 			recA1.x <  recB1.x + Bw &&
