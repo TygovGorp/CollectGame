@@ -7,19 +7,24 @@ namespace Tmpl8
 {
 	class animation
 	{
+	public:
+		~animation() {Frames.clear();}
+
+		//initializes the animation for use
+		void init(int NumFrames, char* filename, int Xloc, int Yloc, Surface* ScreenSurface);
+
+		//updates the animation
+		void update(int FrameCounter, int w, int h, Surface* screen);
+		//updates the animation with new location
+		void update(int FrameCounter, int updatedX, int updatedY, int w, int h, Surface* screen);
+
+		//converts string to char*
+		char* StrToCharStar(char* filename, int i);
+
 	private:
 		int NumOfFrames = 1;
 		int Xlocation, Ylocation;
 		std::vector<Sprite*> Frames;
 
-	public:
-		~animation() {Frames.clear();}
-
-		void init(int NumFrames, char* filename, int Xloc, int Yloc, Surface* ScreenSurface);
-
-		void update(int FrameCounter, int w, int h, Surface* screen);
-		void update(int FrameCounter, int updatedX, int updatedY, int w, int h, Surface* screen);
-
-		char* StrToCharStar(char* filename, int i);
 	};
 }
