@@ -9,12 +9,19 @@ namespace Tmpl8
     {
     public:
         using entity::init;
+        //initializes hittingATrap 
         void init(int numOfTraps);
+        //initializes all animations
         void buildAnimation(Surface* surface);
+        //updates the location and orientation
         void update(Surface* surface, float deltaTime);
+        //player movement with WASD and the arrow keys
         void moveWithInputs(int key);
+        //reset according to inputs
         void resetInputs(int key);
+        //checks if the player collides with a wall and respond accordingly
         void checkCollisionWall(std::vector<wall> wallVec, float deltaTime);
+        //checks if the player collides with a screen border and respond accordingly
         void checkCollisionScreenBounds(int screenHight, int screenWidth, float deltaTime);
 
         void setHitStateTrap(bool YN, int trapNum);

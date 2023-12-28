@@ -20,7 +20,10 @@ namespace Tmpl8
 
 	void player::update(Surface* surface, float deltaTime)
 	{
+		//set change and orientation
 		lastChangeLoc = change;
+
+		//y-axis
 		if (keyPressed[0] == true || keyPressed[1] == true) 
 		{
 			if (keyPressed[0] == true)//down
@@ -35,6 +38,7 @@ namespace Tmpl8
 			}
 		}
 		else { change.y = 0; }
+		//x-axis
 		if (keyPressed[2] == true || keyPressed[3] == true)
 		{
 			if (keyPressed[2] == true) //left
@@ -50,9 +54,10 @@ namespace Tmpl8
 		}
 		else { change.x = 0; }
 
+		//if no buttons are pressed set direction to idle
 		if (keyPressed[0] == false && keyPressed[1] == false && keyPressed[2] == false && keyPressed[3] == false) facingDirection = 0;
 
-
+		//update animation
 		totalTimeFromLastFrame += deltaTime;
 		if (totalTimeFromLastFrame >= 0.150 && animFrame < 12)
 		{
@@ -68,6 +73,8 @@ namespace Tmpl8
 		
 		playerAnim[facingDirection].update(animFrame, int(loc.x), int(loc.y), 60, 60, surface);
 
+
+		//move player
 		move(change, deltaTime);
 	}
 
@@ -100,6 +107,7 @@ namespace Tmpl8
 
 	void player::resetInputs(int key)
 	{
+		//reset inputs
 		switch (key)
 		{
 		case SDL_SCANCODE_S:
@@ -123,6 +131,7 @@ namespace Tmpl8
 
 	void player::checkCollisionWall(std::vector<wall> wallVec, float deltaTime)
 	{
+		//checks if the player collides with a wall and respond accordingly
 		for (int i = 0; i < wallVec.size() - 1; i++)
 		{
 			if (Col.AABB(vec2(loc.x + 7, loc.y), vec2(loc.x + 52, loc.y + 59), wallVec[i].getPointA(), wallVec[i].getPointB()))
@@ -137,6 +146,7 @@ namespace Tmpl8
 	}
 	void player::checkCollisionScreenBounds(int screenHight, int screenWidth, float deltaTime)
 	{
+		//checks if the player collides with a screen border and respond accordingly
 		if (loc.y + 60 > screenHight) loc.y = ScreenHeight - 60;
 		if (loc.y < 0) loc.y = 0;
 		if (loc.x + 52 > screenWidth) loc.x = screenWidth - 52;
