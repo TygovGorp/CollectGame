@@ -5,6 +5,7 @@ namespace Tmpl8
 	class base
 	{
 	public:
+		//sets location
 		base();
 		base(vec2 LOC);
 		base(int x, int y);
