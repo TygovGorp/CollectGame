@@ -72,7 +72,6 @@ namespace Tmpl8
 			R.calculatePB(cornerB, cornerC);
 			R.calculatePB(cornerC, cornerD);
 			R.calculatePB(cornerD, cornerA);
-
 		}
 	}
 }
