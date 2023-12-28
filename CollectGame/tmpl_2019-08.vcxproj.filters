@@ -125,12 +125,6 @@
     <Filter Include="game code\environment">
       <UniqueIdentifier>{e04d3ff1-7acb-4b9b-a44a-b153ef462e6a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game code\environment\object">
-      <UniqueIdentifier>{5105fee8-c85a-4371-a680-cf2f8e53ccdd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="game code\environment\object\will">
-      <UniqueIdentifier>{71ccc90b-3fe5-4a12-80ec-9c0feb159401}</UniqueIdentifier>
-    </Filter>
     <Filter Include="game code\organisms">
       <UniqueIdentifier>{3145edb8-bed9-4090-9e36-9e4f63f0bbe6}</UniqueIdentifier>
     </Filter>
@@ -142,9 +136,6 @@
     </Filter>
     <Filter Include="game code\environment\wall">
       <UniqueIdentifier>{d295f1a5-007f-435a-bd77-445e15fe4046}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="game code\environment\object\trap">
-      <UniqueIdentifier>{0456aae2-2dbc-48de-9b1a-973171f38883}</UniqueIdentifier>
     </Filter>
     <Filter Include="game code\tools\line of sight">
       <UniqueIdentifier>{75442b0d-0029-490b-a99a-5204b7f30f90}</UniqueIdentifier>
@@ -163,6 +154,15 @@
     </Filter>
     <Filter Include="game code\organisms\entity\enemy">
       <UniqueIdentifier>{09148e63-8ff8-416f-a54f-35fb9ec04c1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game code\environment\object">
+      <UniqueIdentifier>{5105fee8-c85a-4371-a680-cf2f8e53ccdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game code\environment\object\will">
+      <UniqueIdentifier>{71ccc90b-3fe5-4a12-80ec-9c0feb159401}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game code\environment\object\trap">
+      <UniqueIdentifier>{0456aae2-2dbc-48de-9b1a-973171f38883}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

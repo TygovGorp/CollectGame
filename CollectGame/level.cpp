@@ -18,6 +18,7 @@ namespace Tmpl8
 
 		screen = ScreenSurface;
 		fstream newfile;
+		//opens the level info text file
 		newfile.open("levels/level_" + to_string(difficulty) + "_" + to_string(levelNum) + ".txt", ios::in);
 
 		if (newfile.is_open()) {
@@ -44,6 +45,7 @@ namespace Tmpl8
 
 			while (getline(newfile, tp, ' ')) {
 
+				//checks if the next coordinates are for the will
 				if (tp.find("WillLocation") != std::string::npos)
 				{
 					nextWillLocation = true;
@@ -70,6 +72,7 @@ namespace Tmpl8
 					counter++;
 				}
 
+				//checks if the next coordinates are for the player
 				if (tp.find("PlayerLocation") != std::string::npos)
 				{
 					nextPlayerLocation = true;
@@ -95,6 +98,7 @@ namespace Tmpl8
 					counter++;
 				}
 
+				//checks if the next coordinates are for the trap
 				if (tp.find("TrapLocation") != std::string::npos)
 				{
 					nextTrapLocation = true;
@@ -126,7 +130,8 @@ namespace Tmpl8
 					}
 					counter++;
 				}
-
+				
+				//checks if the next coordinates are for the enemy
 				if (tp.find("EnemyLocation") != std::string::npos)
 				{
 					nextEnemyLocation = true;
@@ -185,6 +190,7 @@ namespace Tmpl8
 					}
 				}
 
+				//if non of the above apply it are coordinates for a wall
 				if (!nextWillLocation && !nextPlayerLocation && !nextTrapLocation && !nextEnemyLocation)
 				{
 					switch (counter)
@@ -215,6 +221,7 @@ namespace Tmpl8
 
 	void level::update(Surface* screen, player& Player, float deltaTime)
 	{
+		//updates the walls, traps and enemy's
 		for (int i = 0; i < wallVec.size(); i++)
 		{
 			wallVec[i].update(screen, 0x666666); //0x000000 0x666666

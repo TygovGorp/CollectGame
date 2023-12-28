@@ -10,7 +10,9 @@ namespace Tmpl8
 	class level
 	{
 	public:
+		//reads level_levelNum.txt file for level info and initializes it
 		void init(int levelNum, int difficulty, Surface* ScreenSurface);
+		//updates the walls, traps and enemy's
 		void update(Surface* screen, player& Player, float deltaTime);
 
 		vec2 getWillLoc();
