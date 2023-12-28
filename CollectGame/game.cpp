@@ -25,7 +25,7 @@ namespace Tmpl8
 		if (levelNum != 0)
 		{
 			//reads the level_x.txt and loads level
-			levelManager.init(levelNum, difficulty, screenFragVec, screen);
+			levelManager.init(levelNum, difficulty, screen);
 
 			//initializes the player
 			Player.init(levelManager.getPlayerStartLoc().x, levelManager.getPlayerStartLoc().y);

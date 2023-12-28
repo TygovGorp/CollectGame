@@ -7,7 +7,7 @@ using namespace std;
 
 namespace Tmpl8
 {
-	void level::init(int levelNum, int difficulty, screenFragment(&screenFragVec)[ScreenWidth / 30][ScreenHeight / 30], Surface* ScreenSurface)
+	void level::init(int levelNum, int difficulty, Surface* ScreenSurface)
 	{
 		wallVec.clear();
 		trapVec.clear();
@@ -210,20 +210,6 @@ namespace Tmpl8
 				}		
 			}
 			newfile.close();
-		}
-
-		for (int i = 0; i < ScreenWidth / 30; i++)
-		{
-			for (int j = 0; j < ScreenHeight / 30; j++)
-			{
-				for (int q = 0; q < wallVec.size(); q++)
-				{
-					if (collInst.AABB(vec2(i * 30, j * 30), vec2(i * 30 + 30, j * 30 + 30), wallVec[q].getPointA(), wallVec[q].getPointB()))
-					{
-						screenFragVec[i][j].addID(q);
-					}
-				}
-			}
 		}
 	}
 

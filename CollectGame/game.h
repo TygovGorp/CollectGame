@@ -6,7 +6,6 @@
 #include "UI.h"
 #include "LOS.h"
 #include "main_menu.h"
-#include "screenFragment.h"
 #include <iostream>
 
 namespace Tmpl8 {
@@ -19,11 +18,15 @@ public:
 	void Reset();
 	void Shutdown();
 	void Tick(float deltaTime);
-	void MouseUp(int button) { /* implement if you want to detect mouse button presses */ }
+	void MouseUp(int button) {}
 	void MouseDown(int button) 
 	{ 
 		int temp_level = levelNum;
+
+		//checks if you if you hit a button on the main menu and if so preforms the action associated with the button
 		MMinst.Button(levelNum, mainMenuStage, difficulty, mouseX, mouseY, button);
+
+		//checks if your current level is different from the one in the previous frame to see if it needs to initialize a new level
 		if (temp_level != levelNum) Init();
 	}
 	void MouseMove(int x, int y) 
@@ -44,8 +47,6 @@ private:
 	UI uiInst;
 	LOS losInst;
 	main_menu MMinst;
-
-	screenFragment screenFragVec[ScreenWidth / 30][ScreenHeight / 30];
 
 	animation gameOverScreen;
 	animation gameWinScreen;

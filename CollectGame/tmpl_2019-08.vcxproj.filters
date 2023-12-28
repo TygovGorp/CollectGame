@@ -55,9 +55,6 @@
     <ClCompile Include="enemy.cpp">
       <Filter>game code\organisms\entity\enemy</Filter>
     </ClCompile>
-    <ClCompile Include="screenFragment.cpp">
-      <Filter>game code\tools\line of sight</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="surface.h">
@@ -113,9 +110,6 @@
     </ClInclude>
     <ClInclude Include="enemy.h">
       <Filter>game code\organisms\entity\enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="screenFragment.h">
-      <Filter>game code\tools\line of sight</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

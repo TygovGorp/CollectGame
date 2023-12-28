@@ -235,7 +235,6 @@
     <ClCompile Include="object.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="ray.cpp" />
-    <ClCompile Include="screenFragment.cpp" />
     <ClCompile Include="surface.cpp" />
     <ClCompile Include="template.cpp" />
     <ClCompile Include="trap.cpp" />
@@ -256,7 +255,6 @@
     <ClInclude Include="object.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="ray.h" />
-    <ClInclude Include="screenFragment.h" />
     <ClInclude Include="surface.h" />
     <ClInclude Include="template.h" />
     <ClInclude Include="trap.h" />

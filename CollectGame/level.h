@@ -3,7 +3,6 @@
 #include "wall.h"
 #include "trap.h"
 #include "enemy.h"
-#include "screenFragment.h"
 #include "collision.h"
 
 namespace Tmpl8
@@ -11,7 +10,7 @@ namespace Tmpl8
 	class level
 	{
 	public:
-		void init(int levelNum, int difficulty, screenFragment(&screenFragVec)[ScreenWidth / 30][ScreenHeight / 30], Surface* ScreenSurface);
+		void init(int levelNum, int difficulty, Surface* ScreenSurface);
 		void update(Surface* screen, player& Player, float deltaTime);
 
 		vec2 getWillLoc();
