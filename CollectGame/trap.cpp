@@ -2,11 +2,6 @@
 
 namespace Tmpl8
 {
-	trap::trap()
-	{
-		
-	}
-
 	void trap::init(Surface* screen)
 	{
 		trapAnim.init(2, "assets/trap_", loc.x, loc.y, screen);

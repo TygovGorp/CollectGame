@@ -7,8 +7,10 @@ namespace Tmpl8
 	class trap : public object
 	{
 	public:
-		trap();
+		trap() {};
+		//initializes trapAnim
 		void init(Surface* screen);
+		//updates trapAnim
 		void update(Surface* screen, bool trapHitState);
 
 		void setPointB(vec2 pB);
