@@ -4,14 +4,14 @@
 
 namespace Tmpl8
 {
-	ray::ray(vec2 rel_end, vec2 pointA) //in radian
+	ray::ray(vec2 rel_end, vec2 pointA)
 	{
 		// Set end point relative to point A
 		// Add arbitrary length
 		relative_pB = rel_end * 3000.f;
 		pA = pointA;
 	}
-	void ray::init(vec2 rel_end, vec2 pointA) //in radian
+	void ray::init(vec2 rel_end, vec2 pointA)
 	{
 		// Set end point relative to point A
 		// Add arbitrary length
@@ -48,6 +48,7 @@ namespace Tmpl8
 	}
 	vec2 ray::calculatePA(vec2 linePointA, vec2 linePointB)
 	{
+		//sets value to calculations that are used more than once to optimize computing time
 		const float difXpApB = pA.x - pB.x;
 		const float difYpApB = pA.y - pB.y;
 
@@ -61,6 +62,7 @@ namespace Tmpl8
 			return pB;
 		}
 
+		//sets value to calculations that are used more than once to optimize computing time
 		const float difXpAlA = pA.x - linePointA.x;
 		const float difYpAlA = pA.y - linePointA.y;
 

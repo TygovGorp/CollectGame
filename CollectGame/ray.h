@@ -9,13 +9,19 @@ namespace Tmpl8
 	{
 	public:
 		ray() {};
+
+		// Set end point relative to point A and add arbitrary length
 		ray(vec2 rel_end, vec2 pointA);
 		void init(vec2 rel_end, vec2 pointA);
+
 		void resetPA(vec2 playerLoc);
 		
+		//calculates the intersection point between ray and line. sets pB to this point
 		void calculatePB(vec2 linePointA, vec2 linePointB);
+		//calculates the intersection point between ray and line. returns this point
 		vec2 calculatePA(vec2 linePointA, vec2 linePointB);
 		
+		//draws the line
 		void draw(Surface* screen, Pixel color);
 
 		void resetPB();
