@@ -78,8 +78,8 @@ namespace Tmpl8
 	{
 		//based on https://www.jeffreythompson.org/collision-detection/line-rect.php
 		//get width and height
-		int h = squareB.y - squareA.y;
-		int w = squareB.x - squareA.x;
+		int h = static_cast<int>(squareB.y - squareA.y);
+		int w = static_cast<int>(squareB.x - squareA.x);
 
 		bool top = false;
 		bool bottom = false;

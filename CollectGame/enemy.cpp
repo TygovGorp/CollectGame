@@ -118,7 +118,5 @@ namespace Tmpl8
 		{
 			Player.setSpotState(true);
 		}
-
-		playerDetectionRay.draw(screen, 0xFFFFFF);
 	}
 }
