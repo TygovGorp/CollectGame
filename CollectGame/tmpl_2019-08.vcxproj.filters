@@ -49,11 +49,14 @@
     <ClCompile Include="LOS.cpp">
       <Filter>game code\tools\line of sight</Filter>
     </ClCompile>
-    <ClCompile Include="main_menu.cpp">
-      <Filter>game code\environment</Filter>
-    </ClCompile>
     <ClCompile Include="enemy.cpp">
       <Filter>game code\organisms\entity\enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="main_menu.cpp">
+      <Filter>game code</Filter>
+    </ClCompile>
+    <ClCompile Include="storyManager.cpp">
+      <Filter>game code</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -105,11 +108,14 @@
     <ClInclude Include="LOS.h">
       <Filter>game code\tools\line of sight</Filter>
     </ClInclude>
-    <ClInclude Include="main_menu.h">
-      <Filter>game code\environment</Filter>
-    </ClInclude>
     <ClInclude Include="enemy.h">
       <Filter>game code\organisms\entity\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="main_menu.h">
+      <Filter>game code</Filter>
+    </ClInclude>
+    <ClInclude Include="storyManager.h">
+      <Filter>game code</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

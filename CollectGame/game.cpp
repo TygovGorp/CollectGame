@@ -24,6 +24,10 @@ namespace Tmpl8
 		//checks if you are in the main menu or not
 		if (levelNum != 0)
 		{
+			subLevelStage = 0;
+			
+			storyM.init(subLevelStage, levelNum, difficulty, screen);
+
 			//reads the level_x.txt and loads level
 			levelManager.init(levelNum, difficulty, screen);
 
@@ -73,85 +77,92 @@ namespace Tmpl8
 		//checks if it needs to load the main menu or a level
 		if (levelNum != 0)
 		{
-			//updates the light part of the line of sight system
-			losInst.update_light(screen, Player.getLoc());
-
-			//updates the enemy, trap, walls
-			levelManager.update(screen, Player, deltaTime);
-			
-			//updates the will
-			WillInst.update(screen);
-
-			//checks for collisions between the screen and player and moves it back to a valid location if they collide
-			Player.checkCollisionScreenBounds(ScreenHeight, ScreenWidth, deltaTime);
-			//checks for collisions between the walls and player and moves it back to a valid location if they collide
-			Player.checkCollisionWall(levelManager.getWallVec(), deltaTime);
-			//updates the player sprite and location
-			Player.update(screen, deltaTime);
-
-			//updates the dark part of the line of sight system
-			losInst.update_darkness(screen, Player.getLoc(), levelManager.getWallVec());
-
-			//update the UI (level tracker and health)
-			uiInst.update(screen, levelNum, Player.getHP());
-
-			//set will collection state to true when colliding with it
-			if (Col.AABB(Player.getLoc() + 7 , Player.getLoc() + 52, WillInst.getLoc() + 21, WillInst.getLoc() + 41) && !gameOver)
+			if (subLevelStage == 0)
 			{
-				WillInst.Interaction();
+				storyM.update(screen);
 			}
-
-			//checks if the player collides or is colliding with a trap and decreases the health if it does
-			for (int i = 0; i < trapVec.size(); i++)
+			else
 			{
-				//checks for collision between the player and trap with id i
-				bool collisionYN = Col.AABB(Player.getLoc() + 7, Player.getLoc().x + 52, trapVec[i].getLoc(), trapVec[i].getPointB());
+				//updates the light part of the line of sight system
+				losInst.update_light(screen, Player.getLoc());
 
-				//checks if the player collides for the first time or not, so it only decreases health once
-				if (collisionYN && !Player.getHitStateTrap(i))
+				//updates the enemy, trap, walls
+				levelManager.update(screen, Player, deltaTime);
+
+				//updates the will
+				WillInst.update(screen);
+
+				//checks for collisions between the screen and player and moves it back to a valid location if they collide
+				Player.checkCollisionScreenBounds(ScreenHeight, ScreenWidth, deltaTime);
+				//checks for collisions between the walls and player and moves it back to a valid location if they collide
+				Player.checkCollisionWall(levelManager.getWallVec(), deltaTime);
+				//updates the player sprite and location
+				Player.update(screen, deltaTime);
+
+				//updates the dark part of the line of sight system
+				losInst.update_darkness(screen, Player.getLoc(), levelManager.getWallVec());
+
+				//update the UI (level tracker and health)
+				uiInst.update(screen, levelNum, Player.getHP());
+
+				//set will collection state to true when colliding with it
+				if (Col.AABB(Player.getLoc() + 7, Player.getLoc() + 52, WillInst.getLoc() + 21, WillInst.getLoc() + 41) && !gameOver)
 				{
-					Player.setHitStateTrap(true, i);
-					Player.setHP(Player.getHP() - trapVec[i].getDMG());
+					WillInst.Interaction();
 				}
-				else if (!collisionYN && Player.getHitStateTrap(i))
+
+				//checks if the player collides or is colliding with a trap and decreases the health if it does
+				for (int i = 0; i < trapVec.size(); i++)
 				{
-					Player.setHitStateTrap(false, i);
+					//checks for collision between the player and trap with id i
+					bool collisionYN = Col.AABB(Player.getLoc() + 7, Player.getLoc().x + 52, trapVec[i].getLoc(), trapVec[i].getPointB());
+
+					//checks if the player collides for the first time or not, so it only decreases health once
+					if (collisionYN && !Player.getHitStateTrap(i))
+					{
+						Player.setHitStateTrap(true, i);
+						Player.setHP(Player.getHP() - trapVec[i].getDMG());
+					}
+					else if (!collisionYN && Player.getHitStateTrap(i))
+					{
+						Player.setHitStateTrap(false, i);
+					}
 				}
-			}
 
-			//game over if player is spotted
-			if (Player.getSpotState() == true)
-			{
-				gameSpottedScreen.update(1, ScreenWidth, ScreenHeight, screen);
-				gameOver = true;
-			}
+				//game over if player is spotted
+				if (Player.getSpotState() == true)
+				{
+					gameSpottedScreen.update(1, ScreenWidth, ScreenHeight, screen);
+					gameOver = true;
+				}
 
-			//game over if player heath reaches 0
-			if (Player.getHP() <= 0)
-			{
-				gameOverScreen.update(1, ScreenWidth, ScreenHeight, screen);
-				gameOver = true;
-			}
+				//game over if player heath reaches 0
+				if (Player.getHP() <= 0)
+				{
+					gameOverScreen.update(1, ScreenWidth, ScreenHeight, screen);
+					gameOver = true;
+				}
 
-			//load next level when will is collected
-			if (WillInst.getState() && levelNum != maxLevelNum)
-			{
-				levelCleared[levelNum] = true;
-				levelNum++;
-				Init();
-				WillInst.resetState();
-			}
+				//load next level when will is collected
+				if (WillInst.getState() && levelNum != maxLevelNum)
+				{
+					levelCleared[levelNum] = true;
+					levelNum++;
+					Init();
+					WillInst.resetState();
+				}
 
-			//game win screen when will is collected in the last level
-			if (levelNum == maxLevelNum && WillInst.getState())
-			{
-				gameWinScreen.update(1, ScreenWidth, ScreenHeight, screen);
-			}
+				//game win screen when will is collected in the last level
+				if (levelNum == maxLevelNum && WillInst.getState())
+				{
+					gameWinScreen.update(1, ScreenWidth, ScreenHeight, screen);
+				}
+			}	
 		}
 		else
 		{
 			//updates the main menu
-			MMinst.update(levelNum, mainMenuStage, screen);
+			MMinst.update(levelNum, subLevelStage, screen);
 		}
 	}
 };

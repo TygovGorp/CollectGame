@@ -6,7 +6,7 @@
 #include "UI.h"
 #include "LOS.h"
 #include "main_menu.h"
-#include <iostream>
+#include "storyManager.h"
 
 namespace Tmpl8 {
 class Surface;
@@ -22,12 +22,15 @@ public:
 	void MouseDown(int button) 
 	{ 
 		int temp_level = levelNum;
+		int temp_subLevel = subLevelStage;
+
+		storyM.nextStage(button, subLevelStage, levelNum);
 
 		//checks if you if you hit a button on the main menu and if so preforms the action associated with the button
-		MMinst.Button(levelNum, mainMenuStage, difficulty, mouseX, mouseY, button);
+		MMinst.Button(levelNum, subLevelStage, difficulty, mouseX, mouseY, button);
 
 		//checks if your current level is different from the one in the previous frame to see if it needs to initialize a new level
-		if (temp_level != levelNum) Init();
+		if (temp_level != levelNum && temp_subLevel != subLevelStage) Init();
 	}
 	void MouseMove(int x, int y) 
 	{ 
@@ -35,7 +38,7 @@ public:
 		mouseY = y;
 	}
 	void KeyUp(int key) { Player.resetInputs(key); }
-	void KeyDown(int key) { Player.moveWithInputs(key); MMinst.returnToPrevScreen(key, mainMenuStage); }
+	void KeyDown(int key) { Player.moveWithInputs(key); MMinst.returnToPrevScreen(key, subLevelStage); }
 private:
 	Surface* screen;
 	player Player;
@@ -47,6 +50,7 @@ private:
 	UI uiInst;
 	LOS losInst;
 	main_menu MMinst;
+	storyManager storyM;
 
 	animation gameOverScreen;
 	animation gameWinScreen;
@@ -58,7 +62,7 @@ private:
 	bool gameOver = false;
 
 	int levelNum = 0;
-	int mainMenuStage = 1;
+	int subLevelStage = 1;
 	int difficulty; //1 = easy 2 = medium 3 = hard
 	const int maxLevelNum = 3;
 	bool levelCleared[3] = { false };

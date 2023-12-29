@@ -44,6 +44,7 @@ namespace Tmpl8
 				key == 1)
 			{
 				//easy
+				mainMenuStage = 0;
 				levelNum = 1;
 				difficulty = 1;
 			}
@@ -53,6 +54,7 @@ namespace Tmpl8
 					key == 1)
 			{
 				//medium
+				mainMenuStage = 0;
 				levelNum = 1;
 				difficulty = 2;
 			}
@@ -62,6 +64,7 @@ namespace Tmpl8
 				key == 1)
 			{
 				//hard
+				mainMenuStage = 0;
 				levelNum = 1;
 				difficulty = 3;
 			}
