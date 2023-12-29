@@ -1,71 +1,55 @@
-BRIEF INFO ON THE 2019-08 TEMPLATE
-Template, BUAS version https://www.buas.nl/games
-IGAD/BUAS(NHTV)/UU - Jacco Bikker - 2006-2020
+The Will Collector
+---------------------------------------
+A game made for the intake assignement of CMGT at the BUAS 24-25 in the direction of programming.
 
-Purpose:
-The template has been designed to make it easy to start coding C++
-using games and graphics. It intends to offer the programmer a
-simple library with the main purpose of providing a 32-bit graphical
-window with a linear frame buffer. Some basic additional functionality
-is available, such as sprites, bitmap fonts, and vector math support.
+--Story
+In the dimly lit corridors of the ancient dungeon, a lone figure moved silently through the shadows. This was no ordinary adventurer; he was the Will Collector, the last survivor of a once-vibrant party of daring dungeon delvers. He had a solemn duty to fulfill.
 
-How to use:
-1. Copy the template folder (or extract the zip) to a fresh folder for
-   your project. 
-2. Open the .sln file with any version of Visual Studio 2019.
-3. Replace the example code in game.cpp with your own code.
-4. Copy the 64-bit dll's from dlls_x64 to the project folder if you
-   want to run a 64-bit build.
-You can go further by:
-- Expanding the game class in game.h;
-- Implementing some of the empty functions for mouse and keyboard
-  handling;
-- Exploring the code of the template in surface.cpp and template.cpp.
+his party had been the best in the business, renowned for their courage and skill. But their last expedition had gone horribly wrong. A powerful enchantment had been triggered, sealing the entrance behind them and scattering his companions' lifeless bodies throughout the labyrinthine depths of the dungeon.
 
-When handing in assignments based on this template, please run
-clean.bat prior to zipping the folder. This deletes any intermediate
-files created during compilation.
+As the Will Collector, it was his responsibility to recover the wills of his fallen comrades and bring them back to their grieving families. It was a task of utmost importance, for the wills contained not only the wishes and final thoughts of the deceased but also the key to their family's future.
 
-The Template is a 'quickstart' template, and not meant to be elaborate
-performant or complete. 
-At some point, and depending on your requirements, you may want to
-advance to a more full-fledged library, or you can expand the template
-with OpenGL or SDL2 code.
+He crept silently through the darkness, his footsteps barely making a sound on the cold, stone floor. He knew that the dungeon was far from empty; dangerous creatures and traps lurked around every corner. But he was skilled in the art of stealth, and his years of experience had made him a master of evasion.
 
-Credits
-Although the template is small and bare bones, it still uses a lot of
-code gathered over the years:
-- EasyCE's 5x5 bitmap font (primarily used for debugging);
-- EasyCE's surface class (with lots of modifications);
-- This version of the template uses SDL2 for low-level window handling,
-  hopefully improving on the compatibility of earlier versions.
+The first will was hidden deep within a chamber filled with sinister traps. His nimble fingers deftly disarmed the mechanisms, and he retrieved the parchment bearing his comrade's final wishes. He carefully placed it in a pouch at his side, a solemn reminder of the lives lost.
 
-Copyright
-This code is completely free to use and distribute in any form.
+Each will was a piece of the puzzle, guiding him deeper into the dungeon's treacherous heart. But his determination never wavered, and he pressed on, honoring the memory of his fallen friends.
 
-Template Naming
-Starting January 2017, the name of the template represents the version.
-This version also appears in the title of the window. Make sure you
-are using the most recent version.
+As he ventured further into the abyss, he couldn't help but reminisce about his party's past adventures. The laughter, the camaraderie, and the shared triumphs fueled his resolve. He would not let their deaths be in vain.
 
-Breda, 2014-2019, Games @ Breda University (NHTV/IGAD)
-Utrecht, 2015-2019, Utrecht University
-Report problems and suggestions to Robbie Grigg if working on this 
-connected to Breda University then email grigg.r@buas.nl
-otherwise bikker.j@gmail.com .
+Now laden with the weight of his party's collective wishes and dreams. The journey was arduous, but he was driven by the knowledge that he was their last hope.
+
+Finally, he emerged into the daylight, carrying the precious wills of his fallen comrades. He fulfilled his solemn duty, delivering each will to its rightful family. The tears, smiles, and gratitude of those he met were a bittersweet reward.
+
+Though his party was gone, their memory lived on in the hearts of those they had touched. he, the Will Collector, had ensured that their final wishes were granted, and their legacy would endure. In the end, he had not only collected their wills but also preserved their spirit of adventure and camaraderie for generations to come.
+
+--Features
+1. movement [WASD] and [arrow-keys]
+2. player collisions between walls, the window, enemy's and the will
+3. the collection of the will's a the fallen party members
+4. a line of sight system
+5. patroling enemy's
+6. a UI featuring a level and health tracker
+7. a easy, normal and hard difficulty
+8. 3 levels per difficulty
+9. traps that deal 1 heart of damage
+10. enemy's that can spot you causing an instant game over
+11. a main menu containing the title
+12. a difficulty selection screen
+13. a story line
 
 
-Changelog
+--Download--
+1. Download the zip file
+2. Extract the files from the zip file
+3. Open the .exe file called "The_Willcollector_x64"
 
-v2019-08:
-removed headers from the precompiled header file to speed up compilation 
-fixed uninitialised values in the surface class. 
+--How to play!--
+Open the .exe file, this will send you to the main menu. Press play and choice a difficlty (if you want to go back to the title screen while in the difficulty screen press [Backspace]). U can use the [w][a][s][d] and/or [Arrow Up][Arrow Down][Arrow Left][Arrow Right] to move around.
+Collect the Will's (the scroll) of your fallen comrades to proceed to the next level while avoiding potential traps and enemy's that may be there as well.
 
-v2017-01: 
-initial DGDARC release.
-
-v2017-02:
-added a changelog.
-debug mode now also emits .exe to project folder.
-removed rogue SDL2 folder.
-added assert.h to precomp.h.
+--Credits--
+thank you:
+* Snoblinart (https://snoblin.itch.io) for the skeleton sprite and heart sprites
+* Anokolisa (https://twitter.com/Anokolisa) for the trap sprite
+* RunninBlood (https://twitter.com/RunninBlood) for the player sprite
