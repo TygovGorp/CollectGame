@@ -30,7 +30,7 @@ A game made for the intake assignment of CMGT at the BUAS 24-25 in the direction
 
 
 ## Story
-In the dimly lit corridors of the ancient dungeon, a lone figure moved silently through the shadows. This was no ordinary adventurer; he was _The Will Collector_, the last survivor of a once-vibrant party of daring dungeon delvers. He had a solemn duty to fulfill.
+In the dimly lit corridors of the ancient dungeon, a lone figure moved silently through the shadows. This was no ordinary adventurer; you are _The Will Collector_, the last survivor of a once-vibrant party of daring dungeon delvers. You have a solemn duty to fulfill.
 
 Your party had been the best in the business, renowned for their courage and skill. But their last expedition had gone horribly wrong. A powerful enchantment had been triggered, sealing the entrance behind them and scattering his companions' lifeless bodies throughout the labyrinthine depths of the dungeon.
 
