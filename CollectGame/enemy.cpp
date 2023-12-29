@@ -26,7 +26,7 @@ namespace Tmpl8
 
 			//set latestAchievedTarget to latestAchievedTarget + 1 if location is equal to latestAchievedTarget
 			if ((loc.x == targets[latestAchievedTarget].x &&
-				loc.y == targets[latestAchievedTarget].y) || std::hypot(loc.x - targets[latestAchievedTarget].x, loc.y - targets[latestAchievedTarget].y) <= speed * deltaTime * 2.5f)
+				loc.y == targets[latestAchievedTarget].y) || std::hypot(loc.x - targets[latestAchievedTarget].x, loc.y - targets[latestAchievedTarget].y) <= speed * deltaTime * 1.9f)
 			{
 				loc = targets[latestAchievedTarget];
 				latestAchievedTarget++;
