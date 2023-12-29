@@ -1,19 +1,55 @@
-CollectGame
-A game made for the intake assignement of CMGT at the BUAS 24-25 in the direction of programming
+The Will Collector
+---------------------------------------
+A game made for the intake assignement of CMGT at the BUAS 24-25 in the direction of programming.
 
-Story
-While you and your companions were exploring somthing terrible happends which caused the entire party to die exept you. As the final survivor of the party it is your task to collect the will's left behind by you companions.
+--Story
+In the dimly lit corridors of the ancient dungeon, a lone figure moved silently through the shadows. This was no ordinary adventurer; he was the Will Collector, the last survivor of a once-vibrant party of daring dungeon delvers. He had a solemn duty to fulfill.
 
-Features
-1. WASD and arrow movement
-2. Wall and Window collisions
-3. the collection of the will's
+his party had been the best in the business, renowned for their courage and skill. But their last expedition had gone horribly wrong. A powerful enchantment had been triggered, sealing the entrance behind them and scattering his companions' lifeless bodies throughout the labyrinthine depths of the dungeon.
 
-Download
+As the Will Collector, it was his responsibility to recover the wills of his fallen comrades and bring them back to their grieving families. It was a task of utmost importance, for the wills contained not only the wishes and final thoughts of the deceased but also the key to their family's future.
+
+He crept silently through the darkness, his footsteps barely making a sound on the cold, stone floor. He knew that the dungeon was far from empty; dangerous creatures and traps lurked around every corner. But he was skilled in the art of stealth, and his years of experience had made him a master of evasion.
+
+The first will was hidden deep within a chamber filled with sinister traps. His nimble fingers deftly disarmed the mechanisms, and he retrieved the parchment bearing his comrade's final wishes. He carefully placed it in a pouch at his side, a solemn reminder of the lives lost.
+
+Each will was a piece of the puzzle, guiding him deeper into the dungeon's treacherous heart. But his determination never wavered, and he pressed on, honoring the memory of his fallen friends.
+
+As he ventured further into the abyss, he couldn't help but reminisce about his party's past adventures. The laughter, the camaraderie, and the shared triumphs fueled his resolve. He would not let their deaths be in vain.
+
+Now laden with the weight of his party's collective wishes and dreams. The journey was arduous, but he was driven by the knowledge that he was their last hope.
+
+Finally, he emerged into the daylight, carrying the precious wills of his fallen comrades. He fulfilled his solemn duty, delivering each will to its rightful family. The tears, smiles, and gratitude of those he met were a bittersweet reward.
+
+Though his party was gone, their memory lived on in the hearts of those they had touched. he, the Will Collector, had ensured that their final wishes were granted, and their legacy would endure. In the end, he had not only collected their wills but also preserved their spirit of adventure and camaraderie for generations to come.
+
+--Features
+1. movement [WASD] and [arrow-keys]
+2. player collisions between walls, the window, enemy's and the will
+3. the collection of the will's a the fallen party members
+4. a line of sight system
+5. patroling enemy's
+6. a UI featuring a level and health tracker
+7. a easy, normal and hard difficulty
+8. 3 levels per difficulty
+9. traps that deal 1 heart of damage
+10. enemy's that can spot you causing an instant game over
+11. a main menu containing the title
+12. a difficulty selection screen
+13. a story line
+
+
+--Download--
 1. Download the zip file
-2. Extract the file from the zip file
-3. Open the .exe file called "The_Willcollector_x86"
+2. Extract the files from the zip file
+3. Open the .exe file called "The_Willcollector_x64"
 
-How to play!
-U can use the [w][a][s][d] and/or [Arrow Up][Arrow Down][Arrow Left][Arrow Right] to move around.
-Collect the Will's (the yellow block) of your fallen comrades to proceed to the next level.
+--How to play!--
+Open the .exe file, this will send you to the main menu. Press play and choice a difficlty (if you want to go back to the title screen while in the difficulty screen press [Backspace]). U can use the [w][a][s][d] and/or [Arrow Up][Arrow Down][Arrow Left][Arrow Right] to move around.
+Collect the Will's (the scroll) of your fallen comrades to proceed to the next level while avoiding potential traps and enemy's that may be there as well.
+
+--Credits--
+thank you:
+* Snoblinart (https://snoblin.itch.io) for the skeleton sprite and heart sprites
+* Anokolisa (https://twitter.com/Anokolisa) for the trap sprite
+* RunninBlood (https://twitter.com/RunninBlood) for the player sprite
