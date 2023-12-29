@@ -6,7 +6,7 @@ A game made for the intake assignment of CMGT at the BUAS 24-25 in the direction
 --Story--
 In the dimly lit corridors of the ancient dungeon, a lone figure moved silently through the shadows. This was no ordinary adventurer; he was The Will Collector, the last survivor of a once-vibrant party of daring dungeon delvers. He had a solemn duty to fulfill.
 
-His party had been the best in the business, renowned for their courage and skill. But their last expedition had gone horribly wrong. A powerful enchantment had been triggered, sealing the entrance behind them and scattering his companions' lifeless bodies throughout the labyrinthine depths of the dungeon.
+Your party had been the best in the business, renowned for their courage and skill. But their last expedition had gone horribly wrong. A powerful enchantment had been triggered, sealing the entrance behind them and scattering his companions' lifeless bodies throughout the labyrinthine depths of the dungeon.
 
 As The Will Collector, it is your responsibility to recover the wills of your fallen comrades and bring them back to their grieving families. It is a task of utmost importance, for the wills contain not only the wishes and final thoughts of the deceased but also the key to their family's future.
 
@@ -32,7 +32,7 @@ Though your party is gone, their memory lived on in the hearts of those they had
 5. patroling enemies
 6. an UI featuring a level and health tracker
 7. an easy, normal and hard difficulty mode
-8. 3 levels per difficulty
+8. 3 levels per difficulty mode
 9. traps that deal 1 heart of damage
 10. enemies that can spot you causing an instant game over
 11. a main menu containing the title
@@ -44,7 +44,7 @@ Though your party is gone, their memory lived on in the hearts of those they had
 1. go to releases
 2. Download the zip file
 3. Extract the files from the zip file
-4. Open the file called "The_Willcollector_x64.exe"
+4. Open the file called "TheWillcollectorx64.exe"
 
 --How to play!--
 Open the .exe file, this will send you to the main menu. Press play and choose a difficulty mode (if you want to go back to the main menu while in the difficulty screen press [Backspace]). You can use the [W] [A] [S] [D] or [Arrow Up] [Arrow Down] [Arrow Left] [Arrow Right] to move around.
