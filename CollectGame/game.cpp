@@ -84,7 +84,7 @@ namespace Tmpl8
 			else
 			{
 				//updates the light part of the line of sight system
-				losInst.update_light(screen, Player.getLoc());
+				//losInst.update_light(screen, Player.getLoc());
 
 				//updates the enemy, trap, walls
 				levelManager.update(screen, Player, deltaTime);
@@ -100,7 +100,7 @@ namespace Tmpl8
 				Player.update(screen, deltaTime);
 
 				//updates the dark part of the line of sight system
-				losInst.update_darkness(screen, Player.getLoc(), levelManager.getWallVec());
+				//losInst.update_darkness(screen, Player.getLoc(), levelManager.getWallVec());
 
 				//update the UI (level tracker and health)
 				uiInst.update(screen, levelNum, Player.getHP());

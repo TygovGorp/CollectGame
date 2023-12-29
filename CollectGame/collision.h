@@ -15,6 +15,9 @@ namespace Tmpl8
 
 		//collision between line and a wall (square)
 		void rayWallCol(vec2 pointA, ray& R, std::vector<wall> wallVec);
+
+		//collision between line and square
+		bool lineSquareCol(ray Ray, vec2 squareA, vec2 squareB);
 	};
 }
 

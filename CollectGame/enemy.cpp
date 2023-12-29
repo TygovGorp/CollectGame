@@ -115,7 +115,7 @@ namespace Tmpl8
 
 		colInst.rayWallCol(loc + 30, playerDetectionRay, wallVec);
 
-		if (colInst.AABB(Player.getLoc(), Player.getLoc() + 60, loc, vec2(playerDetectionRay.getPB().x, playerDetectionRay.getPB().y)) && Player.getSpotState() != true)
+		if (colInst.lineSquareCol(playerDetectionRay, Player.getLoc() + 7, Player.getLoc() + 52) && Player.getSpotState() != true)
 		{
 			Player.setSpotState(true);
 		}

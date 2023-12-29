@@ -74,4 +74,29 @@ namespace Tmpl8
 			R.calculatePB(cornerD, cornerA);
 		}
 	}
+	bool collision::lineSquareCol(ray Ray, vec2 squareA, vec2 squareB)
+	{
+		int h = squareB.y - squareA.y;
+		int w = squareB.x - squareA.x;
+
+		bool top = false;
+		bool bottom = false;
+		bool left = false;
+		bool right = false;
+
+		vec2 topHitCord = Ray.calculatePA(squareA, vec2(squareB.x, squareB.y - h));
+		if (topHitCord.x != Ray.getPB().x && topHitCord.y != Ray.getPB().y) top = true;
+
+		vec2 bottomHitCord = Ray.calculatePA(vec2(squareA.x, squareA.y + h), squareB);
+		if (bottomHitCord.x != Ray.getPB().x && bottomHitCord.y != Ray.getPB().y) bottom = true;
+
+		vec2 leftHitCord = Ray.calculatePA(squareA, vec2(squareB.x- w, squareB.y));
+		if (leftHitCord.x != Ray.getPB().x && leftHitCord.y != Ray.getPB().y) left = true;
+
+		vec2 rightHitCord = Ray.calculatePA(vec2(squareA.x + w, squareA.y), squareB);
+		if (rightHitCord.x != Ray.getPB().x && rightHitCord.y != Ray.getPB().y) right = true;
+
+
+		return left || right || top || bottom ? true : false;
+	}
 }
