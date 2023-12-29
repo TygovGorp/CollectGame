@@ -76,6 +76,7 @@ namespace Tmpl8
 	}
 	bool collision::lineSquareCol(ray Ray, vec2 squareA, vec2 squareB)
 	{
+		//based on https://www.jeffreythompson.org/collision-detection/line-rect.php
 		//get width and height
 		int h = squareB.y - squareA.y;
 		int w = squareB.x - squareA.x;
