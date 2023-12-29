@@ -9,15 +9,16 @@ namespace Tmpl8
 
 		if (subLevelStage == 0)
 		{
+			//adds the right numbers into to filename so that it can find the right file
+
 			std::string filename_str(filename); // convert char* to std::string
 			filename_str = filename_str + std::to_string(levelNum) + ".png";
 
 			char* filename_cstr = new char[filename_str.length() + 1];
 			std::strcpy(filename_cstr, filename_str.c_str());
 
+			//initializes the animation
 			storyAnim.init(1, filename_cstr, 1, 1, screen);
-
-			std::cout << filename_cstr << std::endl;
 
 			delete[] filename_cstr;
 		}	
