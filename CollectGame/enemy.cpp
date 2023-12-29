@@ -112,9 +112,10 @@ namespace Tmpl8
 			enemyAnim[orientation].update(animFrame, static_cast<int>(loc.x), static_cast<int>(loc.y), 60, 60, screen);
 		}
 		
-
+		//set end of the detection ray to the first wall it hits (so they can't see through walls)
 		colInst.rayWallCol(loc + 30, playerDetectionRay, wallVec);
 
+		//checks if the player collides with the detection ray
 		if (colInst.lineSquareCol(playerDetectionRay, Player.getLoc() + 7, Player.getLoc() + 52) && Player.getSpotState() != true)
 		{
 			Player.setSpotState(true);
