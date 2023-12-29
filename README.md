@@ -24,7 +24,7 @@ A game made for the intake assignment of CMGT at the BUAS 24-25 in the direction
 
 <br><br>
 
-![ Demo video of the game](assets/ReadMe_DemoVid.gif)
+![ Demo video of the game](CollectGame/assets/ReadMe_DemoVid.gif)
 
 
 
