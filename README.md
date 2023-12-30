@@ -11,7 +11,7 @@ A game made for the intake assignment of CMGT at the BUAS 24-25 in the direction
 </div>
 
 <div align="center">
-    <a href="#story">story</a>
+    <a href="#Story">Story</a>
     ·
     <a href="#Features">Features</a>
     ·
