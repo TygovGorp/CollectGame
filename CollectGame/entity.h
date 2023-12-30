@@ -19,16 +19,16 @@ namespace Tmpl8
 		void build(int hp, int dmg, vec2 LOC);
 		void build(int hp, int dmg, int xloc, int yloc);
 
-		void update();
+		void update(Surface* surface);
 
-		void move(int xDifference, int yDifference);
+		void move(vec2 change, float deltaTime);
 
 		void setHP(int hp) { HP = hp; };
 		void setDMG(int dmg) { DMG = dmg; };
 		void setLoc(vec2 Loc) { loc = Loc; };
 		void setLoc(int x, int y) { 
-			loc.x = x; 
-			loc.y = y; 
+			loc.x = static_cast<float>(x); 
+			loc.y = static_cast<float>(y);
 		};
 
 		int getHP() { return HP; };
@@ -36,8 +36,11 @@ namespace Tmpl8
 		vec2 getLoc() { return loc; };
 
 	protected:
-		int HP = 10;
-		int DMG = 5;
+		int speed = 50;
+		int HP = 3;
+		int DMG = 1;
+		int animFrame = 1;
+		float totalTimeFromLastFrame = 0.0f;
 		animation entityAnimation;
 	};
 }

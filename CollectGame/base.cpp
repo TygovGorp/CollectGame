@@ -13,13 +13,13 @@ namespace Tmpl8
 	}
 	base::base(int x, int y)
 	{
-		loc.x = x;
-		loc.y = y;
+		loc.x = static_cast<float>(x);
+		loc.y = static_cast<float>(y);
 	}
 
 	void base::init(int x, int y)
 	{
-		loc.x = x;
-		loc.y = y;
+		loc.x = static_cast<float>(x);
+		loc.y = static_cast<float>(y);
 	}
 }

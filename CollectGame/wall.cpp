@@ -10,7 +10,7 @@ namespace Tmpl8
 
 	void wall::update(Surface* screen, Pixel color)
 	{
-		screen->Bar(locPointA.x, locPointA.y, locPointB.x, locPointB.y, color);
+		screen->Bar(static_cast<int>(locPointA.x), static_cast<int>(locPointA.y), static_cast<int>(locPointB.x), static_cast<int>(locPointB.y), color);
 	}
 
 	void wall::setPointA(vec2 A)

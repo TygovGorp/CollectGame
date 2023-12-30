@@ -10,7 +10,6 @@ namespace Tmpl8
 		//assigning the values
 		Xlocation = Xloc;
 		Ylocation = Yloc;
-		Screen = ScreenSurface;
 		NumOfFrames = NumFrames;
 
 		//storing the frames in the Frames vector
@@ -30,17 +29,17 @@ namespace Tmpl8
 		}
 	}
 
-	void animation::update(int FrameCounter)
+	void animation::update(int FrameCounter, int w, int h, Surface* screen)
 	{
 		//drawing the frames (do minus to the FrameCounter because you don't have frame 0 but start at 1)
-		Frames[FrameCounter - 1]->DrawScaled(Xlocation, Ylocation, 60, 60, Screen);
+		Frames[FrameCounter - 1]->DrawScaled(Xlocation, Ylocation, w, h, screen);
 	}
 	
-	void animation::update(int FrameCounter, int updatedX, int updatedY)
+	void animation::update(int FrameCounter, int updatedX, int updatedY, int w, int h, Surface* screen)
 	{
 		Xlocation = updatedX;
 		Ylocation = updatedY;
-		update(FrameCounter);
+		update(FrameCounter, w, h, screen);
 	}
 
 	//adding the extension to the end of the filename for full animations (automation)

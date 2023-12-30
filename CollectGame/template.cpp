@@ -299,7 +299,7 @@ void swap()
 #endif
 
 int main( int argc, char **argv ) 
-{  
+{
 #ifdef _MSC_VER
     if (!redirectIO())
         return 1;
@@ -320,6 +320,7 @@ int main( int argc, char **argv )
 	window = SDL_CreateWindow(TemplateVersion, 100, 100, ScreenWidth, ScreenHeight, SDL_WINDOW_FULLSCREEN );
 #else
 	window = SDL_CreateWindow(TemplateVersion, 100, 100, ScreenWidth, ScreenHeight, SDL_WINDOW_SHOWN );
+	//window title
 #endif
 	surface = new Surface( ScreenWidth, ScreenHeight );
 	surface->Clear( 0 );
@@ -366,10 +367,10 @@ int main( int argc, char **argv )
 		float elapsedTime = t.elapsed();
 		t.reset();
 
-		game->Tick( elapsedTime );
+		game->Tick(elapsedTime);
 		// event loop
 		SDL_Event event;
-		while (SDL_PollEvent( &event )) 
+		while (SDL_PollEvent(&event))
 		{
 			switch (event.type)
 			{
@@ -377,24 +378,24 @@ int main( int argc, char **argv )
 				exitapp = 1;
 				break;
 			case SDL_KEYDOWN:
-				if (event.key.keysym.sym == SDLK_ESCAPE) 
+				if (event.key.keysym.sym == SDLK_ESCAPE)
 				{
 					exitapp = 1;
 					// find other keys here: http://sdl.beuc.net/sdl.wiki/SDLKey
 				}
-				game->KeyDown( event.key.keysym.scancode );
+				game->KeyDown(event.key.keysym.scancode);
 				break;
 			case SDL_KEYUP:
-				game->KeyUp( event.key.keysym.scancode );
+				game->KeyUp(event.key.keysym.scancode);
 				break;
 			case SDL_MOUSEMOTION:
-				game->MouseMove( event.motion.xrel, event.motion.yrel );
+				game->MouseMove(event.motion.x, event.motion.y);
 				break;
 			case SDL_MOUSEBUTTONUP:
-				game->MouseUp( event.button.button );
+				game->MouseUp(event.button.button);
 				break;
 			case SDL_MOUSEBUTTONDOWN:
-				game->MouseDown( event.button.button );
+				game->MouseDown(event.button.button);
 				break;
 			default:
 				break;

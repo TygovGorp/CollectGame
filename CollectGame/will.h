@@ -8,13 +8,18 @@ namespace Tmpl8
 	class will : public object
 	{
 	public:
+		//initializes willAnim
 		void init(Surface* screen);
 
-		void update();
+		//update willAnim
+		void update(Surface* screen);
 
+		//sets pickedUp to True
 		void Interaction();
 
+		//returns pickedUp
 		bool getState() { return pickedUp; };
+		//sets pickedUp to false
 		void resetState() { pickedUp = false; };
 	private:
 		bool pickedUp = false;

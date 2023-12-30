@@ -7,8 +7,10 @@ namespace Tmpl8
 	class wall
 	{
 	public:
+		//set pointA and pointB of the wall
 		void setLocPoints(vec2 pointA, vec2 pointB);
 
+		//update the wall
 		void update(Surface* screen, Pixel color);
 
 		vec2 getPointA() { return locPointA; };

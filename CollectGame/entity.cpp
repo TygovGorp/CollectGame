@@ -3,23 +3,26 @@ namespace Tmpl8
 {
 	entity::entity()
 	{
-		HP = 10;
-		DMG = 5;
+		totalTimeFromLastFrame = 0.0f;
+		HP = 3;
+		DMG = 1;
 		loc.x = 0;
 		loc.y = 0;
 	}
 	entity::entity(int hp, int dmg, vec2 LOC)
 	{
+		totalTimeFromLastFrame = 0.0f;
 		HP = hp;
 		DMG = dmg;
 		loc = LOC;
 	}
 	entity::entity(int hp, int dmg, int xloc, int yloc)
 	{
+		totalTimeFromLastFrame = 0.0f;
 		HP = hp;
 		DMG = dmg;
-		loc.x = xloc;
-		loc.y = yloc;
+		loc.x = static_cast<float>(xloc);
+		loc.y = static_cast<float>(yloc);
 	}
 
 	void entity::buildAnimation(Surface* surface, int numofframes, char* filename)
@@ -37,19 +40,18 @@ namespace Tmpl8
 	{
 		HP = hp;
 		DMG = dmg;
-		loc.x = xloc;
-		loc.y = yloc;
+		loc.x = static_cast<float>(xloc);
+		loc.y = static_cast<float>(yloc);
 
 	}
 
-	void entity::update()
+	void entity::update(Surface* surface)
 	{
-		entityAnimation.update(1, int(loc.x), int(loc.y));
+		entityAnimation.update(1, int(loc.x), int(loc.y), 60,60, surface);
 	}
 
-	void entity::move(int xDifference, int yDifference)
+	void entity::move(vec2 change, float deltaTime)
 	{
-		loc.x += xDifference;
-		loc.y += yDifference;
+		loc += change * static_cast<float>(speed) * deltaTime;
 	}
 }
