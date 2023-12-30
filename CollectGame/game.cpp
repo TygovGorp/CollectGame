@@ -84,7 +84,7 @@ namespace Tmpl8
 			else
 			{
 				//updates the light part of the line of sight system
-				losInst.update_light(screen, Player.getLoc());
+				//losInst.update_light(screen, Player.getLoc());
 
 				//updates the enemy, trap, walls
 				levelManager.update(screen, Player, deltaTime);
@@ -100,7 +100,7 @@ namespace Tmpl8
 				Player.update(screen, deltaTime);
 
 				//updates the dark part of the line of sight system
-				losInst.update_darkness(screen, Player.getLoc(), levelManager.getWallVec());
+				//losInst.update_darkness(screen, Player.getLoc(), levelManager.getWallVec());
 
 				//update the UI (level tracker and health)
 				uiInst.update(screen, levelNum, Player.getHP());
@@ -115,7 +115,7 @@ namespace Tmpl8
 				for (int i = 0; i < trapVec.size(); i++)
 				{
 					//checks for collision between the player and trap with id i
-					bool collisionYN = Col.AABB(Player.getLoc() + 7, Player.getLoc().x + 52, trapVec[i].getLoc(), trapVec[i].getPointB());
+					bool collisionYN = Col.AABB(Player.getLoc() + 8, Player.getLoc() + 51, trapVec[i].getLoc(), trapVec[i].getPointB());
 
 					//checks if the player collides for the first time or not, so it only decreases health once
 					if (collisionYN && !Player.getHitStateTrap(i))

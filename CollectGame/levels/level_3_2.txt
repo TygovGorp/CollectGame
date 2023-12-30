@@ -78,7 +78,7 @@
 
  TrapLocation
  80 1
- 160 70
+ 160 80
 
  TrapLocation
  640 1
